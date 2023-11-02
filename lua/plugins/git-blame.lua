@@ -4,6 +4,6 @@ return {
 		vim.g.gitblame_enabled = 0
 	end,
 	keys = {
-		{ "gt", ":GitBlameToggle<cr>", "Toggle Git Blame" },
+		{ "<leader>gt", ":GitBlameToggle<CR>", "Toggle Git Blame" },
 	},
 }

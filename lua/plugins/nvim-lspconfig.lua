@@ -63,7 +63,7 @@ local config = function()
 		on_attach = on_attach,
 		capabilities = capabilities,
 		filetypes = {
-			"typescript",
+			"typescript", "javascript", "typescriptreact", "javascriptreact"
 		},
 		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
 	})
@@ -110,7 +110,6 @@ end
 return {
 	"neovim/nvim-lspconfig",
 	config = config,
-	lazy = false,
 	dependencies = {
 		"williamboman/mason.nvim",
 		"windwp/nvim-autopairs",
