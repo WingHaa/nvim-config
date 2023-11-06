@@ -34,3 +34,4 @@ map.set("t", "<C-h>", "wincmd h") -- Navigate Left
 map.set("t", "<C-j>", "wincmd j") -- Navigate Down
 map.set("t", "<C-k>", "wincmd k") -- Navigate Up
 map.set("t", "<C-l>", "wincmd l") -- Navigate Right
+map.set("n", "<leader>L", ":Lazy<cr>")

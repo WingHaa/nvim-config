@@ -1,5 +1,4 @@
 return {
-	"folke/which-key.nvim",
 	{ "folke/neoconf.nvim", cmd = "Neoconf" },
 	"folke/neodev.nvim",
 	"nvim-tree/nvim-web-devicons",
@@ -8,7 +7,7 @@ return {
 	{
 		"mbbill/undotree",
 		cmd = "UndotreeToggle",
-		keys = { "<leader>u", "<cmd>UndotreeToggle<cr>", "Undotree" },
+		keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", "Undotree" } },
 	},
 	{
 		"windwp/nvim-ts-autotag",
@@ -18,6 +17,7 @@ return {
 	},
 	{
 		"simrat39/symbols-outline.nvim",
+		keys = { { "<leader>o", "<cmd>SymbolsOutline<cr>", "Outline Symbols" } },
 		config = function()
 			require("symbols-outline").setup()
 		end,

@@ -13,4 +13,5 @@ return {
 			},
 		})
 	end,
+	keys = { { "<leader>lm", "<cmd>Mason<cr>", "Mason" } },
 }

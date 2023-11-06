@@ -32,6 +32,7 @@ opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
 opt.scrolloff = 8
+vim.wo.signcolumn = "yes:1"
 
 vim.g.format_on_save = true
 
