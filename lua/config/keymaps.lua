@@ -26,12 +26,11 @@ map.set("n", "<C-Left>", ":vertical resize -2<CR>")
 map.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
 -- Pane and Window Navigation
-map.set("n", "<C-h>", "<C-w>h")            -- Navigate Left
-map.set("n", "<C-j>", "<C-w>j")            -- Navigate Down
-map.set("n", "<C-k>", "<C-w>k")            -- Navigate Up
-map.set("n", "<C-l>", "<C-w>l")            -- Navigate Right
-map.set("n", "<leader>c", ":bd<cr>", opts) -- Kill Buffer
-map.set("t", "<C-h>", "wincmd h")          -- Navigate Left
-map.set("t", "<C-j>", "wincmd j")          -- Navigate Down
-map.set("t", "<C-k>", "wincmd k")          -- Navigate Up
-map.set("t", "<C-l>", "wincmd l")          -- Navigate Right
+map.set("n", "<C-h>", "<C-w>h")   -- Navigate Left
+map.set("n", "<C-j>", "<C-w>j")   -- Navigate Down
+map.set("n", "<C-k>", "<C-w>k")   -- Navigate Up
+map.set("n", "<C-l>", "<C-w>l")   -- Navigate Right
+map.set("t", "<C-h>", "wincmd h") -- Navigate Left
+map.set("t", "<C-j>", "wincmd j") -- Navigate Down
+map.set("t", "<C-k>", "wincmd k") -- Navigate Up
+map.set("t", "<C-l>", "wincmd l") -- Navigate Right

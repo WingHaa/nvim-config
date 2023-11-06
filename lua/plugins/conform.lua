@@ -63,7 +63,7 @@ return {
 				require("conform").format({ async = true, lsp_fallback = true })
 			end,
 			mode = { "n", "v" },
-			desc = "Format Injected Langs",
+			desc = "Format",
 		},
 	},
 	init = function()

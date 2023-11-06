@@ -6,10 +6,10 @@ local config = function()
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 			disabled_filetypes = {
-				statusline = {},
-				winbar = {},
+				'Lazy',
+				'NvimTree',
+				'dashboard',
 			},
-			ignore_focus = {},
 			always_divide_middle = true,
 			globalstatus = false,
 			refresh = {
@@ -34,10 +34,6 @@ local config = function()
 			lualine_y = {},
 			lualine_z = {},
 		},
-		tabline = {},
-		winbar = {},
-		inactive_winbar = {},
-		extensions = {},
 	})
 end
 
