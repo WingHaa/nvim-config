@@ -137,7 +137,6 @@ return {
 	config = config,
 	dependencies = {
 		"williamboman/mason.nvim",
-		"windwp/nvim-autopairs",
 		"williamboman/mason.nvim",
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",

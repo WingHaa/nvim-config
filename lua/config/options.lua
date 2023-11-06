@@ -34,7 +34,7 @@ opt.termguicolors = true
 opt.scrolloff = 8
 vim.wo.signcolumn = "yes:1"
 
-vim.g.format_on_save = true
+vim.g.autoformat = false
 
 vim.o.guicursor =
 "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,n:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"

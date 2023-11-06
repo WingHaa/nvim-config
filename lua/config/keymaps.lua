@@ -25,13 +25,16 @@ map.set("n", "<C-Down>", ":resize +2<CR>")
 map.set("n", "<C-Left>", ":vertical resize -2<CR>")
 map.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
+-- Unbind command history
+map.set("n", "q:", "<nop>", opts)
+
 -- Pane and Window Navigation
-map.set("n", "<C-h>", "<C-w>h")   -- Navigate Left
-map.set("n", "<C-j>", "<C-w>j")   -- Navigate Down
-map.set("n", "<C-k>", "<C-w>k")   -- Navigate Up
-map.set("n", "<C-l>", "<C-w>l")   -- Navigate Right
-map.set("t", "<C-h>", "wincmd h") -- Navigate Left
-map.set("t", "<C-j>", "wincmd j") -- Navigate Down
-map.set("t", "<C-k>", "wincmd k") -- Navigate Up
-map.set("t", "<C-l>", "wincmd l") -- Navigate Right
-map.set("n", "<leader>L", ":Lazy<cr>")
+map.set("n", "<C-h>", "<C-w>h", opts)   -- Navigate Left
+map.set("n", "<C-j>", "<C-w>j", opts)   -- Navigate Down
+map.set("n", "<C-k>", "<C-w>k", opts)   -- Navigate Up
+map.set("n", "<C-l>", "<C-w>l", opts)   -- Navigate Right
+map.set("t", "<C-h>", "wincmd h", opts) -- Navigate Left
+map.set("t", "<C-j>", "wincmd j", opts) -- Navigate Down
+map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
+map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
+map.set("n", "<leader>L", ":Lazy<cr>", opts)

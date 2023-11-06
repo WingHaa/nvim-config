@@ -1,9 +1,9 @@
 vim.api.nvim_create_user_command("FormatDisable", function(args)
 	if args.bang then
 		-- FormatDisable! will disable formatting just for this buffer
-		vim.b.format_on_save = false
+		vim.b.autoformat = false
 	else
-		vim.g.format_on_save = false
+		vim.g.autoformat = false
 	end
 end, {
 	desc = "Disable autoformat-on-save",
@@ -11,8 +11,8 @@ end, {
 })
 
 vim.api.nvim_create_user_command("FormatEnable", function()
-	vim.b.format_on_save = true
-	vim.g.format_on_save = true
+	vim.b.autoformat = true
+	vim.g.autoformat = true
 end, {
 	desc = "Re-enable autoformat-on-save",
 })
@@ -30,6 +30,11 @@ local opts = {
 		javascript = { { "prettierd", "prettier" } },
 	},
 	formatters = {
+		javascript = { "prettierd", "prettier" },
+		typescript = { "prettierd", "prettier" },
+		typescriptreact = { "prettierd", "prettier" },
+		javascriptreact = { "prettierd", "prettier" },
+		php = { "php_cs_fixer", "prettierd" },
 		-- # Example of using dprint only when a dprint.json file is present
 		-- dprint = {
 		--   condition = function(ctx)
@@ -44,7 +49,7 @@ local opts = {
 	},
 	format_on_save = function(bufnr)
 		-- Disable with a global or buffer-local variable
-		if not (vim.g.format_on_save or vim.b[bufnr].format_on_save) then
+		if not (vim.g.autoformat or vim.b[bufnr].autoformat) then
 			return
 		end
 		return { timeout_ms = 500, lsp_fallback = true }
