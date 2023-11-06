@@ -45,10 +45,10 @@ return {
 	dependencies = { { 'nvim-tree/nvim-web-devicons' } },
 	config = function()
 		require('dashboard').setup(opts)
-		vim.api.nvim_set_hl(0, "DashboardHeader", { link = "@text.literal" })
-		vim.api.nvim_set_hl(0, "DashboardKey", { link = "@label" })
-		vim.api.nvim_set_hl(0, "DashboardIcon", { link = "@attribute" })
-		vim.api.nvim_set_hl(0, "DashboardFooter", { link = "@text.reference" })
-		vim.api.nvim_set_hl(0, "DashboardDesc", { link = "@attribute" })
+		-- vim.api.nvim_set_hl(0, "DashboardHeader", { link = "@text.literal" })
+		-- vim.api.nvim_set_hl(0, "DashboardKey", { link = "@label" })
+		-- vim.api.nvim_set_hl(0, "DashboardIcon", { link = "@attribute" })
+		-- vim.api.nvim_set_hl(0, "DashboardFooter", { link = "@text.reference" })
+		-- vim.api.nvim_set_hl(0, "DashboardDesc", { link = "@attribute" })
 	end
 }
