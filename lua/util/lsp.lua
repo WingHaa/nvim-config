@@ -21,11 +21,6 @@ M.on_attach = function(client, bufnr)
 	end
 
 	if client.name == "tsserver" then
-		local function organize_imports()
-			local params = { command = "_typescript.organizeImports", arguments = { vim.api.nvim_buf_get_name(0) }, title = "" }
-			vim.lsp.buf.execute_command(params)
-		end
-
 		map.set("n", "<Leader>oi",
 			":lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<CR>",
 			opts)

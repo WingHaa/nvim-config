@@ -26,12 +26,17 @@ return {
 			messages = {
 				-- NOTE: If you enable messages, then the cmdline is enabled automatically.
 				-- This is a current Neovim limitation.
-				enabled = true,        -- enables the Noice messages UI
-				view = "notify",       -- default view for messages
-				view_error = "notify", -- view for errors
-				view_warn = "notify",  -- view for warnings
-				view_history = "messages", -- view for :messages
-				view_search = false,   -- view for search count messages. Set to `false` to disable
+				enabled = false, -- enables the Noice messages UI
+				-- view = "notify",       -- default view for messages
+				-- view_error = "notify", -- view for errors
+				-- view_warn = "notify",  -- view for warnings
+				-- view_history = "messages", -- view for :messages
+				-- view_search = false,   -- view for search count messages. Set to `false` to disable
+				view = false,     -- default view for messages
+				view_error = false, -- view for errors
+				view_warn = false, -- view for warnings
+				view_history = false, -- view for :messages
+				view_search = false, -- view for search count messages. Set to `false` to disable
 			},
 		})
 	end
