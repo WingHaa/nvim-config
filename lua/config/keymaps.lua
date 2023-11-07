@@ -17,8 +17,6 @@ map.set("n", "N", "Nzzzv")
 map.set("v", "<", "<gv") -- Shift Indentation to Left
 map.set("v", ">", ">gv") -- Shift Indentation to Right
 
-map.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- Resize with arrows
 map.set("n", "<C-Up>", ":resize -2<CR>")
 map.set("n", "<C-Down>", ":resize +2<CR>")

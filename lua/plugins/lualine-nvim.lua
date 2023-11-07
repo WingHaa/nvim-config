@@ -9,6 +9,8 @@ local config = function()
 			disabled_filetypes = {
 				'Lazy',
 				'NvimTree',
+				'neo-tree',
+				"neo-tree-popup",
 				'dashboard',
 			},
 			always_divide_middle = true,

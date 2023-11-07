@@ -11,6 +11,8 @@ return {
 				"lazy",
 				"DashBoard",
 				"NvimTree",
+				'neo-tree',
+				"neo-tree-popup",
 			},
 			buftype_exclude = { -- A list of buffer types for which the auto command gets disabled
 				"help",

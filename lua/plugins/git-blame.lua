@@ -1,7 +1,10 @@
 return {
 	"f-person/git-blame.nvim",
+	cmd = "GitBlameToggle",
 	init = function()
-		vim.g.gitblame_enabled = 0
+		require('gitblame').setup {
+			enabled = false,
+		}
 	end,
 	keys = {
 		{ "<leader>gt", ":GitBlameToggle<CR>", "Toggle Git Blame" },
