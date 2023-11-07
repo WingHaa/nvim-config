@@ -30,6 +30,7 @@ local opts = {
 		javascript = { { "prettierd", "prettier" } },
 	},
 	formatters = {
+		lua = { "stylua" },
 		javascript = { "prettierd", "prettier" },
 		typescript = { "prettierd", "prettier" },
 		typescriptreact = { "prettierd", "prettier" },

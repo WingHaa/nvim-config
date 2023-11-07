@@ -28,7 +28,14 @@ return {
 			width = 50,
 		},
 		filters = {
+			git_ignored = false,
 			dotfiles = false,
+		},
+		reload_on_bufenter = true,
+		sync_root_with_cwd = true,
+		update_focused_file = {
+			enable = true,
+			update_root = true
 		},
 	},
 	config = function()
