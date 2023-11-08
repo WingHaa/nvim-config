@@ -8,9 +8,7 @@ vim.g.maplocalleader = " "
 map.set("n", "J", "mzJ`z")
 -- keep cursor at middle of screen when navigating
 map.set("n", "<C-d>", "<C-d>zz")
-map.set("n", "<C-u>", "<C-u>zz")
--- Keep searches at middle of screen when you search
-map.set("n", "n", "nzzzv")
+map.set("n", "<C-u>", "<C-u>zz") -- Keep searches at middle of screen when you search map.set("n", "n", "nzzzv")
 map.set("n", "N", "Nzzzv")
 
 -- Indenting
@@ -40,3 +38,8 @@ map.set("n", "<leader>L", ":Lazy<cr>", opts)
 
 --Cause q: is a bitch
 map.set("n", "<leader>q", ":qa<cr>", opts)
+
+local terminal = require('util.terminal')
+--Lazygit
+map.set("n", "<leader>gg", function() terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false }) end,
+	{ desc = "Lazygit (cwd)" })
