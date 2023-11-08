@@ -12,7 +12,7 @@ return {
 
 			-- add client
 			for _, client in pairs(buf_clients) do
-				if client.name ~= "null-ls" and client.name ~= "copilot" then
+				if client.name ~= "copilot" then
 					table.insert(buf_client_names, client.name)
 				end
 
@@ -21,15 +21,23 @@ return {
 				end
 			end
 
-			-- add formatter
-			local formatters = require "lvim.lsp.null-ls.formatters"
-			local supported_formatters = formatters.list_registered(buf_ft)
-			vim.list_extend(buf_client_names, supported_formatters)
-
-			-- add linter
-			local linters = require "lvim.lsp.null-ls.linters"
-			local supported_linters = linters.list_registered(buf_ft)
-			vim.list_extend(buf_client_names, supported_linters)
+			-- Add linters (from nvim-lint)
+			local lint_s, lint = pcall(require, "lint")
+			if lint_s then
+				for ft_k, ft_v in pairs(lint.linters_by_ft) do
+					if type(ft_v) == "table" then
+						for _, linter in ipairs(ft_v) do
+							if buf_ft == ft_k then
+								table.insert(buf_client_names, linter)
+							end
+						end
+					elseif type(ft_v) == "string" then
+						if buf_ft == ft_k then
+							table.insert(buf_client_names, ft_v)
+						end
+					end
+				end
+			end
 
 			local unique_client_names = table.concat(buf_client_names, ", ")
 			local language_servers = string.format("[%s]", unique_client_names)

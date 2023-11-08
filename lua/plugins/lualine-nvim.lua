@@ -25,7 +25,7 @@ local config = function()
 			lualine_a = { "mode" },
 			lualine_b = { "branch", "diff", "diagnostics" },
 			lualine_c = { "filename" },
-			lualine_x = { "encoding", components.shiftwidth, "filetype" },
+			lualine_x = { components.lsp, "encoding", components.shiftwidth, "filetype" },
 			lualine_y = { "progress" },
 			lualine_z = { "location" },
 		},

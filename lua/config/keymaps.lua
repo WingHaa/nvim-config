@@ -23,9 +23,6 @@ map.set("n", "<C-Down>", ":resize +2<CR>")
 map.set("n", "<C-Left>", ":vertical resize -2<CR>")
 map.set("n", "<C-Right>", ":vertical resize +2<CR>")
 
--- Unbind command history
-map.set("n", "q:", "<Nop>", opts)
-
 -- Pane and Window Navigation
 map.set("n", "<C-h>", "<C-w>h", opts)   -- Navigate Left
 map.set("n", "<C-j>", "<C-w>j", opts)   -- Navigate Down
