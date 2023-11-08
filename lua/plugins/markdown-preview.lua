@@ -7,8 +7,7 @@ return {
 			vim.g.mkdp_auto_start = 1
 		end,
 		keys = {
-			{ "<leader>m", "<cmd>MarkdownPreview<cr>", desc = "Find Files" },
+			{ "<leader>m", "<cmd>MarkdownPreview<cr>", desc = "Preview Markdown" },
 		},
 	},
 }
-

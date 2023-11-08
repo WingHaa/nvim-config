@@ -20,8 +20,8 @@ return {
 		})
 	end,
 	keys = {
-		{ "<leader>fs", "<cmd>SessionManager load_session<cr>",         "Sessions" },
-		{ "<leader>sa", "<cmd>SessionManager save_current_session<cr>", "Session Add" },
-		{ "<leader>sd", "<cmd>SessionManager delete_session<cr>",       "Session Delete" },
+		{ "<leader>fs", "<cmd>SessionManager load_session<cr>",         desc = "Sessions" },
+		{ "<leader>sa", "<cmd>SessionManager save_current_session<cr>", desc = "Session Add" },
+		{ "<leader>sd", "<cmd>SessionManager delete_session<cr>",       desc = "Session Delete" },
 	},
 }

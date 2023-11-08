@@ -7,7 +7,7 @@ return {
 	{
 		"mbbill/undotree",
 		cmd = "UndotreeToggle",
-		keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", "Undotree" } },
+		keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undotree" } },
 	},
 	{
 		"windwp/nvim-ts-autotag",
@@ -18,7 +18,7 @@ return {
 	},
 	{
 		"simrat39/symbols-outline.nvim",
-		keys = { { "<leader>o", "<cmd>SymbolsOutline<cr>", "Outline Symbols" } },
+		keys = { { "<leader>o", "<cmd>SymbolsOutline<cr>", desc = "Outline Symbols" } },
 		config = function()
 			require("symbols-outline").setup()
 		end,
