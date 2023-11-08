@@ -3,7 +3,11 @@ return {
 	"folke/neodev.nvim",
 	"nvim-tree/nvim-web-devicons",
 	"tpope/vim-repeat",
-	{ "folke/trouble.nvim", cmd = "TroubleToggle" },
+	{
+		"folke/trouble.nvim",
+		cmd = "TroubleToggle",
+		keys = { { "<leader>lt", "<cmd>TroubleToggle<cr>", desc = "Toggle Error" } },
+	},
 	{
 		"mbbill/undotree",
 		cmd = "UndotreeToggle",

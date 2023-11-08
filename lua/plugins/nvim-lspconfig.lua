@@ -142,5 +142,8 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",
 	},
-	keys = { { "<leader>ll", "<cmd>LspInfo<cr>", desc = "Lsp Info" } },
+	keys = {
+		{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
+		{ "<leader>ll", "<cmd>LspLog<cr>",  desc = "Lsp Log" }
+	},
 }
