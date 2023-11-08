@@ -8,6 +8,29 @@ au TextYankPost * silent! lua vim.highlight.on_yank {higroup=(vim.fn['hlexists']
 augroup END
 ]])
 
+
+-- Disable for certain filetypes
+-- vim.cmd([[
+-- augroup DisableMiniIndentScopeFileType
+-- autocmd!
+-- au FileType * if index(['dashboard'], &ft) > 0 | lua vim.b.miniindentscope_disable = true | endif
+-- augroup END
+-- ]])
+
+vim.cmd([[
+augroup DisableMiniIndentScopeTerm
+autocmd!
+au TermOpen * lua vim.b.miniindentscope_disable = true
+augroup END
+]])
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "dashboard",
+	callback = function()
+		vim.b.miniindentscope_disable = true
+	end,
+})
+
 -- vim.api.nvim_create_autocmd("VimEnter", {
 -- 	callback = function()
 -- 		if vim.fn.argv(0) == "" then

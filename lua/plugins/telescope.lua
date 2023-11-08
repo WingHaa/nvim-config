@@ -40,6 +40,7 @@ return {
 			map.set("n", "<leader>fk", ":Telescope keymaps<CR>", key_opts),
 			map.set("n", "<leader>fh", ":Telescope help_tags<CR>", key_opts),
 			map.set("n", "<leader>fc", ":Telescope git_bcommits<CR>", key_opts),
+			map.set("n", "<leader>fw", ":Telescope grep_string<CR>", key_opts),
 		},
 		config = config,
 	},

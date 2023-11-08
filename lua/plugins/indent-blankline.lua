@@ -1,5 +1,6 @@
 return {
 	"lukas-reineke/indent-blankline.nvim",
+	event = "BufRead",
 	opts = {
 		indent = {
 			char = "│",

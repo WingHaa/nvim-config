@@ -180,6 +180,9 @@ M.git_status = {
 
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	keys = {
+		{ "<leader>e", "<cmd>Neotree filesystem toggle reveal current<CR>", desc = "Neotree", { noremap = true, silent = true } },
+	},
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
