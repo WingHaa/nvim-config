@@ -6,13 +6,7 @@ local config = function()
 			theme = "auto",
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
-			disabled_filetypes = {
-				'Lazy',
-				'NvimTree',
-				'neo-tree',
-				"neo-tree-popup",
-				'dashboard',
-			},
+			disabled_filetypes = require("util.exclude").filetype,
 			always_divide_middle = true,
 			globalstatus = false,
 			refresh = {

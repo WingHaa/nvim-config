@@ -54,19 +54,7 @@ return {
 		})
 
 		vim.api.nvim_create_autocmd("FileType", {
-			pattern = {
-				"help",
-				"alpha",
-				"dashboard",
-				"neo-tree",
-				"Trouble",
-				"trouble",
-				"lazy",
-				"mason",
-				"notify",
-				"toggleterm",
-				"lazyterm",
-			},
+			pattern = require("util.exclude").filetype,
 			callback = function()
 				vim.b.miniindentscope_disable = true
 			end,
