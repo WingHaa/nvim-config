@@ -37,3 +37,6 @@ map.set("t", "<C-j>", "wincmd j", opts) -- Navigate Down
 map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
 map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
 map.set("n", "<leader>L", ":Lazy<cr>", opts)
+
+--Cause q: is a bitch
+map.set("n", "<leader>q", ":qa<cr>", opts)
