@@ -32,6 +32,7 @@ local config = function()
 		init_options = {
 			["language_server_phpstan.enabled"] = false,
 			["language_server_psalm.enabled"] = false,
+			["php_code_sniffer.enabled"] = true,
 		},
 		handlers = {
 			['textDocument/publishDiagnostics'] = function() end

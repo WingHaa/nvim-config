@@ -19,6 +19,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		"tpope/vim-dotenv",
 		"MunifTanjim/nui.nvim",
+		"nvim-treesitter/nvim-treesitter"
 	},
 	cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
 	keys = {

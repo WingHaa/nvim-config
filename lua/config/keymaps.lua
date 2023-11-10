@@ -37,7 +37,7 @@ map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
 map.set("n", "<leader>L", ":Lazy<cr>", opts)
 
 --Cause q: is a bitch
-map.set("n", "<leader>q", ":qa<cr>", opts)
+map.set("n", "<leader>q", ":q<cr>", opts)
 
 local terminal = require('util.terminal')
 --Lazygit

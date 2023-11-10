@@ -90,8 +90,9 @@ return {
 			},
 			is_open_target_win = true, --open file on opener window
 			is_insert_mode     = false, -- start open panel on is_insert_mode
-			is_block_ui_break  = false -- mapping backspace and enter key to avoid ui break
+			is_block_ui_break  = true -- mapping backspace and enter key to avoid ui break
 		})
+
 		vim.keymap.set('n', '<leader>sr', '<cmd>lua require("spectre").toggle()<CR>', {
 			desc = "Toggle Spectre"
 		})

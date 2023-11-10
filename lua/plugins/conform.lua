@@ -35,7 +35,7 @@ local opts = {
 		typescript = { "prettierd", "prettier" },
 		typescriptreact = { "prettierd", "prettier" },
 		javascriptreact = { "prettierd", "prettier" },
-		php = { "php_cs_fixer", "prettierd" },
+		php = { "php-cs-fixer", "prettierd" },
 		-- # Example of using dprint only when a dprint.json file is present
 		-- dprint = {
 		--   condition = function(ctx)
