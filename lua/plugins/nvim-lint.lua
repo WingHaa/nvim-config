@@ -1,10 +1,10 @@
 return {
 	"mfussenegger/nvim-lint",
 	ft = {
-		'javascript',
-		'typescript',
-		'javascriptreact',
-		'typescriptreact',
+		"javascript",
+		"typescript",
+		"javascriptreact",
+		"typescriptreact",
 	},
 	config = function()
 		local lint = require("lint")
@@ -22,7 +22,7 @@ return {
 				"eslint_d",
 			},
 			php = {
-				"phpstan",
+				"phpcs",
 			},
 		}
 

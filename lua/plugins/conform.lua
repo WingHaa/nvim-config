@@ -23,19 +23,24 @@ local opts = {
 		async = false, -- not recommended to change
 		quiet = false, -- not recommended to change
 	},
+	-- Map of filetype to formatters
 	formatters_by_ft = {
 		lua = { "stylua" },
 		sh = { "shfmt" },
 		python = { "isort", "black" },
 		javascript = { { "prettierd", "prettier" } },
+		php = { { "php_cs_fixer", "prettierd" } },
+		blade = { "blade-formatter" },
 	},
+	-- Custom formatters and changes to built-in formatters
 	formatters = {
 		lua = { "stylua" },
 		javascript = { "prettierd", "prettier" },
 		typescript = { "prettierd", "prettier" },
 		typescriptreact = { "prettierd", "prettier" },
 		javascriptreact = { "prettierd", "prettier" },
-		php = { "php-cs-fixer", "prettierd" },
+		php = { "php_cs_fixer", "prettierd" },
+		blade = { "blade-formatter" },
 		-- # Example of using dprint only when a dprint.json file is present
 		-- dprint = {
 		--   condition = function(ctx)

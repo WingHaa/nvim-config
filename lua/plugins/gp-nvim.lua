@@ -132,17 +132,17 @@ return {
 		})
 
 		-- Chat commands
-		vim.keymap.set({ "n", "i" }, "<leader>gc", "<cmd>GpChatNew<cr>", keymapOptions("New Chat"))
-		vim.keymap.set({ "n", "i" }, "<leader>gt", "<cmd>GpChatToggle<cr>", keymapOptions("Toggle Popup Chat"))
-		vim.keymap.set({ "n", "i" }, "<leader>gf", "<cmd>GpChatFinder<cr>", keymapOptions("Chat Finder"))
+		vim.keymap.set("n", "<leader>gc", "<cmd>GpChatNew<cr>", keymapOptions("New Chat"))
+		vim.keymap.set("n", "<leader>gt", "<cmd>GpChatToggle<cr>", keymapOptions("Toggle Popup Chat"))
+		vim.keymap.set("n", "<leader>gf", "<cmd>GpChatFinder<cr>", keymapOptions("Chat Finder"))
 
 		vim.keymap.set("v", "<leader>gc", ":<C-u>'<,'>GpChatNew<cr>", keymapOptions("Visual Chat New"))
 		vim.keymap.set("v", "<leader>gv", ":<C-u>'<,'>GpChatPaste<cr>", keymapOptions("Visual Chat Paste"))
 		vim.keymap.set("v", "<leader>gt", ":<C-u>'<,'>GpChatToggle<cr>", keymapOptions("Visual Popup Chat"))
 
-		vim.keymap.set({ "n", "i" }, "<C-g><C-x>", "<cmd>GpChatNew split<cr>", keymapOptions("New Chat split"))
-		vim.keymap.set({ "n", "i" }, "<C-g><C-v>", "<cmd>GpChatNew vsplit<cr>", keymapOptions("New Chat vsplit"))
-		vim.keymap.set({ "n", "i" }, "<C-g><C-t>", "<cmd>GpChatNew tabnew<cr>", keymapOptions("New Chat tabnew"))
+		vim.keymap.set("n", "<C-g><C-x>", "<cmd>GpChatNew split<cr>", keymapOptions("New Chat split"))
+		vim.keymap.set("n", "<C-g><C-v>", "<cmd>GpChatNew vsplit<cr>", keymapOptions("New Chat vsplit"))
+		vim.keymap.set("n", "<C-g><C-t>", "<cmd>GpChatNew tabnew<cr>", keymapOptions("New Chat tabnew"))
 
 		vim.keymap.set("v", "<C-g>x", ":<C-u>'<,'>GpChatNew split<cr>", keymapOptions("Visual Chat New split"))
 		vim.keymap.set("v", "<C-g>v", ":<C-u>'<,'>GpChatNew vsplit<cr>", keymapOptions("Visual Chat New vsplit"))
@@ -155,7 +155,7 @@ return {
 		vim.keymap.set("v", "<leader>ge", ":<C-u>'<,'>GpEnew<cr>", keymapOptions("Visual Enew"))
 		vim.keymap.set("v", "<leader>gp", ":<C-u>'<,'>GpPopup<cr>", keymapOptions("Visual Popup"))
 
-		vim.keymap.set({ "n", "i", "v", "x" }, "<leader>gs", "<cmd>GpStop<cr>", keymapOptions("Stop"))
+		vim.keymap.set({ "n", "v", "x" }, "<leader>gs", "<cmd>GpStop<cr>", keymapOptions("Stop"))
 
 		-- optional Whisper commands
 		-- vim.keymap.set({ "n", "i" }, "<C-g>w", "<cmd>GpWhisper<cr>", keymapOptions("Whisper"))

@@ -14,19 +14,19 @@ local config = function()
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
 	-- PHP
-	require('lspconfig').intelephense.setup({
+	require("lspconfig").intelephense.setup({
 		commands = {
 			IntelephenseIndex = {
 				function()
-					vim.lsp.buf.execute_command({ command = 'intelephense.index.workspace' })
+					vim.lsp.buf.execute_command({ command = "intelephense.index.workspace" })
 				end,
 			},
 		},
 		on_attach = on_attach,
-		capabilities = capabilities
+		capabilities = capabilities,
 	})
 
-	require('lspconfig').phpactor.setup({
+	require("lspconfig").phpactor.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
 		init_options = {
@@ -35,8 +35,9 @@ local config = function()
 			["php_code_sniffer.enabled"] = true,
 		},
 		handlers = {
-			['textDocument/publishDiagnostics'] = function() end
-		}
+			["textDocument/publishDiagnostics"] = function() end,
+		},
+		filetypes = { "php", "blade" },
 	})
 
 	-- lua
@@ -89,7 +90,10 @@ local config = function()
 		on_attach = on_attach,
 		capabilities = capabilities,
 		filetypes = {
-			"typescript", "javascript", "typescriptreact", "javascriptreact"
+			"typescript",
+			"javascript",
+			"typescriptreact",
+			"javascriptreact",
 		},
 		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
 	})
@@ -131,6 +135,11 @@ local config = function()
 		capabilities = capabilities,
 		on_attach = on_attach,
 	})
+
+	lspconfig.yamlls.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
 end
 
 return {
@@ -145,6 +154,6 @@ return {
 	},
 	keys = {
 		{ "<leader>li", "<cmd>LspInfo<cr>", desc = "Lsp Info" },
-		{ "<leader>ll", "<cmd>LspLog<cr>",  desc = "Lsp Log" }
+		{ "<leader>ll", "<cmd>LspLog<cr>", desc = "Lsp Log" },
 	},
 }

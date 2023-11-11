@@ -15,6 +15,7 @@ M.filetype = {
 	"notify",
 	"toggleterm",
 	"lazyterm",
+	"markdown",
 }
 
 return M

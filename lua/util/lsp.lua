@@ -3,6 +3,9 @@ local M = {}
 
 -- set keymaps on the active lsp server
 M.on_attach = function(client, bufnr)
+	client.server_capabilities.documentFormattingProvider = false
+	client.server_capabilities.documentRangeFormattingProvider = false
+
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
 	map.set("n", "fd", ":Lspsaga finder<CR>", opts)                        -- go to definition

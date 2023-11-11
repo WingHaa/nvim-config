@@ -1,1 +1,1 @@
-vim.g.autoformat = true
+vim.b.autoformat = true
