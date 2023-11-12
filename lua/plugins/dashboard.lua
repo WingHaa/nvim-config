@@ -16,12 +16,13 @@ local opts = {
 		statusline = false,
 	},
 	config = {
-		header = addPad(require('util.headers').neovim_banner),
+		header = addPad(require("util.headers").neovim_banner),
 		-- stylua: ignore
 		center = {
 			{ action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
 			{ action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "r" },
 			{ action = "Telescope live_grep", desc = " Find text", icon = " ", key = "g" },
+			{ action = "SessionManager load_session", desc = " Find Project", icon = " ", key = "p" },
 			{ action = "SessionManager load_last_session", desc = " Restore Session", icon = " ", key = "s" },
 			{ action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },
 			{ action = "qa", desc = " Quit", icon = " ", key = "q" },
@@ -40,15 +41,15 @@ for _, button in ipairs(opts.config.center) do
 end
 
 return {
-	'nvimdev/dashboard-nvim',
-	event = 'VimEnter',
-	dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+	"nvimdev/dashboard-nvim",
+	event = "VimEnter",
+	dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	config = function()
-		require('dashboard').setup(opts)
+		require("dashboard").setup(opts)
 		-- vim.api.nvim_set_hl(0, "DashboardHeader", { link = "@text.literal" })
 		-- vim.api.nvim_set_hl(0, "DashboardKey", { link = "@label" })
 		-- vim.api.nvim_set_hl(0, "DashboardIcon", { link = "@attribute" })
 		-- vim.api.nvim_set_hl(0, "DashboardFooter", { link = "@text.reference" })
 		-- vim.api.nvim_set_hl(0, "DashboardDesc", { link = "@attribute" })
-	end
+	end,
 }

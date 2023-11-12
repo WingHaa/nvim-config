@@ -1,8 +1,8 @@
 return {
-	'echasnovski/mini.ai',
-	event = 'InsertEnter',
-	version = '*',
+	"echasnovski/mini.ai",
+	event = "BufRead",
+	version = "*",
 	config = function()
-		require('mini.ai').setup()
-	end
+		require("mini.ai").setup()
+	end,
 }

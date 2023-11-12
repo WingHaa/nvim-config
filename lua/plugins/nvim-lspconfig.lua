@@ -5,6 +5,7 @@ local config = function()
 	require("neoconf").setup({})
 	local cmp_nvim_lsp = require("cmp_nvim_lsp")
 	local lspconfig = require("lspconfig")
+	local lsp_config = require("lspconfig.configs")
 
 	for type, icon in pairs(diagnostic_signs) do
 		local hl = "DiagnosticSign" .. type
@@ -14,30 +15,45 @@ local config = function()
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
 	-- PHP
-	require("lspconfig").intelephense.setup({
-		commands = {
-			IntelephenseIndex = {
-				function()
-					vim.lsp.buf.execute_command({ command = "intelephense.index.workspace" })
-				end,
-			},
-		},
-		on_attach = on_attach,
-		capabilities = capabilities,
-	})
+	-- require("lspconfig").intelephense.setup({
+	-- 	commands = {
+	-- 		IntelephenseIndex = {
+	-- 			function()
+	-- 				vim.lsp.buf.execute_command({ command = "intelephense.index.workspace" })
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- 	on_attach = on_attach,
+	-- 	capabilities = capabilities,
+	-- })
 
 	require("lspconfig").phpactor.setup({
-		capabilities = capabilities,
 		on_attach = on_attach,
+		capabilities = capabilities,
 		init_options = {
-			["language_server_phpstan.enabled"] = false,
-			["language_server_psalm.enabled"] = false,
+			["language_server_phpstan.enabled"] = true,
+			["language_server_psalm.enabled"] = true,
 			["php_code_sniffer.enabled"] = true,
 		},
-		handlers = {
-			["textDocument/publishDiagnostics"] = function() end,
-		},
 		filetypes = { "php", "blade" },
+	})
+
+	-- Add custom blade lsp
+	lsp_config.blade_ls = {
+		default_config = {
+			name = "blade_ls",
+			cmd = { vim.fn.expand("$HOME/blade-lsp/builds/laravel-dev-tools"), "lsp" },
+			filetypes = { "blade" },
+			root_dir = function()
+				return vim.loop.cwd()
+			end,
+
+			settings = {},
+		},
+	}
+	-- Setup it
+	lspconfig.blade_ls.setup({
+		capabilities = capabilities,
 	})
 
 	-- lua

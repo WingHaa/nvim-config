@@ -1,18 +1,11 @@
-local function keymapOptions(desc)
-	return {
-		noremap = true,
-		silent = true,
-		nowait = true,
-		desc = "GPT prompt " .. desc,
-	}
-end
+local add_desc = require("util.keymap").desc
 
 return {
 	"robitx/gp.nvim",
 	config = function()
 		require("gp").setup({
 			-- required openai api key
-			openai_api_key = require('.env').key(), -- os.getenv("OPENAI_API_KEY")
+			openai_api_key = require(".env").key(), -- os.getenv("OPENAI_API_KEY")
 			-- api endpoint (you can change this to azure endpoint)
 			openai_api_endpoint = "https://api.openai.com/v1/chat/completions",
 			-- openai_api_endpoint = "https://$URL.openai.azure.com/openai/deployments/{{model}}/chat/completions?api-version=2023-03-15-preview",
@@ -30,20 +23,20 @@ return {
 			chat_system_prompt = "You are a general AI assistant.",
 			-- chat custom instructions (not visible in the chat but prepended to model prompt)
 			chat_custom_instructions = "The user provided the additional info about how they would like you to respond:\n\n"
-					.. "- If you're unsure don't guess and say you don't know instead.\n"
-					.. "- Ask question if you need clarification to provide better answer.\n"
-					.. "- Think deeply and carefully from first principles step by step.\n"
-					.. "- Zoom out first to see the big picture and then zoom in to details.\n"
-					.. "- Use Socratic method to improve your thinking and coding skills.\n"
-					.. "- Don't elide any code from your output if the answer requires coding.\n"
-					.. "- Take a deep breath; You've got this!\n",
+				.. "- If you're unsure don't guess and say you don't know instead.\n"
+				.. "- Ask question if you need clarification to provide better answer.\n"
+				.. "- Think deeply and carefully from first principles step by step.\n"
+				.. "- Zoom out first to see the big picture and then zoom in to details.\n"
+				.. "- Use Socratic method to improve your thinking and coding skills.\n"
+				.. "- Don't elide any code from your output if the answer requires coding.\n"
+				.. "- Take a deep breath; You've got this!\n",
 			-- chat user prompt prefix
 			chat_user_prefix = "🗨:",
 			-- chat assistant prompt prefix
 			chat_assistant_prefix = "🤖:",
 			-- chat topic generation prompt
 			chat_topic_gen_prompt = "Summarize the topic of our conversation above"
-					.. " in two or three words. Respond only with those words.",
+				.. " in two or three words. Respond only with those words.",
 			-- chat topic model (string with model name or table with model name and parameters)
 			chat_topic_gen_model = "gpt-3.5-turbo",
 			-- explicitly confirm deletion of a chat file
@@ -65,23 +58,23 @@ return {
 			command_model = { model = "gpt-3.5-turbo", temperature = 1.1, top_p = 1 },
 			-- command system prompt
 			command_system_prompt = "You are an AI working as code editor.\n\n"
-					.. "Please AVOID COMMENTARY OUTSIDE OF SNIPPET RESPONSE.\n"
-					.. "Start and end your answer with:\n\n```",
+				.. "Please AVOID COMMENTARY OUTSIDE OF SNIPPET RESPONSE.\n"
+				.. "Start and end your answer with:\n\n```",
 			-- auto select command response (easier chaining of commands)
 			command_auto_select_response = true,
 
 			-- templates
 			template_selection = "I have the following code from {{filename}}:"
-					.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}",
+				.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}",
 			template_rewrite = "I have the following code from {{filename}}:"
-					.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}"
-					.. "\n\nRespond exclusively with the snippet that should replace the code above.",
+				.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}"
+				.. "\n\nRespond exclusively with the snippet that should replace the code above.",
 			template_append = "I have the following code from {{filename}}:"
-					.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}"
-					.. "\n\nRespond exclusively with the snippet that should be appended after the code above.",
+				.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}"
+				.. "\n\nRespond exclusively with the snippet that should be appended after the code above.",
 			template_prepend = "I have the following code from {{filename}}:"
-					.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}"
-					.. "\n\nRespond exclusively with the snippet that should be prepended before the code above.",
+				.. "\n\n```{{filetype}}\n{{selection}}\n```\n\n{{command}}"
+				.. "\n\nRespond exclusively with the snippet that should be prepended before the code above.",
 			template_command = "{{command}}",
 
 			-- https://platform.openai.com/docs/guides/speech-to-text/quickstart
@@ -111,9 +104,9 @@ return {
 				-- GpImplement rewrites the provided selection/range based on comments in the code
 				Implement = function(gp, params)
 					local template = "Having following from {{filename}}:\n\n"
-							.. "```{{filetype}}\n{{selection}}\n```\n\n"
-							.. "Please rewrite this code according to the comment instructions."
-							.. "\n\nRespond only with the snippet of finalized code:"
+						.. "```{{filetype}}\n{{selection}}\n```\n\n"
+						.. "Please rewrite this code according to the comment instructions."
+						.. "\n\nRespond only with the snippet of finalized code:"
 
 					gp.Prompt(
 						params,
@@ -127,49 +120,30 @@ return {
 
 				-- your own functions can go here, see README for more examples like
 				-- :GpExplain, :GpUnitTests.., :GpBetterChatNew, ..
-
 			},
 		})
 
 		-- Chat commands
-		vim.keymap.set("n", "<leader>gc", "<cmd>GpChatNew<cr>", keymapOptions("New Chat"))
-		vim.keymap.set("n", "<leader>gt", "<cmd>GpChatToggle<cr>", keymapOptions("Toggle Popup Chat"))
-		vim.keymap.set("n", "<leader>gf", "<cmd>GpChatFinder<cr>", keymapOptions("Chat Finder"))
+		vim.keymap.set("n", "<leader>gn", "<cmd>GpChatNew<cr>", add_desc("New Chat"))
+		vim.keymap.set("n", "<leader>gt", "<cmd>GpChatToggle<cr>", add_desc("Toggle Popup Chat"))
+		vim.keymap.set("n", "<leader>gf", "<cmd>GpChatFinder<cr>", add_desc("Chat Finder"))
+		vim.keymap.set("n", "<leader>gx", "<cmd>GpChatNew split<cr>", add_desc("New Chat split"))
+		vim.keymap.set("n", "<leader>gv", "<cmd>GpChatNew vsplit<cr>", add_desc("New Chat vsplit"))
+		vim.keymap.set("n", "<leader>gb", "<cmd>GpChatNew tabnew<cr>", add_desc("New Chat buffer"))
 
-		vim.keymap.set("v", "<leader>gc", ":<C-u>'<,'>GpChatNew<cr>", keymapOptions("Visual Chat New"))
-		vim.keymap.set("v", "<leader>gv", ":<C-u>'<,'>GpChatPaste<cr>", keymapOptions("Visual Chat Paste"))
-		vim.keymap.set("v", "<leader>gt", ":<C-u>'<,'>GpChatToggle<cr>", keymapOptions("Visual Popup Chat"))
-
-		vim.keymap.set("n", "<C-g><C-x>", "<cmd>GpChatNew split<cr>", keymapOptions("New Chat split"))
-		vim.keymap.set("n", "<C-g><C-v>", "<cmd>GpChatNew vsplit<cr>", keymapOptions("New Chat vsplit"))
-		vim.keymap.set("n", "<C-g><C-t>", "<cmd>GpChatNew tabnew<cr>", keymapOptions("New Chat tabnew"))
-
-		vim.keymap.set("v", "<C-g>x", ":<C-u>'<,'>GpChatNew split<cr>", keymapOptions("Visual Chat New split"))
-		vim.keymap.set("v", "<C-g>v", ":<C-u>'<,'>GpChatNew vsplit<cr>", keymapOptions("Visual Chat New vsplit"))
-		vim.keymap.set("v", "<C-g>t", ":<C-u>'<,'>GpChatNew tabnew<cr>", keymapOptions("Visual Chat New tabnew"))
+		vim.keymap.set("v", "<leader>gn", ":<C-u>'<,'>GpChatNew<cr>", add_desc("Visual Chat New"))
+		vim.keymap.set("v", "<leader>gp", ":<C-u>'<,'>GpChatPaste<cr>", add_desc("Visual Chat Paste"))
+		vim.keymap.set("v", "<leader>gt", ":<C-u>'<,'>GpChatToggle<cr>", add_desc("Visual Popup Chat"))
+		vim.keymap.set("v", "<leader>gx", ":<C-u>'<,'>GpChatNew split<cr>", add_desc("Visual Chat New split"))
+		vim.keymap.set("v", "<leader>gv", ":<C-u>'<,'>GpChatNew vsplit<cr>", add_desc("Visual Chat New vsplit"))
 
 		-- Prompt commands
-		vim.keymap.set("v", "<leader>gr", ":<C-u>'<,'>GpRewrite<cr>", keymapOptions("Visual Rewrite"))
-		vim.keymap.set("v", "<leader>ga", ":<C-u>'<,'>GpAppend<cr>", keymapOptions("Visual Append"))
-		vim.keymap.set("v", "<leader>gb", ":<C-u>'<,'>GpPrepend<cr>", keymapOptions("Visual Prepend"))
-		vim.keymap.set("v", "<leader>ge", ":<C-u>'<,'>GpEnew<cr>", keymapOptions("Visual Enew"))
-		vim.keymap.set("v", "<leader>gp", ":<C-u>'<,'>GpPopup<cr>", keymapOptions("Visual Popup"))
+		vim.keymap.set("v", "<leader>gr", ":<C-u>'<,'>GpRewrite<cr>", add_desc("Visual Rewrite"))
+		vim.keymap.set("v", "<leader>ga", ":<C-u>'<,'>GpAppend<cr>", add_desc("Visual After"))
+		vim.keymap.set("v", "<leader>gb", ":<C-u>'<,'>GpPrepend<cr>", add_desc("Visual Before"))
+		vim.keymap.set("v", "<leader>ge", ":<C-u>'<,'>GpEnew<cr>", add_desc("Visual Enew"))
+		vim.keymap.set("v", "<leader>gf", ":<C-u>'<,'>GpPopup<cr>", add_desc("Visual Popup"))
 
-		vim.keymap.set({ "n", "v", "x" }, "<leader>gs", "<cmd>GpStop<cr>", keymapOptions("Stop"))
-
-		-- optional Whisper commands
-		-- vim.keymap.set({ "n", "i" }, "<C-g>w", "<cmd>GpWhisper<cr>", keymapOptions("Whisper"))
-		-- vim.keymap.set({ "n", "i" }, "<C-g>R", "<cmd>GpWhisperRewrite<cr>", keymapOptions("Inline Rewrite"))
-		-- vim.keymap.set({ "n", "i" }, "<C-g>A", "<cmd>GpWhisperAppend<cr>", keymapOptions("Append"))
-		-- vim.keymap.set({ "n", "i" }, "<C-g>B", "<cmd>GpWhisperPrepend<cr>", keymapOptions("Prepend"))
-		-- vim.keymap.set({ "n", "i" }, "<C-g>E", "<cmd>GpWhisperEnew<cr>", keymapOptions("Enew"))
-		-- vim.keymap.set({ "n", "i" }, "<C-g>P", "<cmd>GpWhisperPopup<cr>", keymapOptions("Popup"))
-
-		-- vim.keymap.set("v", "<C-g>w", ":<C-u>'<,'>GpWhisper<cr>", keymapOptions("Whisper"))
-		-- vim.keymap.set("v", "<C-g>R", ":<C-u>'<,'>GpWhisperRewrite<cr>", keymapOptions("Visual Rewrite"))
-		-- vim.keymap.set("v", "<C-g>A", ":<C-u>'<,'>GpWhisperAppend<cr>", keymapOptions("Visual Append"))
-		-- vim.keymap.set("v", "<C-g>B", ":<C-u>'<,'>GpWhisperPrepend<cr>", keymapOptions("Visual Prepend"))
-		-- vim.keymap.set("v", "<C-g>E", ":<C-u>'<,'>GpWhisperEnew<cr>", keymapOptions("Visual Enew"))
-		-- vim.keymap.set("v", "<C-g>P", ":<C-u>'<,'>GpWhisperPopup<cr>", keymapOptions("Visual Popup"))
+		vim.keymap.set({ "n", "v", "x" }, "<leader>gs", "<cmd>GpStop<cr>", add_desc("Stop"))
 	end,
 }

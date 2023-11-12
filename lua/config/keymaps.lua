@@ -16,20 +16,20 @@ map.set("v", "<", "<gv") -- Shift Indentation to Left
 map.set("v", ">", ">gv") -- Shift Indentation to Right
 
 -- Resize with arrows
-map.set("n", "<C-Up>", ":resize -2<CR>")
-map.set("n", "<C-Down>", ":resize +2<CR>")
-map.set("n", "<C-Left>", ":vertical resize -2<CR>")
-map.set("n", "<C-Right>", ":vertical resize +2<CR>")
+map.set("n", "<C-Up>", ":resize -2<CR>", opts)
+map.set("n", "<C-Down>", ":resize +2<CR>", opts)
+map.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
+map.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Pane and Window Navigation
-map.set("n", "<C-h>", "<C-w>h", opts)   -- Navigate Left
-map.set("n", "<C-j>", "<C-w>j", opts)   -- Navigate Down
-map.set("n", "<C-k>", "<C-w>k", opts)   -- Navigate Up
-map.set("n", "<C-l>", "<C-w>l", opts)   -- Navigate Right
-map.set("n", "<M-H>", "<C-w>H", opts)   -- Move Pane Left
-map.set("n", "<M-J>", "<C-w>J", opts)   -- Move Pane Down
-map.set("n", "<M-K>", "<C-w>K", opts)   -- Move Pane Up
-map.set("n", "<M-L>", "<C-w>L", opts)   -- Move Pane Right
+map.set("n", "<C-h>", "<C-w>h", opts) -- Navigate Left
+map.set("n", "<C-j>", "<C-w>j", opts) -- Navigate Down
+map.set("n", "<C-k>", "<C-w>k", opts) -- Navigate Up
+map.set("n", "<C-l>", "<C-w>l", opts) -- Navigate Right
+map.set("n", "<M-H>", "<C-w>H", opts) -- Move Pane Left
+map.set("n", "<M-J>", "<C-w>J", opts) -- Move Pane Down
+map.set("n", "<M-K>", "<C-w>K", opts) -- Move Pane Up
+map.set("n", "<M-L>", "<C-w>L", opts) -- Move Pane Right
 map.set("t", "<C-H>", "wincmd h", opts) -- Navigate Left
 map.set("t", "<C-j>", "wincmd j", opts) -- Navigate Down
 map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
@@ -39,9 +39,10 @@ map.set("n", "<leader>L", ":Lazy<cr>", opts)
 --Cause q: is a bitch
 map.set("n", "<leader>q", ":q<cr>", opts)
 
-local terminal = require('util.terminal')
+local terminal = require("util.terminal")
 --Lazygit
-map.set("n", "<leader>gg", function() terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false }) end,
-	{ desc = "Lazygit (cwd)" })
+map.set("n", "<leader>gg", function()
+	terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
+end, { desc = "Lazygit (cwd)" })
 
 map.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<cr>", opts)

@@ -1,4 +1,4 @@
-local components = require('util.lualine.components')
+local components = require("util.lualine.components")
 local config = function()
 	require("lualine").setup({
 		options = {
@@ -16,9 +16,21 @@ local config = function()
 			},
 		},
 		sections = {
-			lualine_a = { "mode" },
+			lualine_a = {
+				{
+					function()
+						return ""
+					end,
+				},
+			},
 			lualine_b = { "branch", "diff", "diagnostics" },
-			lualine_c = { "filename" },
+			lualine_c = {
+				"filename",
+				{
+					require("noice").api.statusline.mode.get_hl,
+					cond = require("noice").api.statusline.mode.has,
+				},
+			},
 			lualine_x = { components.lsp, "encoding", components.shiftwidth, "filetype" },
 			lualine_y = { "progress" },
 			lualine_z = { "location" },
