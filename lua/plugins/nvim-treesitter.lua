@@ -20,7 +20,6 @@ local opt = {
 			"css",
 			"lua",
 			"xml",
-			"php",
 			"markdown",
 		},
 	},

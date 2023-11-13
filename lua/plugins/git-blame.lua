@@ -1,3 +1,4 @@
+local add_desc = require("util.keymap").desc
 return {
 	"f-person/git-blame.nvim",
 	cmd = "GitBlameToggle",
@@ -5,8 +6,7 @@ return {
 		require("gitblame").setup({
 			enabled = false,
 		})
+
+		vim.keymap.set("n", "<leader>bt", ":GitBlameToggle<CR>", add_desc("Blame Toggle"))
 	end,
-	keys = {
-		{ "<leader>bt", ":GitBlameToggle<CR>", "Blame Toggle" },
-	},
 }

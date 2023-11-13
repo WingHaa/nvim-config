@@ -51,9 +51,14 @@ return {
 				},
 			},
 		})
+
+		local add_desc = require("util.keymap").desc
+		local map = vim.keymap
+		map.set("n", "<leader>nn", "<cmd>Noice<CR>", add_desc("Noice Log"))
+		map.set("n", "<leader>nd", "<cmd>NoiceDismiss<CR>", add_desc("Noice Dismiss"))
+		map.set("n", "<leader>nl", "<cmd>NoiceLast<CR>", add_desc("Noice Last"))
 	end,
 	dependencies = {
-		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 		"MunifTanjim/nui.nvim",
 		"rcarriga/nvim-notify",
 	},

@@ -1,4 +1,5 @@
 local components = require("util.lualine.components")
+
 local config = function()
 	require("lualine").setup({
 		options = {
@@ -16,14 +17,12 @@ local config = function()
 			},
 		},
 		sections = {
-			lualine_a = {
-				{
-					function()
-						return ""
-					end,
-				},
+			lualine_a = { components.vim },
+			lualine_b = {
+				{ "b:gitsigns_head", icon = "" },
+				{ "diff", source = components.diffsource },
+				"diagnostics",
 			},
-			lualine_b = { "branch", "diff", "diagnostics" },
 			lualine_c = {
 				"filename",
 				{
