@@ -69,6 +69,26 @@ local config = function(_, opts)
 			[".*%.blade%.php"] = "blade",
 		},
 	})
+
+	vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+		callback = function()
+			local buf = vim.api.nvim_get_current_buf()
+
+			local lines = vim.api.nvim_buf_get_lines(buf, 0, 100, false)
+			local long_line = false
+
+			for _, line in ipairs(lines) do
+				if #line > 300 then
+					long_line = true
+					break
+				end
+			end
+
+			if long_line then
+				vim.cmd("syntax clear")
+			end
+		end,
+	})
 end
 
 return {

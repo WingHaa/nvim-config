@@ -23,13 +23,7 @@ local config = function()
 				{ "diff", source = components.diffsource },
 				"diagnostics",
 			},
-			lualine_c = {
-				"filename",
-				{
-					require("noice").api.statusline.mode.get_hl,
-					cond = require("noice").api.statusline.mode.has,
-				},
-			},
+			lualine_c = { "filename" },
 			lualine_x = { components.lsp, "encoding", components.shiftwidth, "filetype" },
 			lualine_y = { "progress" },
 			lualine_z = { "location" },

@@ -15,25 +15,15 @@ local config = function()
 	local capabilities = cmp_nvim_lsp.default_capabilities()
 
 	-- PHP
-	-- require("lspconfig").intelephense.setup({
-	-- 	commands = {
-	-- 		IntelephenseIndex = {
-	-- 			function()
-	-- 				vim.lsp.buf.execute_command({ command = "intelephense.index.workspace" })
-	-- 			end,
-	-- 		},
-	-- 	},
-	-- 	on_attach = on_attach,
-	-- 	capabilities = capabilities,
-	-- })
-
 	require("lspconfig").phpactor.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 		init_options = {
 			["language_server_phpstan.enabled"] = true,
-			["language_server_psalm.enabled"] = true,
+			["language_server_psalm.enabled"] = false,
 			["php_code_sniffer.enabled"] = true,
+			["language_server_php_cs_fixer.enabled"] = true,
+			["language_server_phpstan.level"] = 9,
 		},
 		filetypes = { "php", "blade" },
 	})
@@ -152,9 +142,20 @@ local config = function()
 		on_attach = on_attach,
 	})
 
+	-- yaml
 	lspconfig.yamlls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
+	})
+
+	-- sql
+	lspconfig.sqlls.setup({
+		cmd = { "sql-language-server", "up", "--method", "stdio" },
+		capabilities = capabilities,
+		on_attach = on_attach,
+		root_dir = function()
+			return vim.loop.cwd()
+		end,
 	})
 end
 

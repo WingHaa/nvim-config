@@ -30,16 +30,10 @@ local opts = {
 		python = { "isort", "black" },
 		javascript = { { "prettierd", "prettier" } },
 		php = { { "php_cs_fixer", "prettierd" } },
-		blade = { "blade-formatter" },
+		sql = { "sql_formatter" },
 	},
 	-- Custom formatters and changes to built-in formatters
 	formatters = {
-		lua = { "stylua" },
-		javascript = { "prettierd", "prettier" },
-		typescript = { "prettierd", "prettier" },
-		typescriptreact = { "prettierd", "prettier" },
-		javascriptreact = { "prettierd", "prettier" },
-		php = { "php_cs_fixer", "prettierd" },
 		blade = { "blade-formatter" },
 		-- # Example of using dprint only when a dprint.json file is present
 		-- dprint = {
