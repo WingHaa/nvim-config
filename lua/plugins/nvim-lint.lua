@@ -21,10 +21,19 @@ return {
 			typescriptreact = {
 				"eslint_d",
 			},
-			php = {
-				"phpcs",
-			},
+			-- php = {
+			-- 	"phpcs",
+			-- },
 		}
+
+		-- local phpcs = require("lint").linters.phpcs
+		-- phpcs.args = {
+		-- 	"-q",
+		-- 	-- <- Add a new parameter here
+		-- 	"--standard=phpcs.xml",
+		-- 	"--report=json",
+		-- 	"-",
+		-- }
 
 		vim.api.nvim_create_autocmd({ "BufRead", "InsertLeave", "BufWritePost" }, {
 			callback = function()

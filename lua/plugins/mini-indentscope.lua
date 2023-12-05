@@ -1,7 +1,7 @@
 return {
-	'echasnovski/mini.indentscope',
+	"echasnovski/mini.indentscope",
 	event = "BufReadPost",
-	version = '*',
+	version = "*",
 	opts = {
 		-- Draw options
 		draw = {
@@ -18,19 +18,19 @@ return {
 		-- Module mappings. Use `''` (empty string) to disable one.
 		mappings = {
 			-- Textobjects
-			object_scope = 'ii',
-			object_scope_with_border = 'ai',
+			object_scope = "ii",
+			object_scope_with_border = "ai",
 
 			-- Motions (jump to respective border line; if not present - body line)
-			goto_top = '[i',
-			goto_bottom = ']i',
+			goto_top = "[i",
+			goto_bottom = "]i",
 		},
 
 		-- Options which control scope computation
 		options = {
 			-- Type of scope's border: which line(s) with smaller indent to
 			-- categorize as border. Can be one of: 'both', 'top', 'bottom', 'none'.
-			border = 'both',
+			border = "both",
 
 			-- Whether to use cursor column when computing reference indent.
 			-- Useful to see incremental scopes with horizontal cursor movements.
@@ -43,8 +43,8 @@ return {
 		},
 
 		-- Which character to use for drawing scope indicator
-		symbol = '╎',
-		-- symbol = "│",
+		-- symbol = '╎',
+		symbol = "│",
 	},
 	init = function()
 		vim.api.nvim_create_autocmd("TermOpen", {
@@ -59,5 +59,5 @@ return {
 				vim.b.miniindentscope_disable = true
 			end,
 		})
-	end
+	end,
 }

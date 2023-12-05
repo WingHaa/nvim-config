@@ -19,7 +19,7 @@ local config = function()
 		sections = {
 			lualine_a = { components.vim },
 			lualine_b = {
-				{ "b:gitsigns_head", icon = "" },
+				{ "b:gitsigns_head", icon = "" },
 				{ "diff", source = components.diffsource },
 				"diagnostics",
 			},

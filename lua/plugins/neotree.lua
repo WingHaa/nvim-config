@@ -29,7 +29,7 @@ M.window = {
 		["C"] = "close_node",
 		-- ['C'] = 'close_all_subnodes',
 		["z"] = "close_all_nodes",
-		--["Z"] = "expand_all_nodes",
+		["Z"] = "expand_all_nodes",
 		["a"] = {
 			"add",
 			-- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:h neo-tree-file-actions` for details
@@ -68,7 +68,7 @@ M.filesystem = {
 		hide_gitignored = false,
 		hide_hidden = true, -- only works on Windows for hidden files/directories
 		hide_by_name = {
-			--"node_modules"
+			"node_modules",
 		},
 		hide_by_pattern = { -- uses glob style patterns
 			--"*.meta",

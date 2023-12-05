@@ -11,6 +11,11 @@ local config = function()
 					["<C-j>"] = "move_selection_next",
 				},
 			},
+			path_display = {
+				"smart",
+				"shorten",
+			},
+			file_ignore_patterns = { "node_modules" },
 		},
 		pickers = {
 			find_files = {
@@ -20,6 +25,57 @@ local config = function()
 			buffers = {},
 		},
 	})
+
+	map.set(
+		"n",
+		"<leader>ff",
+		":lua require('telescope.builtin').find_files({hidden=false})<CR>",
+		{ desc = "Files by name", silent = true }
+	)
+	map.set(
+		"n",
+		"<leader>fg",
+		":lua require('telescope.builtin').live_grep()<CR>",
+		{ desc = "Grep files", silent = true }
+	)
+	map.set(
+		"n",
+		"<leader>fr",
+		":lua require('telescope.builtin').resume()<CR>",
+		{ desc = "Resume search", silent = true }
+	)
+	map.set(
+		"n",
+		"<leader>fo",
+		":lua require('telescope.builtin').oldfiles()<CR>",
+		{ desc = "Recent files", silent = true }
+	)
+	map.set("n", "<leader>fb", ":lua require('telescope.builtin').buffers()<CR>", { desc = "Buffers", silent = true })
+	map.set("n", "<leader>fk", ":lua require('telescope.builtin').keymaps()<CR>", { desc = "Keymaps", silent = true })
+	map.set(
+		"n",
+		"<leader>fh",
+		":lua require('telescope.builtin').find_files({hidden=true})<CR>",
+		{ desc = "Hidden Files", silent = true }
+	)
+	map.set(
+		"n",
+		"<leader>fw",
+		":lua require('telescope.builtin').grep_string()<CR>",
+		{ desc = "String at cursor", silent = true }
+	)
+	map.set(
+		"n",
+		"<leader>sb",
+		":lua require('telescope.builtin').git_branches()<CR>",
+		{ desc = "Branches", silent = true }
+	)
+	map.set(
+		"n",
+		"<leader>sc",
+		":lua require('telescope.builtin').git_bcommits()<CR>",
+		{ desc = "Branch commits", silent = true }
+	)
 end
 
 return {
@@ -29,18 +85,6 @@ return {
 		cmd = "Telescope",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-		},
-		keys = {
-			map.set("n", "<leader>ff", ":Telescope find_files<CR>", { desc = "Files by name", silent = true }),
-			map.set("n", "<leader>fg", ":Telescope live_grep<CR>", { desc = "Grep files", silent = true }),
-			map.set("n", "<leader>fr", ":Telescope resume<CR>", { desc = "Resume search", silent = true }),
-			map.set("n", "<leader>fo", ":Telescope oldfiles<CR>", { desc = "Recent files", silent = true }),
-			map.set("n", "<leader>fb", ":Telescope buffers<CR>", { desc = "Buffers", silent = true }),
-			map.set("n", "<leader>fk", ":Telescope keymaps<CR>", { desc = "Keymaps", silent = true }),
-			map.set("n", "<leader>fh", ":Telescope help_tags<CR>", { desc = "Helps", silent = true }),
-			map.set("n", "<leader>fw", ":Telescope grep_string<CR>", { desc = "String at cursor", silent = true }),
-			map.set("n", "<leader>sb", ":Telescope git_branches<CR>", { desc = "Branches", silent = true }),
-			map.set("n", "<leader>sc", ":Telescope git_bcommits<CR>", { desc = "Branch commits", silent = true }),
 		},
 		config = config,
 	},

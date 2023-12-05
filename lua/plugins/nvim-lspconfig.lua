@@ -23,7 +23,7 @@ local config = function()
 			["language_server_psalm.enabled"] = false,
 			["php_code_sniffer.enabled"] = true,
 			["language_server_php_cs_fixer.enabled"] = true,
-			["language_server_phpstan.level"] = 9,
+			["language_server_phpstan.level"] = 8,
 		},
 		filetypes = { "php", "blade" },
 	})
@@ -104,6 +104,12 @@ local config = function()
 		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
 	})
 
+	-- typescript
+	lspconfig.tailwindcss.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
+
 	-- bash
 	lspconfig.bashls.setup({
 		capabilities = capabilities,
@@ -148,6 +154,23 @@ local config = function()
 		on_attach = on_attach,
 	})
 
+	-- toml
+	lspconfig.taplo.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
+	-- docker file
+	lspconfig.dockerls.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
+
+	-- docker compose
+	lspconfig.docker_compose_language_service.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
 	-- sql
 	lspconfig.sqlls.setup({
 		cmd = { "sql-language-server", "up", "--method", "stdio" },
