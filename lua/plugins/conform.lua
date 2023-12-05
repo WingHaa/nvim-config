@@ -29,8 +29,10 @@ local opts = {
 		sh = { "shfmt" },
 		python = { "isort", "black" },
 		javascript = { { "prettierd", "prettier" } },
+		typescript = { { "prettierd", "prettier" } },
 		php = { { "php_cs_fixer", "prettierd" } },
 		sql = { "sql_formatter" },
+		blade = { "blade-formatter" },
 	},
 	-- Custom formatters and changes to built-in formatters
 	formatters = {
