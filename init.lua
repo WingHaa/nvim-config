@@ -1,3 +1,3 @@
-require('config')
-vim.cmd("colorscheme tokyonight-night")
--- vim.cmd("colorscheme onedark")
+require("config")
+-- vim.cmd("colorscheme tokyonight-moon")
+vim.cmd("colorscheme onedark")

@@ -16,7 +16,7 @@ local opts = {
 		statusline = false,
 	},
 	config = {
-		header = addPad(require("util.headers").hydra),
+		header = addPad(require("util.headers").neovim_banner),
 		-- stylua: ignore
 		center = {
 			{ action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },

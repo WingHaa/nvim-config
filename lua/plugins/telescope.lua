@@ -21,6 +21,9 @@ local config = function()
 			find_files = {
 				hidden = true,
 			},
+			colorscheme = {
+				enable_preview = true,
+			},
 			live_grep = {},
 			buffers = {},
 		},
