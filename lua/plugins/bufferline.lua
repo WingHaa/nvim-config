@@ -35,7 +35,7 @@ local opts = {
 				filetype = "NvimTree",
 				text = "File Explorer",
 				text_align = "left",
-				separator = true,
+				separator = false,
 			},
 		},
 		sort_by = "id",
