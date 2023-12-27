@@ -22,6 +22,11 @@ local config = function()
 				{ "b:gitsigns_head", icon = "" },
 				{ "diff", source = components.diffsource },
 				"diagnostics",
+				{
+					require("noice").api.statusline.mode.get,
+					cond = require("noice").api.statusline.mode.has,
+					color = { fg = "#ff9e64" },
+				},
 			},
 			lualine_c = { "filename" },
 			lualine_x = { components.lsp, "encoding", components.shiftwidth, "filetype" },
