@@ -213,7 +213,6 @@ return {
 	config = config,
 	dependencies = {
 		"williamboman/mason.nvim",
-		"williamboman/mason.nvim",
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",

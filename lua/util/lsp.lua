@@ -8,7 +8,7 @@ M.on_attach = function(client, bufnr)
 
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
-	map.set("n", "<Leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	map.set("n", "<Leader>gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	map.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 	map.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 	map.set("n", "gd", ":Telescope lsp_definitions<CR>", opts)

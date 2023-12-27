@@ -44,5 +44,3 @@ local terminal = require("util.terminal")
 map.set("n", "<leader>gg", function()
 	terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
 end, { desc = "Lazygit (cwd)" })
-
-map.set("n", "<leader>lr", ":lua vim.lsp.buf.rename()<cr>", opts)
