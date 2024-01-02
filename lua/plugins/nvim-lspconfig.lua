@@ -197,6 +197,7 @@ local config = function()
 		capabilities = capabilities,
 		on_attach = on_attach,
 	})
+
 	-- sql
 	lspconfig.sqlls.setup({
 		cmd = { "sql-language-server", "up", "--method", "stdio" },
@@ -205,6 +206,12 @@ local config = function()
 		root_dir = function()
 			return vim.loop.cwd()
 		end,
+	})
+
+	-- prisma
+	lspconfig.prismals.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
 	})
 end
 
