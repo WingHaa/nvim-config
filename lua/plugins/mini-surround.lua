@@ -12,4 +12,5 @@ return {
 			update_n_lines = "gsn", -- Update `n_lines`
 		},
 	},
+	keys = { "gs", "ds" },
 }

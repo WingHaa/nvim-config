@@ -44,7 +44,7 @@ local opts = {
 
 return {
 	"akinsho/bufferline.nvim",
-	event = "VeryLazy",
+	event = "FileReadPre",
 	keys = {
 		{ "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
 		{ "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },

@@ -46,6 +46,7 @@ end
 
 return {
 	"nvim-lualine/lualine.nvim",
+	event = "BufReadPre",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = config,
 }

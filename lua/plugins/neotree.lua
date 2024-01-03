@@ -280,6 +280,7 @@ local opts = {
 
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	cmd = "Neotree",
 	keys = {
 		{
 			"<leader>e",
@@ -316,7 +317,6 @@ return {
 	},
 	config = function()
 		require("neo-tree").setup(opts)
-
 		vim.keymap.set(
 			"n",
 			"<leader>e",

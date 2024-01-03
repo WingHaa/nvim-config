@@ -1,6 +1,12 @@
 return {
-	{ "folke/neoconf.nvim", cmd = "Neoconf" },
-	"folke/neodev.nvim",
+	{
+		"folke/neoconf.nvim",
+		cmd = "Neoconf",
+	},
+	{
+		"folke/neodev.nvim",
+		filetype = { "lua", "vim" },
+	},
 	"nvim-tree/nvim-web-devicons",
 	"tpope/vim-repeat",
 	{
@@ -15,13 +21,14 @@ return {
 	},
 	{
 		"windwp/nvim-ts-autotag",
-		event = "BufRead",
+		event = "InsertEnter",
 		config = function()
 			require("nvim-ts-autotag").setup()
 		end,
 	},
 	{
 		"simrat39/symbols-outline.nvim",
+		cmd = "SymbolsOutline",
 		keys = { { "<leader>so", "<cmd>SymbolsOutline<cr>", desc = "Outline Symbols" } },
 		config = function()
 			require("symbols-outline").setup()

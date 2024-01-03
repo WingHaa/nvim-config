@@ -1,5 +1,5 @@
 local config = function()
-	require 'marks'.setup {
+	require("marks").setup({
 		-- whether to map keybinds or not. default true
 		default_mappings = false,
 		refresh_interval = 150,
@@ -14,11 +14,12 @@ local config = function()
 		mappings = {
 			delete_line = "<leader>md", --            Deletes all marks on current line.
 			delete_buf = "<leader>mr", --             Deletes all marks in current buffer.
-		}
-	}
+		},
+	})
 end
 
 return {
 	"chentoast/marks.nvim",
-	config = config
+	event = "BufReadPre",
+	config = config,
 }
