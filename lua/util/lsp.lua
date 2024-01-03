@@ -21,7 +21,7 @@ M.on_attach = function(client, bufnr)
 	map.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", desc("Rename Symbol"))
 
 	if client.name == "pyright" then
-		map.set("n", "<Leader>oi", ":PyrightOrganizeImports<CR>", opts)
+		map.set("n", "<Leader>oi", ":PyrightOrganizeImports<CR>", desc("Organize Imports"))
 	end
 
 	if client.name == "tsserver" then
@@ -29,7 +29,7 @@ M.on_attach = function(client, bufnr)
 			"n",
 			"<Leader>oi",
 			":lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<CR>",
-			opts
+			desc("Organize Imports")
 		)
 	end
 end
