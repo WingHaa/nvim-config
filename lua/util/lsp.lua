@@ -1,5 +1,6 @@
 local map = vim.keymap
 local M = {}
+local desc = require("util.keymap").desc
 
 -- set keymaps on the active lsp server
 M.on_attach = function(client, bufnr)
@@ -8,16 +9,16 @@ M.on_attach = function(client, bufnr)
 
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 
-	map.set("n", "<Leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-	map.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-	map.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-	map.set("n", "gd", ":Telescope lsp_definitions<CR>", opts)
-	map.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	map.set("n", "gi", ":Telescope lsp_implementations<CR>", opts)
-	map.set("n", "go", ":Telescope lsp_references<CR>", opts)
-	map.set("n", "<Leader>lr", ":LspRestart<CR>", opts)
-	map.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	map.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	map.set("n", "<Leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>", desc("Current Line Diagnostic"))
+	map.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc("Prev Diagnostic"))
+	map.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc("Next Diagnostic"))
+	map.set("n", "gd", ":Telescope lsp_definitions<CR>", desc("Go to Definition"))
+	map.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc("Code Actions"))
+	map.set("n", "gi", ":Telescope lsp_implementations<CR>", desc("Go to Implementation"))
+	map.set("n", "go", ":Telescope lsp_references<CR>", desc("Go to References"))
+	map.set("n", "<Leader>lr", ":LspRestart<CR>", desc("Restart LSP Server"))
+	map.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc("Hover Definition"))
+	map.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", desc("Rename Symbol"))
 
 	if client.name == "pyright" then
 		map.set("n", "<Leader>oi", ":PyrightOrganizeImports<CR>", opts)
