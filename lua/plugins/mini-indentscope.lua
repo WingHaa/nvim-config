@@ -1,5 +1,6 @@
 return {
 	"echasnovski/mini.indentscope",
+	enabled = false,
 	event = "BufReadPost",
 	version = "*",
 	opts = {

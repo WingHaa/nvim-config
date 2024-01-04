@@ -134,6 +134,17 @@ local config = function()
 	lspconfig.tailwindcss.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
+		filetypes = {
+			"html",
+			"typescriptreact",
+			"javascriptreact",
+			"css",
+			"sass",
+			"scss",
+			"less",
+			"svelte",
+			"vue",
+		},
 	})
 
 	-- bash
@@ -154,18 +165,6 @@ local config = function()
 	lspconfig.emmet_ls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
-		filetypes = {
-			"html",
-			"typescriptreact",
-			"javascriptreact",
-			"javascript",
-			"css",
-			"sass",
-			"scss",
-			"less",
-			"svelte",
-			"vue",
-		},
 	})
 
 	-- docker

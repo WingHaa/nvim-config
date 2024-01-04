@@ -11,6 +11,12 @@ map.set("n", "<C-d>", "<C-d>zz")
 map.set("n", "<C-u>", "<C-u>zz") -- Keep searches at middle of screen when you search map.set("n", "n", "nzzzv")
 map.set("n", "N", "Nzzzv")
 
+-- better up/down
+map.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+
 -- Indenting
 map.set("v", "<", "<gv") -- Shift Indentation to Left
 map.set("v", ">", ">gv") -- Shift Indentation to Right
@@ -20,6 +26,10 @@ map.set("n", "<C-Up>", ":resize -2<CR>", opts)
 map.set("n", "<C-Down>", ":resize +2<CR>", opts)
 map.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 map.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+
+-- Quickfix nav
+map.set("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
+map.set("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
 -- Pane and Window Navigation
 map.set("n", "<C-h>", "<C-w>h", opts) -- Navigate Left
@@ -36,8 +46,8 @@ map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
 map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
 map.set("n", "<leader>L", ":Lazy<cr>", opts)
 
---Cause q: is a bitch
-map.set("n", "<leader>q", ":q<cr>", opts)
+-- quit
+map.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
 
 local terminal = require("util.terminal")
 --Lazygit
