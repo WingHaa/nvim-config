@@ -36,6 +36,8 @@ local opt = {
 		"dockerfile",
 		"gitignore",
 		"vue",
+		"jsdoc",
+		"phpdoc",
 	},
 	auto_install = true,
 	highlight = {
