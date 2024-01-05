@@ -90,7 +90,17 @@ return {
 	},
 	vim = {
 		function()
-			return ""
+			return ""
 		end,
+	},
+	recording = {
+		function()
+			local reg = vim.fn.reg_recording()
+			if reg == "" then
+				return ""
+			end -- not recording
+			return "recording to @" .. reg
+		end,
+		color = { fg = "#ff9e64" },
 	},
 }
