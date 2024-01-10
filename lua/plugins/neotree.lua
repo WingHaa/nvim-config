@@ -25,7 +25,6 @@ M.window = {
 		-- ["<cr>"] = "open_drop",
 		-- ["t"] = "open_tab_drop",
 		["w"] = "open_with_window_picker",
-		--["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
 		["C"] = "close_node",
 		-- ['C'] = 'close_all_subnodes',
 		["z"] = "close_all_nodes",

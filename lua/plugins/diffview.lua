@@ -1,16 +1,32 @@
 local map = vim.keymap
 local add_desc = require("util.keymap").desc
+
 map.set("n", "<leader>do", "<cmd>DiffviewOpen<CR>", add_desc("Diffview Open"))
 map.set("n", "<leader>dc", "<cmd>DiffviewClose<CR>", add_desc("Diffview Close"))
 map.set("n", "<leader>db", "<cmd>DiffviewFileHistory<CR>", add_desc("Branch History"))
 map.set("n", "<leader>df", "<cmd>DiffviewFileHistory %<CR>", add_desc("File History"))
-map.set("n", "<leader>dr", "<cmd>DiffviewOpen origin/HEAD...HEAD --imply-local<CR>", add_desc("PR Review"))
-map.set(
-	"n",
-	"<leader>dR",
-	"<cmd>DiffviewFileHistory --range=origin/HEAD...HEAD --right-only --no-merges<CR>",
-	add_desc("PR Review by commits")
-)
+vim.api.nvim_set_keymap("n", "<leader>dr", ":lua PrReview()<CR>", add_desc("PR Review"))
+vim.api.nvim_set_keymap("n", "<leader>dR", ":lua PrReviewCommit()<CR>", add_desc("PR Review By Commit"))
+
+function PrReview()
+	local branch = vim.fn.input("Target branch: ")
+	if branch == "" then
+		branch = "HEAD"
+	end
+	local command = "DiffviewOpen origin/" .. branch .. "...HEAD --imply-local"
+	vim.cmd(command)
+end
+
+function PrReviewCommit()
+	local branch = vim.fn.input("Target branch: ")
+	if branch == "" then
+		branch = "HEAD"
+	end
+	local command = "DiffviewFileHistory --range=origin/" .. branch .. "...HEAD --right-only --no-merges"
+	vim.cmd(command)
+end
+
+vim.opt.fillchars:append({ diff = "╱" })
 
 return {
 	"sindrets/diffview.nvim",
@@ -69,8 +85,7 @@ return {
 					{ "n", "gf", actions.goto_file_edit, { desc = "Open the file in the previous tabpage" } },
 					{ "n", "<C-w><C-f>", actions.goto_file_split, { desc = "Open the file in a new split" } },
 					{ "n", "<C-w>gf", actions.goto_file_tab, { desc = "Open the file in a new tabpage" } },
-					{ "n", "<leader>e", actions.focus_files, { desc = "Bring focus to the file panel" } },
-					{ "n", "<leader>b", actions.toggle_files, { desc = "Toggle the file panel." } },
+					{ "n", "<leader>e", actions.toggle_files, { desc = "Toggle the file panel." } },
 					{ "n", "<leader>l", actions.cycle_layout, { desc = "Cycle through available layouts." } },
 					{ "n", "[x", actions.prev_conflict, { desc = "In merge-tool: jump to the previous conflict" } },
 					{ "n", "]x", actions.next_conflict, { desc = "In merge-tool: jump to the next conflict" } },
