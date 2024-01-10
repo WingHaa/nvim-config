@@ -276,6 +276,16 @@ local opts = {
 	source_selector = {
 		winbar = true,
 	},
+	event_handlers = {
+		{
+			event = "vim_buffer_enter",
+			handler = function()
+				if vim.bo.filetype == "neo-tree" then
+					vim.cmd([[setlocal rnu ]])
+				end
+			end,
+		},
+	},
 }
 
 return {
@@ -284,7 +294,7 @@ return {
 	keys = {
 		{
 			"<leader>e",
-			"<cmd>Neotree filesystem toggle reveal current<CR>",
+			"<cmd>Neotree filesystem toggle reveal float<CR>",
 			desc = "Neotree",
 			{ noremap = true, silent = true },
 		},
@@ -315,13 +325,5 @@ return {
 			end,
 		},
 	},
-	config = function()
-		require("neo-tree").setup(opts)
-		vim.keymap.set(
-			"n",
-			"<leader>e",
-			":Neotree filesystem toggle reveal current<CR>",
-			{ desc = "Neotree", silent = true }
-		)
-	end,
+	opts = opts,
 }
