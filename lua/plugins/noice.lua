@@ -64,11 +64,11 @@ return {
 		-- OPTIONAL:
 		--   `nvim-notify` is only needed, if you want to use the notification view.
 		--   If not available, we use `mini` as the fallback
-		"rcarriga/nvim-notify",
+		-- "rcarriga/nvim-notify",
 	},
 	config = function()
 		require("noice").setup({
-			routes = routes,
+			-- routes = routes,
 			lsp = {
 				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 				override = {
@@ -85,12 +85,27 @@ return {
 				inc_rename = false, -- enables an input dialog for inc-rename.nvim
 				lsp_doc_border = true, -- add a border to hover docs and signature help
 			},
+			views = {
+				mini = {
+					backend = "mini",
+					timeout = 1500,
+					size = { height = "auto", width = "auto", max_height = 5 },
+					border = { style = "none" },
+					zindex = 30,
+					win_options = {
+						winbar = "",
+						foldenable = false,
+						winblend = 40,
+						winhighlight = { Normal = "NoiceMini" },
+					},
+				},
+			},
 		})
 
 		vim.api.nvim_set_hl(0, "NoiceMini", { link = "NormalFloat" })
 
-		require("notify").setup({
-			background_colour = "#000000",
-		})
+		-- require("notify").setup({
+		-- 	background_colour = "#000000",
+		-- })
 	end,
 }

@@ -7,8 +7,6 @@ M.on_attach = function(client, bufnr)
 	client.server_capabilities.documentFormattingProvider = false
 	client.server_capabilities.documentRangeFormattingProvider = false
 
-	local opts = { noremap = true, silent = true, buffer = bufnr }
-
 	map.set("n", "<Leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>", desc("Current Line Diagnostic"))
 	map.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc("Prev Diagnostic"))
 	map.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc("Next Diagnostic"))
@@ -19,6 +17,7 @@ M.on_attach = function(client, bufnr)
 	map.set("n", "<Leader>lr", ":LspRestart<CR>", desc("Restart LSP Server"))
 	map.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc("Hover Definition"))
 	map.set("n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", desc("Rename Symbol"))
+	map.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc("Signature Help"))
 
 	if client.name == "pyright" then
 		map.set("n", "<Leader>oi", ":PyrightOrganizeImports<CR>", desc("Organize Imports"))

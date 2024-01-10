@@ -167,12 +167,6 @@ local config = function()
 		on_attach = on_attach,
 	})
 
-	-- docker
-	lspconfig.dockerls.setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-	})
-
 	-- yaml
 	lspconfig.yamlls.setup({
 		capabilities = capabilities,
@@ -185,7 +179,7 @@ local config = function()
 		on_attach = on_attach,
 	})
 
-	-- docker file
+	-- docker
 	lspconfig.dockerls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,

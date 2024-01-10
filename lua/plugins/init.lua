@@ -34,4 +34,7 @@ return {
 			require("symbols-outline").setup()
 		end,
 	},
+	{
+		"LunarVim/bigfile.nvim",
+	},
 }
