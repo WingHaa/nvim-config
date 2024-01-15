@@ -34,7 +34,7 @@ return {
 				"to_lower_phrase_case",
 			},
 		})
-		require("telescope").load_extension("textcase")
+		-- require("telescope").load_extension("textcase")
 	end,
 	keys = {
 		{ "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "v" }, desc = "Telescope" },

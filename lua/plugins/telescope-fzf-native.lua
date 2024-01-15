@@ -1,5 +1,6 @@
 return {
 	"nvim-telescope/telescope-fzf-native.nvim",
+	enabled = false,
 	build = "make",
 	cmd = "Telescope",
 	config = function()

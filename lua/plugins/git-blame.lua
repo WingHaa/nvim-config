@@ -7,6 +7,6 @@ return {
 			enabled = false,
 		})
 		vim.g.gitblame_ignored_filetypes = { "dashboard" }
-		vim.keymap.set("n", "<leader>bt", ":GitBlameToggle<CR>", add_desc("Blame Toggle"))
+		vim.keymap.set("n", "<leader>bt", "<cmd>GitBlameToggle<CR>", add_desc("Blame Toggle"))
 	end,
 }

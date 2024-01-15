@@ -8,7 +8,7 @@ return {
 		vim.keymap.set(
 			"n",
 			"<leader>nf",
-			":lua require('neogen').generate({type='func'})<CR>",
+			"<cmd>lua require('neogen').generate({type='func'})<CR>",
 			add_desc("Generate Docs")
 		)
 	end,

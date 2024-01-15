@@ -22,10 +22,10 @@ map.set("v", "<", "<gv") -- Shift Indentation to Left
 map.set("v", ">", ">gv") -- Shift Indentation to Right
 
 -- Resize with arrows
-map.set("n", "<C-Up>", ":resize -2<CR>", opts)
-map.set("n", "<C-Down>", ":resize +2<CR>", opts)
-map.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-map.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+map.set("n", "<C-Up>", "<cmd>resize -2<CR>", opts)
+map.set("n", "<C-Down>", "<cmd>resize +2<CR>", opts)
+map.set("n", "<C-Left>", "<cmd>vertical resize -2<CR>", opts)
+map.set("n", "<C-Right>", "<cmd>vertical resize +2<CR>", opts)
 
 -- Quickfix nav
 map.set("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
@@ -44,7 +44,7 @@ map.set("t", "<C-H>", "wincmd h", opts) -- Navigate Left
 map.set("t", "<C-j>", "wincmd j", opts) -- Navigate Down
 map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
 map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
-map.set("n", "<leader>L", ":Lazy<cr>", opts)
+map.set("n", "<leader>L", "<cmd>Lazy<cr>", opts)
 
 -- quit
 map.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
