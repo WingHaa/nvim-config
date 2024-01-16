@@ -1,30 +1,13 @@
 local map = vim.keymap
-local add_desc = require("util.keymap").desc
+local set = vim.api.nvim_set_keymap
+local desc = require("util.keymap").desc
 
-map.set("n", "<leader>do", "<cmd>DiffviewOpen<CR>", add_desc("Diffview Open"))
-map.set("n", "<leader>dc", "<cmd>DiffviewClose<CR>", add_desc("Diffview Close"))
-map.set("n", "<leader>db", "<cmd>DiffviewFileHistory<CR>", add_desc("Branch History"))
-map.set("n", "<leader>df", "<cmd>DiffviewFileHistory %<CR>", add_desc("File History"))
-vim.api.nvim_set_keymap("n", "<leader>dr", "<cmd>lua PrReview()<CR>", add_desc("PR Review"))
-vim.api.nvim_set_keymap("n", "<leader>dR", "<cmd>lua PrReviewCommit()<CR>", add_desc("PR Review By Commit"))
-
-function PrReview()
-	local branch = vim.fn.input("Target branch: ")
-	if branch == "" then
-		branch = "HEAD"
-	end
-	local command = "DiffviewOpen origin/" .. branch .. "...HEAD --imply-local"
-	vim.cmd(command)
-end
-
-function PrReviewCommit()
-	local branch = vim.fn.input("Target branch: ")
-	if branch == "" then
-		branch = "HEAD"
-	end
-	local command = "DiffviewFileHistory --range=origin/" .. branch .. "...HEAD --right-only --no-merges"
-	vim.cmd(command)
-end
+map.set("n", "<leader>do", "<cmd>DiffviewOpen<CR>", desc("Diffview Open"))
+map.set("n", "<leader>dc", "<cmd>DiffviewClose<CR>", desc("Diffview Close"))
+map.set("n", "<leader>db", "<cmd>DiffviewFileHistory<CR>", desc("Branch History"))
+map.set("n", "<leader>df", "<cmd>DiffviewFileHistory %<CR>", desc("File History"))
+set("n", "<leader>dr", "<cmd>lua require('util.diffview').review()<CR>", desc("Branch Diff"))
+set("n", "<leader>dR", "<cmd>lua require('util.diffview').review_commit()<CR>", desc("Diff By Commit"))
 
 vim.opt.fillchars:append({ diff = "╱" })
 

@@ -1,5 +1,5 @@
 local map = vim.keymap
-
+local desc = require("util.keymap").desc
 local config = function()
 	local telescope = require("telescope")
 
@@ -29,77 +29,35 @@ local config = function()
 		},
 	})
 
-	map.set(
-		"n",
-		"<leader>ff",
-		"<cmd>lua require('telescope.builtin').find_files({hidden=false})<CR>",
-		{ desc = "Files by name", silent = true }
-	)
-	map.set(
-		"n",
-		"<leader>fg",
-		"<cmd>lua require('telescope.builtin').live_grep()<CR>",
-		{ desc = "Grep files", silent = true }
-	)
-	map.set(
-		"n",
-		"<leader>fr",
-		"<cmd>lua require('telescope.builtin').resume()<CR>",
-		{ desc = "Resume search", silent = true }
-	)
-	map.set(
-		"n",
-		"<leader>fo",
-		"<cmd>lua require('telescope.builtin').oldfiles()<CR>",
-		{ desc = "Recent files", silent = true }
-	)
-	map.set(
-		"n",
-		"<leader>fb",
-		"<cmd>lua require('telescope.builtin').buffers()<CR>",
-		{ desc = "Buffers", silent = true }
-	)
-	map.set(
-		"n",
-		"<leader>fk",
-		"<cmd>lua require('telescope.builtin').keymaps()<CR>",
-		{ desc = "Keymaps", silent = true }
-	)
-	map.set(
-		"n",
-		"<leader>fh",
-		"<cmd>lua require('telescope.builtin').find_files({hidden=true})<CR>",
-		{ desc = "Hidden Files", silent = true }
-	)
-	map.set(
-		"n",
-		"<leader>fw",
-		"<cmd>lua require('telescope.builtin').grep_string()<CR>",
-		{ desc = "String at cursor", silent = true }
-	)
-	map.set(
-		"n",
-		"<leader>sb",
-		"<cmd>lua require('telescope.builtin').git_branches()<CR>",
-		{ desc = "Branches", silent = true }
-	)
-	map.set(
-		"n",
-		"<leader>sc",
-		"<cmd>lua require('telescope.builtin').git_bcommits()<CR>",
-		{ desc = "Branch commits", silent = true }
-	)
+	telescope.load_extension("fzf")
+
+	map.set("n", "<leader>ff", "<cmd>Telescope find_files<CR>", desc("Files by name"))
+	map.set("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", desc("Grep files"))
+	map.set("n", "<leader>fr", "<cmd>Telescope resume<CR>", desc("Resume search"))
+	map.set("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc("Recent files"))
+	map.set("n", "<leader>fb", "<cmd>Telescope buffers<CR>", desc("Buffers"))
+	map.set("n", "<leader>fk", "<cmd>Telescope keymaps<CR>", desc("Keymaps"))
+	map.set("n", "<leader>fw", "<cmd>Telescope grep_string<CR>", desc("String at cursor"))
+	map.set("n", "<leader>sb", "<cmd>Telescope git_branches<CR>", desc("Branches"))
+	map.set("n", "<leader>sc", "<cmd>Telescope git_bcommits<CR>", desc("Branch commits"))
 end
 
+local use_telescope = false
 return {
 	{
 		"nvim-telescope/telescope.nvim",
-		enabled = false,
+		enabled = use_telescope,
 		branch = "0.1.x",
 		cmd = "Telescope",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
 		config = config,
+	},
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		enabled = use_telescope,
+		build = "make",
+		cmd = "Telescope",
 	},
 }
