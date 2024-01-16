@@ -1,14 +1,17 @@
 return {
-	{
-		"christoomey/vim-tmux-navigator",
-		event = "VeryLazy",
-		config = function()
-			vim.g.tmux_navigator_no_mappings = 1
-			vim.api.nvim_set_keymap("n", "<C-h>", ":<C-U>TmuxNavigateLeft<cr>", { silent = true })
-			vim.api.nvim_set_keymap("n", "<C-j>", ":<C-U>TmuxNavigateDown<cr>", { silent = true })
-			vim.api.nvim_set_keymap("n", "<C-k>", ":<C-U>TmuxNavigateUp<cr>", { silent = true })
-			vim.api.nvim_set_keymap("n", "<C-l>", ":<C-U>TmuxNavigateRight<cr>", { silent = true })
-			-- vim.api.nvim_set_keymap("n","<C-\>", " :<C-U>TmuxNavigatePrevious<cr>", {silent=true})
-		end,
+	"christoomey/vim-tmux-navigator",
+	cmd = {
+		"TmuxNavigateLeft",
+		"TmuxNavigateDown",
+		"TmuxNavigateUp",
+		"TmuxNavigateRight",
+		"TmuxNavigatePrevious",
+	},
+	keys = {
+		{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>", { silent = true } },
+		{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>", { silent = true } },
+		{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>", { silent = true } },
+		{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>", { silent = true } },
+		-- { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>", { silent = true } },
 	},
 }
