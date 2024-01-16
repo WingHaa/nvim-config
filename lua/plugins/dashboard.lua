@@ -19,9 +19,12 @@ local opts = {
 		header = addPad(require("util.headers").neovim_banner),
 		-- stylua: ignore
 		center = {
-			{ action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
-			{ action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "r" },
-			{ action = "Telescope live_grep", desc = " Find text", icon = " ", key = "g" },
+			-- { action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
+			-- { action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "r" },
+			-- { action = "Telescope live_grep", desc = " Find text", icon = " ", key = "g" },
+			{ action = "FzfLua files", desc = " Find file", icon = " ", key = "f" },
+			{ action = "FzfLua oldfiles", desc = " Recent files", icon = " ", key = "r" },
+			{ action = "FzfLua live_grep_glob", desc = " Find text", icon = " ", key = "g" },
 			{ action = "SessionManager load_session", desc = " Find Project", icon = " ", key = "p" },
 			{ action = "SessionManager load_last_session", desc = " Restore Session", icon = " ", key = "s" },
 			{ action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "l" },

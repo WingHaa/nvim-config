@@ -1,6 +1,8 @@
 local on_attach = require("util.lsp").on_attach
+
 return {
 	"pmizio/typescript-tools.nvim",
+	event = "LspAttach",
 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	opts = {
 		on_attach = on_attach,
