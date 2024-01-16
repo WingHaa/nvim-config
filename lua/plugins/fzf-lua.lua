@@ -14,7 +14,6 @@ map.set("n", "<leader>fq", "<cmd>FzfLua quickfix<CR>", desc("Quickfix list"))
 map.set("n", "<leader>fl", "<cmd>FzfLua loclist<CR>", desc("Location list"))
 map.set("n", "<leader>fr", "<cmd>FzfLua resume<CR>", desc("Resume"))
 map.set("n", "<leader>fh", "<cmd>FzfLua help_tags<CR>", desc("Help tags"))
-map.set("n", "<leader>fm", "<cmd>FzfLua man_pages<CR>", desc("Man pages"))
 
 return {
 	"ibhagwan/fzf-lua",
