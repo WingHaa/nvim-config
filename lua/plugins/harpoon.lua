@@ -1,39 +1,41 @@
 local desc = require("util.keymap").desc
-local map = vim.keymap
+local set = vim.keymap.set
 
 return {
 	"ThePrimeagen/harpoon",
+	branch = "harpoon2",
 	dependencies = { "nvim-lua/plenary.nvim" },
-	opts = {
-		global_settings = {
-			-- sets the marks upon calling `toggle` on the ui, instead of require `:w`.
-			save_on_toggle = true,
+	config = function()
+		local harpoon = require("harpoon")
 
-			-- closes any tmux windows harpoon that harpoon creates when you close Neovim.
-			tmux_autoclose_windows = true,
+		harpoon:setup()
 
-			-- filetypes that you want to prevent from adding to the harpoon list menu.
-			excluded_filetypes = { "harpoon" },
+		set("n", "<leader>a", function()
+			harpoon:list():append()
+		end, desc("Harpoon add"))
+		set("n", "<leader>hl", function()
+			harpoon.ui:toggle_quick_menu(harpoon:list())
+		end, desc("Harpoon list"))
 
-			-- set marks specific to each git branch inside git repository
-			mark_branch = false,
-		},
-	},
-	config = function(_, opts)
-		require("harpoon").setup(opts)
+		set("n", "<leader>1", function()
+			harpoon:list():select(1)
+		end, desc("Harpoon 1"))
+		set("n", "<leader>2", function()
+			harpoon:list():select(2)
+		end, desc("Harpoon 2"))
+		set("n", "<leader>3", function()
+			harpoon:list():select(3)
+		end, desc("Harpoon 3"))
+		set("n", "<leader>4", function()
+			harpoon:list():select(4)
+		end, desc("Harpoon 4"))
 
-		map.set("n", "<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>", desc("Harpoon add"))
-		map.set("n", "<leader>hl", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", desc("Harpoon list"))
-		map.set("n", "<M-k>", "<cmd>lua require('harpoon.ui').nav_next()<cr>", desc("Next harpoon"))
-		map.set("n", "<M-j>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", desc("Previous harpoon"))
-		map.set("n", "<leader>1", "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", desc("Harpoon 1"))
-		map.set("n", "<leader>2", "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", desc("Harpoon 2"))
-		map.set("n", "<leader>3", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", desc("Harpoon 3"))
-		map.set("n", "<leader>4", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", desc("Harpoon 4"))
-		map.set("n", "<leader>5", "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", desc("Harpoon 5"))
-		map.set("n", "<leader>6", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", desc("Harpoon 6"))
-		map.set("n", "<leader>7", "<cmd>lua require('harpoon.ui').nav_file(7)<cr>", desc("Harpoon 7"))
-		map.set("n", "<leader>8", "<cmd>lua require('harpoon.ui').nav_file(8)<cr>", desc("Harpoon 8"))
-		map.set("n", "<leader>9", "<cmd>lua require('harpoon.ui').nav_file(9)<cr>", desc("Harpoon 9"))
+		-- Toggle previous & next buffers stored within Harpoon list
+		set("n", "<M-k>", function()
+			harpoon:list():prev()
+		end, desc("Previous harpoon"))
+		set("n", "<M-j>", function()
+			harpoon:list():next()
+		end, desc("Next harpoon"))
 	end,
 }
