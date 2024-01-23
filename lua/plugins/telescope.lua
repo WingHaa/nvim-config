@@ -58,6 +58,5 @@ return {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		enabled = use_telescope,
 		build = "make",
-		cmd = "Telescope",
 	},
 }
