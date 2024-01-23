@@ -32,6 +32,9 @@ return {
 		local actions = require("fzf-lua.actions")
 		require("fzf-lua").setup({
 			"telescope",
+			winopts = {
+				preview = { default = (vim.fn.executable("batcat") or vim.fn.executable("cat")) and "bat" or "builtin" },
+			},
 			fzf_opts = {
 				["--layout"] = "reverse",
 			},
@@ -44,9 +47,6 @@ return {
 				},
 			},
 			files = {
-				-- previewer      = "bat",          -- uncomment to override previewer
-				-- (name from 'previewers' table)
-				-- set to 'false' to disable
 				prompt = "Files❯ ",
 				multiprocess = true, -- run command in a separate process
 				git_icons = true, -- show git icons?
@@ -66,7 +66,7 @@ return {
 				-- uncomment if you wish to force display of the cwd as part of the
 				-- query prompt string (fzf.vim style), header line or both
 				-- cwd_header = true,
-				cwd_prompt = false,
+				cwd_prompt = true,
 				cwd_prompt_shorten_len = 32, -- shorten prompt beyond this length
 				cwd_prompt_shorten_val = 1, -- shortened path parts length
 				toggle_ignore_flag = "--no-ignore", -- flag toggled in `actions.toggle_ignore`
@@ -97,7 +97,7 @@ return {
 				-- search strings will be split using the 'glob_separator' and translated
 				-- to '--iglob=' arguments, requires 'rg'
 				-- can still be used when 'false' by calling 'live_grep_glob' directly
-				rg_glob = false, -- default to glob parsing?
+				rg_glob = true, -- default to glob parsing?
 				glob_flag = "--iglob", -- for case sensitive globs use '--glob'
 				glob_separator = "%s%-%-", -- query separator pattern (lua): ' --'
 				-- advanced usage: for custom argument parsing define
