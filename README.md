@@ -65,7 +65,6 @@ NVIM_APPNAME=WingHaa/nvim-config/ nvim
 + [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
 ### indent
 
-+ [echasnovski/mini.indentscope](https://dotfyle.com/plugins/echasnovski/mini.indentscope)
 + [lukas-reineke/indent-blankline.nvim](https://dotfyle.com/plugins/lukas-reineke/indent-blankline.nvim)
 ### keybinding
 
@@ -123,16 +122,11 @@ NVIM_APPNAME=WingHaa/nvim-config/ nvim
 + [nvim-lualine/lualine.nvim](https://dotfyle.com/plugins/nvim-lualine/lualine.nvim)
 ### syntax
 
-+ [echasnovski/mini.surround](https://dotfyle.com/plugins/echasnovski/mini.surround)
-+ [nvim-treesitter/nvim-treesitter-textobjects](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-textobjects)
 + [nvim-treesitter/nvim-treesitter](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter)
-### tabline
-
-+ [akinsho/bufferline.nvim](https://dotfyle.com/plugins/akinsho/bufferline.nvim)
++ [nvim-treesitter/nvim-treesitter-textobjects](https://dotfyle.com/plugins/nvim-treesitter/nvim-treesitter-textobjects)
++ [echasnovski/mini.surround](https://dotfyle.com/plugins/echasnovski/mini.surround)
 ### utility
 
-+ [folke/noice.nvim](https://dotfyle.com/plugins/folke/noice.nvim)
-+ [rcarriga/nvim-notify](https://dotfyle.com/plugins/rcarriga/nvim-notify)
 + [chrisgrieser/nvim-early-retirement](https://dotfyle.com/plugins/chrisgrieser/nvim-early-retirement)
 + [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
 ## Language Servers
