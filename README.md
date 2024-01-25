@@ -128,7 +128,6 @@ NVIM_APPNAME=WingHaa/nvim-config/ nvim
 ### utility
 
 + [chrisgrieser/nvim-early-retirement](https://dotfyle.com/plugins/chrisgrieser/nvim-early-retirement)
-+ [stevearc/dressing.nvim](https://dotfyle.com/plugins/stevearc/dressing.nvim)
 ## Language Servers
 
 + html
