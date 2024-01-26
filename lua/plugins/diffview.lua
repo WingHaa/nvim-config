@@ -406,8 +406,8 @@ M.keys = {
 	{ "<leader>dc", "<cmd>DiffviewClose<CR>", "n", desc("Diffview Close") },
 	{ "<leader>db", "<cmd>DiffviewFileHistory<CR>", "n", desc("Branch History") },
 	{ "<leader>df", "<cmd>DiffviewFileHistory %<CR>", "n", desc("File History") },
-	{ "<leader>dr", "<cmd>lua require('util.diffview').review()<CR>", "n", desc("Branch Diff") },
-	{ "<leader>dR", "<cmd>lua require('util.diffview').review_commit()<CR>", "n", desc("Diff By Commit") },
+	{ "<leader>dr", "<cmd>lua require('util.diffview').neo_review({type='branch'})<CR>", "n", desc("Branch Diff") },
+	{ "<leader>dR", "<cmd>lua require('util.diffview').neo_review({type='commit'})<CR>", "n", desc("Diff By Commit") },
 }
 
 vim.opt.fillchars:append({ diff = "╱" })
