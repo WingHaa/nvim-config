@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 
 -- Pick the line below and squash it on current line while keep cursor at start
 map.set("n", "J", "mzJ`z")
+
 -- keep cursor at middle of screen when navigating
 map.set("n", "<C-d>", "<C-d>zz")
 map.set("n", "<C-u>", "<C-u>zz") -- Keep searches at middle of screen when you search map.set("n", "n", "nzzzv")
@@ -46,8 +47,19 @@ map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
 map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
 map.set("n", "<leader>L", "<cmd>Lazy<cr>", opts)
 
+-- dd only yank if line not empty
+map.set("n", "dd", function()
+	---@diagnostic disable-next-line: param-type-mismatch
+	if vim.fn.getline("."):match("^%s*$") then
+		return '"_dd'
+	end
+	return "dd"
+end, { expr = true })
+
 -- quit
 map.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
+-- fast edit word
+map.set("n", "<cr>", "ciw")
 
 local terminal = require("util.terminal")
 --Lazygit

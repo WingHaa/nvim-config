@@ -1,5 +1,6 @@
 return {
 	"chrisgrieser/nvim-early-retirement",
+	enabled = false,
 	event = "VeryLazy",
 	config = function()
 		require("early-retirement").setup({
