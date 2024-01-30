@@ -56,11 +56,6 @@ map.set("n", "dd", function()
 	return "dd"
 end, { expr = true })
 
--- quit
-map.set("n", "<leader>q", "<cmd>qa<cr>", { desc = "Quit all" })
--- fast edit word
-map.set("n", "<cr>", "ciw")
-
 local terminal = require("util.terminal")
 --Lazygit
 map.set("n", "<leader>gg", function()

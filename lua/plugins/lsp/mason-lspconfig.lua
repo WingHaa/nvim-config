@@ -1,6 +1,11 @@
 local opts = {
 	ensure_installed = {
 		"lua_ls",
+		"bashls",
+		"phpactor",
+		"tsserver",
+		"pyright",
+		"jsonls",
 	},
 	automatic_installation = true,
 }

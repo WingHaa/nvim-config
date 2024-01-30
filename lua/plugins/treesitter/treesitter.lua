@@ -38,6 +38,7 @@ local opt = {
 		"vue",
 		"jsdoc",
 		"phpdoc",
+		"http",
 	},
 	auto_install = true,
 	highlight = {
