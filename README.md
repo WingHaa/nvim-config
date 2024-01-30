@@ -27,8 +27,8 @@ NVIM_APPNAME=WingHaa/nvim-config/ nvim
 ### colorscheme
 
 + [folke/tokyonight.nvim](https://dotfyle.com/plugins/folke/tokyonight.nvim)
-+ [catppuccin/nvim](https://dotfyle.com/plugins/catppuccin/nvim)
 + [navarasu/onedark.nvim](https://dotfyle.com/plugins/navarasu/onedark.nvim)
++ [catppuccin/nvim](https://dotfyle.com/plugins/catppuccin/nvim)
 ### comment
 
 + [numToStr/Comment.nvim](https://dotfyle.com/plugins/numToStr/Comment.nvim)
@@ -36,18 +36,18 @@ NVIM_APPNAME=WingHaa/nvim-config/ nvim
 + [JoosepAlviste/nvim-ts-context-commentstring](https://dotfyle.com/plugins/JoosepAlviste/nvim-ts-context-commentstring)
 ### completion
 
-+ [Exafunction/codeium.nvim](https://dotfyle.com/plugins/Exafunction/codeium.nvim)
 + [hrsh7th/nvim-cmp](https://dotfyle.com/plugins/hrsh7th/nvim-cmp)
++ [Exafunction/codeium.nvim](https://dotfyle.com/plugins/Exafunction/codeium.nvim)
 ### diagnostics
 
 + [folke/trouble.nvim](https://dotfyle.com/plugins/folke/trouble.nvim)
 ### editing-support
 
-+ [johmsalas/text-case.nvim](https://dotfyle.com/plugins/johmsalas/text-case.nvim)
-+ [echasnovski/mini.pairs](https://dotfyle.com/plugins/echasnovski/mini.pairs)
-+ [gbprod/substitute.nvim](https://dotfyle.com/plugins/gbprod/substitute.nvim)
 + [windwp/nvim-ts-autotag](https://dotfyle.com/plugins/windwp/nvim-ts-autotag)
++ [gbprod/substitute.nvim](https://dotfyle.com/plugins/gbprod/substitute.nvim)
++ [echasnovski/mini.pairs](https://dotfyle.com/plugins/echasnovski/mini.pairs)
 + [echasnovski/mini.ai](https://dotfyle.com/plugins/echasnovski/mini.ai)
++ [johmsalas/text-case.nvim](https://dotfyle.com/plugins/johmsalas/text-case.nvim)
 ### file-explorer
 
 + [nvim-neo-tree/neo-tree.nvim](https://dotfyle.com/plugins/nvim-neo-tree/neo-tree.nvim)
@@ -56,12 +56,12 @@ NVIM_APPNAME=WingHaa/nvim-config/ nvim
 + [stevearc/conform.nvim](https://dotfyle.com/plugins/stevearc/conform.nvim)
 ### fuzzy-finder
 
-+ [ibhagwan/fzf-lua](https://dotfyle.com/plugins/ibhagwan/fzf-lua)
 + [nvim-telescope/telescope.nvim](https://dotfyle.com/plugins/nvim-telescope/telescope.nvim)
++ [ibhagwan/fzf-lua](https://dotfyle.com/plugins/ibhagwan/fzf-lua)
 ### git
 
-+ [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
 + [f-person/git-blame.nvim](https://dotfyle.com/plugins/f-person/git-blame.nvim)
++ [lewis6991/gitsigns.nvim](https://dotfyle.com/plugins/lewis6991/gitsigns.nvim)
 + [sindrets/diffview.nvim](https://dotfyle.com/plugins/sindrets/diffview.nvim)
 ### indent
 
@@ -71,10 +71,10 @@ NVIM_APPNAME=WingHaa/nvim-config/ nvim
 + [folke/which-key.nvim](https://dotfyle.com/plugins/folke/which-key.nvim)
 ### lsp
 
-+ [simrat39/symbols-outline.nvim](https://dotfyle.com/plugins/simrat39/symbols-outline.nvim)
-+ [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
 + [neovim/nvim-lspconfig](https://dotfyle.com/plugins/neovim/nvim-lspconfig)
 + [mfussenegger/nvim-lint](https://dotfyle.com/plugins/mfussenegger/nvim-lint)
++ [onsails/lspkind.nvim](https://dotfyle.com/plugins/onsails/lspkind.nvim)
++ [simrat39/symbols-outline.nvim](https://dotfyle.com/plugins/simrat39/symbols-outline.nvim)
 ### lsp-installer
 
 + [williamboman/mason.nvim](https://dotfyle.com/plugins/williamboman/mason.nvim)
@@ -94,14 +94,11 @@ NVIM_APPNAME=WingHaa/nvim-config/ nvim
 ### nvim-dev
 
 + [folke/neodev.nvim](https://dotfyle.com/plugins/folke/neodev.nvim)
-+ [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
 + [nvim-lua/plenary.nvim](https://dotfyle.com/plugins/nvim-lua/plenary.nvim)
++ [MunifTanjim/nui.nvim](https://dotfyle.com/plugins/MunifTanjim/nui.nvim)
 ### plugin-manager
 
 + [folke/lazy.nvim](https://dotfyle.com/plugins/folke/lazy.nvim)
-### preconfigured
-
-+ [LazyVim/LazyVim](https://dotfyle.com/plugins/LazyVim/LazyVim)
 ### quickfix
 
 + [kevinhwang91/nvim-bqf](https://dotfyle.com/plugins/kevinhwang91/nvim-bqf)

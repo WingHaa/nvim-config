@@ -36,6 +36,7 @@ local opts = {
 		scss = { { "prettierd", "prettier" } },
 		php = { { "php_cs_fixer", "prettierd" } },
 		sql = { "sql_formatter" },
+		mysql = { "sql_formatter" },
 		blade = { "blade-formatter" },
 	},
 	-- Custom formatters and changes to built-in formatters

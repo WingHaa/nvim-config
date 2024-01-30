@@ -4,9 +4,9 @@ return {
 	opts = {
 		indent = {
 			char = "│",
-			tab_char = "│",
+			tab_char = "╎",
 		},
-		scope = { enabled = false },
+		scope = { enabled = true },
 		exclude = {
 			filetypes = require("util.exclude").filetype,
 		},

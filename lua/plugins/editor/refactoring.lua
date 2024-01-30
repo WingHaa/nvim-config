@@ -1,4 +1,5 @@
 local desc = require("util.keymap").desc
+
 local M = {
 	"ThePrimeagen/refactoring.nvim",
 	cmd = "Refactor",
