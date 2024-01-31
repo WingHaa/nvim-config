@@ -1,5 +1,4 @@
-local desc = require("util.keymap").desc
-local use_telescope = false
+local use_telescope = true
 local M = {
 	"nvim-telescope/telescope.nvim",
 	enabled = use_telescope,
@@ -48,16 +47,16 @@ M.config = function()
 	telescope.load_extension("fzf")
 end
 
-M.keys = {
-	{ "<leader>ff", "<cmd>Telescope find_files<CR>", "n", desc("Files by name") },
-	{ "<leader>fg", "<cmd>Telescope live_grep<CR>", "n", desc("Grep files") },
-	{ "<leader>fr", "<cmd>Telescope resume<CR>", "n", desc("Resume search") },
-	{ "<leader>fo", "<cmd>Telescope oldfiles<CR>", "n", desc("Recent files") },
-	{ "<leader>fb", "<cmd>Telescope buffers<CR>", "n", desc("Buffers") },
-	{ "<leader>fk", "<cmd>Telescope keymaps<CR>", "n", desc("Keymaps") },
-	{ "<leader>fw", "<cmd>Telescope grep_string<CR>", "n", desc("String at cursor") },
-	{ "<leader>sb", "<cmd>Telescope git_branches<CR>", "n", desc("Branches") },
-	{ "<leader>sc", "<cmd>Telescope git_bcommits<CR>", "n", desc("Branch commits") },
-}
+-- M.keys = {
+-- 	{ "<leader>ff", "<cmd>Telescope find_files<CR>", "n", desc("Files by name") },
+-- 	{ "<leader>fg", "<cmd>Telescope live_grep<CR>", "n", desc("Grep files") },
+-- 	{ "<leader>fr", "<cmd>Telescope resume<CR>", "n", desc("Resume search") },
+-- 	{ "<leader>fo", "<cmd>Telescope oldfiles<CR>", "n", desc("Recent files") },
+-- 	{ "<leader>fb", "<cmd>Telescope buffers<CR>", "n", desc("Buffers") },
+-- 	{ "<leader>fk", "<cmd>Telescope keymaps<CR>", "n", desc("Keymaps") },
+-- 	{ "<leader>fw", "<cmd>Telescope grep_string<CR>", "n", desc("String at cursor") },
+-- 	{ "<leader>sb", "<cmd>Telescope git_branches<CR>", "n", desc("Branches") },
+-- 	{ "<leader>sc", "<cmd>Telescope git_bcommits<CR>", "n", desc("Branch commits") },
+-- }
 
 return { M, F }

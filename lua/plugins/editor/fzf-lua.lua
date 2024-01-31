@@ -5,9 +5,9 @@ local M = {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 
-M.init = function()
-	require("fzf-lua").register_ui_select()
-end
+-- M.init = function()
+-- 	require("fzf-lua").register_ui_select()
+-- end
 
 M.keys = {
 	{ "<leader>ff", "<cmd>FzfLua files<CR>", "n", desc("Find files") },

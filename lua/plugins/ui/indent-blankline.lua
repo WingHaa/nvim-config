@@ -6,7 +6,7 @@ return {
 			char = "│",
 			tab_char = "╎",
 		},
-		scope = { enabled = true },
+		scope = { enabled = true, show_start = false, show_end = false },
 		exclude = {
 			filetypes = require("util.exclude").filetype,
 		},

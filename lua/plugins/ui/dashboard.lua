@@ -16,7 +16,7 @@ local opts = {
 		statusline = false,
 	},
 	config = {
-		header = addPad(require("util.headers").neovim_banner),
+		header = addPad(require("util.headers").hydra),
 		-- stylua: ignore
 		center = {
 			-- { action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
@@ -49,10 +49,6 @@ return {
 	dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	config = function()
 		require("dashboard").setup(opts)
-		-- vim.api.nvim_set_hl(0, "DashboardHeader", { link = "@text.literal" })
-		-- vim.api.nvim_set_hl(0, "DashboardKey", { link = "@label" })
-		-- vim.api.nvim_set_hl(0, "DashboardIcon", { link = "@attribute" })
 		vim.api.nvim_set_hl(0, "DashboardFooter", { fg = "#FDD023" })
-		-- vim.api.nvim_set_hl(0, "DashboardDesc", { link = "@attribute" })
 	end,
 }
