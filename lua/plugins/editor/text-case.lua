@@ -1,5 +1,6 @@
 return {
 	"johmsalas/text-case.nvim",
+	cmd = "Subs",
 	event = { "BufReadPost" },
 	-- Author's Note: If default keymappings fail to register (possible config issue in my local setup),
 	-- verify lazy loading functionality. On failure, disable lazy load and report issue
