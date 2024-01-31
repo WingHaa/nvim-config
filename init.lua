@@ -1,4 +1,6 @@
 require("config")
-vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme tokyonight")
 -- vim.cmd("colorscheme onedark")
 -- vim.cmd("colorscheme catppuccin-macchiato")
+-- vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme everforest")

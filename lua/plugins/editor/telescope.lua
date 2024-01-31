@@ -1,4 +1,4 @@
-local use_telescope = false
+local use_telescope = true
 local M = {
 	"nvim-telescope/telescope.nvim",
 	enabled = use_telescope,

@@ -21,8 +21,8 @@ return {
 			},
 		}
 
-		vim.keymap.set({ "n", "x", "o" }, "t", "<Plug>(leap-forward-to)")
-		vim.keymap.set({ "n", "x", "o" }, "T", "<Plug>(leap-backward-to)")
+		vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward-to)")
+		vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward-to)")
 	end,
-	keys = { "t", "T" },
+	keys = { "s", "S" },
 }

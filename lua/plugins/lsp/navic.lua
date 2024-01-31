@@ -1,5 +1,6 @@
 return {
 	"SmiteshP/nvim-navic",
+	event = "LspAttach",
 	requires = "neovim/nvim-lspconfig",
 	opts = {
 		icons = {
@@ -48,5 +49,7 @@ return {
 	config = function(_, opts)
 		require("nvim-navic").setup(opts)
 		vim.o.winbar = " %{%v:lua.require('nvim-navic').get_location()%}"
+		vim.api.nvim_set_hl(0, "WinBar", { link = "Normal" })
+		vim.api.nvim_set_hl(0, "WinBarNC", { link = "Normal" })
 	end,
 }
