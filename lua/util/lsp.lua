@@ -37,10 +37,6 @@ M.on_attach = function(client, bufnr)
 			desc("Organize Imports")
 		)
 	end
-
-	if client.server_capabilities.documentSymbolProvider then
-		require("nvim-navic").attach(client, bufnr)
-	end
 end
 
 M.diagnostic_signs = { Error = " ", Warn = " ", Hint = "󰌵", Info = "" }

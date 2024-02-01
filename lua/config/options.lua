@@ -35,10 +35,10 @@ opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
 opt.scrolloff = 8
+
+opt.foldlevel = 99
+vim.go.foldcolumn = "auto"
+
 vim.wo.signcolumn = "yes:1"
 
 vim.g.autoformat = false
-
-vim.o.guicursor =
-	-- "n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,n:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
-	"n-v-c-i:block,n:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175"
