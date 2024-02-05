@@ -12,12 +12,6 @@ map.set("n", "<C-d>", "<C-d>zz")
 map.set("n", "<C-u>", "<C-u>zz") -- Keep searches at middle of screen when you search map.set("n", "n", "nzzzv")
 map.set("n", "N", "Nzzzv")
 
--- better up/down
-map.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map.set({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map.set({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-
 -- Indenting
 map.set("v", "<", "<gv") -- Shift Indentation to Left
 map.set("v", ">", ">gv") -- Shift Indentation to Right
@@ -49,15 +43,15 @@ map.set("n", "<leader>L", "<cmd>Lazy<cr>", opts)
 
 -- dd only yank if line not empty
 map.set("n", "dd", function()
-	---@diagnostic disable-next-line: param-type-mismatch
-	if vim.fn.getline("."):match("^%s*$") then
-		return '"_dd'
-	end
-	return "dd"
+  ---@diagnostic disable-next-line: param-type-mismatch
+  if vim.fn.getline("."):match("^%s*$") then
+    return '"_dd'
+  end
+  return "dd"
 end, { expr = true })
 
 local terminal = require("util.terminal")
 --Lazygit
 map.set("n", "<leader>gg", function()
-	terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
+  terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
 end, { desc = "Lazygit (cwd)" })
