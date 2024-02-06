@@ -1,11 +1,9 @@
 local M = {
   "folke/noice.nvim",
   event = "VimEnter",
-  dependencies = {
-    "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
-  },
 }
+
+M.dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
 
 M.opts = {
   lsp = {
@@ -14,6 +12,9 @@ M.opts = {
       ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
       ["vim.lsp.util.stylize_markdown"] = true,
       ["cmp.entry.get_documentation"] = true,
+    },
+    hover = {
+      enabled = false,
     },
   },
   -- you can enable a preset for easier configuration
@@ -50,8 +51,16 @@ M.opts.routes = {
   { filter = { event = "msg_show", find = "%d+L, %d+B$" }, view = "mini" },
   { filter = { event = "msg_show", find = "%-%-No lines in buffer%-%-" }, view = "mini" },
 
+  -- redo/undo messages
+  { filter = { event = "msg_show", find = "%d+ changes?; %a+ #%d+" }, view = "mini" },
+  { filter = { event = "msg_show", find = "1 more line" }, view = "mini" },
+  { filter = { event = "msg_show", find = "1 line less" }, view = "mini" },
+  { filter = { event = "msg_show", find = "%d+ more lines" }, view = "mini" },
+  { filter = { event = "msg_show", find = "%d+ fewer lines" }, view = "mini" },
+  { filter = { event = "msg_show", find = "^Already at %a+ change$" }, view = "mini" },
+
   -- unneeded info on search patterns
-  { filter = { event = "msg_show", find = "^[/?]." }, skip = true },
+  -- { filter = { event = "msg_show", find = "^[/?]." }, skip = true },
   { filter = { event = "msg_show", find = "^E486: Pattern not found" }, view = "mini" },
 
   -- Word added to spellfile via `zg`
@@ -85,6 +94,9 @@ M.opts.routes = {
   -- LSP
   { filter = { event = "notify", find = "Restarting…" }, view = "mini" },
 
+  -- Lazy
+  { filter = { event = "notify", find = "Config Change Detected. Reloading..." }, view = "mini" },
+
   -- Mason
   { filter = { event = "notify", find = "%[mason%-tool%-installer%]" }, view = "mini" },
   {
@@ -100,12 +112,13 @@ M.opts.routes = {
 
 M.config = function(_, opts)
   require("noice").setup(opts)
-
-  vim.api.nvim_set_hl(0, "NoiceMini", { link = "NormalFloat" })
-
-  -- require("notify").setup({
-  -- 	background_colour = "#000000",
-  -- })
 end
+
+M.keys = {
+  { "<leader>nh", "<cmd>NoiceHistory<cr>", desc = "Messages" },
+  { "<leader>nd", "<cmd>NoiceDismiss<cr>", desc = "Noice Dismiss" },
+  { "<leader>nc", "<cmd>NoiceDisable<cr>", desc = "Noice Close" },
+  { "<leader>ne", "<cmd>NoiceEnable<cr>", desc = "Noice Enable" },
+}
 
 return M

@@ -27,7 +27,7 @@ local config = function()
         },
         "diagnostics",
       },
-      lualine_c = {},
+      lualine_c = { components.recording },
       lualine_x = {},
       lualine_y = {
         components.shiftwidth,
