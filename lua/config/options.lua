@@ -31,7 +31,7 @@ opt.smartcase = true
 opt.hlsearch = false
 
 --Appearance
--- opt.number = true already support by lualine
+opt.number = true
 opt.relativenumber = true
 opt.termguicolors = true
 opt.scrolloff = 8

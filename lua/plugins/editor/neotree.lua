@@ -1,7 +1,6 @@
 local O = {}
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
-  cmd = "Neotree",
   branch = "v3.x",
 }
 
@@ -28,15 +27,6 @@ M.dependencies = {
         },
       })
     end,
-  },
-}
-
-M.keys = {
-  {
-    "<leader>e",
-    "<cmd>Neotree filesystem toggle reveal float<CR>",
-    desc = "Neotree",
-    { noremap = true, silent = true },
   },
 }
 
@@ -126,14 +116,9 @@ M.opts = {
   commands = {},
   nesting_rules = {},
   -- List of sources
-  sources = {
-    "filesystem",
-    "git_status",
-  },
+  sources = { "filesystem" },
   -- Show source in winbar
-  source_selector = {
-    winbar = true,
-  },
+  source_selector = { winbar = false },
   event_handlers = {
     {
       event = "vim_buffer_enter",
@@ -148,7 +133,7 @@ M.opts = {
 
 -- Keymappings
 O.window = {
-  position = "left",
+  position = "current",
   width = 40,
   mapping_options = {
     noremap = true,
@@ -324,5 +309,12 @@ O.git_status = {
 }
 
 M.opts = vim.tbl_deep_extend("force", M.opts, O)
+
+M.config = function(_, opts)
+  require("neo-tree").setup(opts)
+
+  local desc = require("util.keymap").desc
+  vim.keymap.set("n", "<leader>e", "<cmd>Neotree filesystem toggle reveal current<CR>", desc("Neotree"))
+end
 
 return M

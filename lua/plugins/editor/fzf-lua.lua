@@ -40,7 +40,10 @@ M.config = function()
   require("fzf-lua").setup({
     "telescope",
     winopts = {
-      preview = { default = (vim.fn.executable("batcat") or vim.fn.executable("cat")) and "bat" or "builtin" },
+      preview = {
+        default = (vim.fn.executable("batcat") or vim.fn.executable("cat")) and "bat" or "builtin",
+        layout = "vertical",
+      },
     },
     fzf_opts = {
       ["--layout"] = "reverse",

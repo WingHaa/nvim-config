@@ -1,13 +1,21 @@
 local M = {}
 
-M.desc = function(desc, silent)
-	silent = silent or true
-	return {
-		noremap = true,
-		silent = true,
-		nowait = true,
-		desc = desc,
-	}
+M.desc = function(desc)
+  return {
+    noremap = true,
+    silent = true,
+    nowait = true,
+    desc = desc,
+  }
+end
+
+M.noisy_desc = function(desc)
+  return {
+    noremap = true,
+    silent = false,
+    nowait = true,
+    desc = desc,
+  }
 end
 
 return M
