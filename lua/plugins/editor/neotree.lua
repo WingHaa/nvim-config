@@ -1,7 +1,20 @@
+local desc = require("util.keymap").desc
+vim.keymap.set("n", "<leader>e", "<cmd>Neotree filesystem toggle reveal current<CR>", desc("Neotree"))
+
+-- Load neotree when launching directory with nvim
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if vim.fn.isdirectory(vim.fn.expand("%")) == 1 then
+      require("neo-tree")
+    end
+  end,
+})
+
 local O = {}
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
+  cmd = "Neotree",
 }
 
 M.dependencies = {
@@ -309,12 +322,5 @@ O.git_status = {
 }
 
 M.opts = vim.tbl_deep_extend("force", M.opts, O)
-
-M.config = function(_, opts)
-  require("neo-tree").setup(opts)
-
-  local desc = require("util.keymap").desc
-  vim.keymap.set("n", "<leader>e", "<cmd>Neotree filesystem toggle reveal current<CR>", desc("Neotree"))
-end
 
 return M

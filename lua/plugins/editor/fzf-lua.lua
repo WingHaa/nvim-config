@@ -1,4 +1,5 @@
 local desc = require("util.keymap").desc
+local wk = require("util.keymap").wk_desc
 local M = {
   "ibhagwan/fzf-lua",
   cmd = { "FzfLua" },
@@ -6,33 +7,40 @@ local M = {
 }
 
 M.keys = {
-  { "<leader>ff", "<cmd>FzfLua files<CR>", "n", desc("Find files") },
-  {
-    "<leader>fF",
-    "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })<CR>",
-    "n",
-    desc("Find files"),
-  },
-  { "<leader>fg", "<cmd>FzfLua grep_project<CR>", "n", desc("Grep pattern") },
-  { "<leader>fG", "<cmd>FzfLua live_grep_glob<CR>", "n", desc("Live grep glob") },
-  { "<leader>fo", "<cmd>FzfLua oldfiles<CR>", "n", desc("Recent files") },
-  { "<leader>fb", "<cmd>FzfLua buffers<CR>", "n", desc("Buffers") },
-  { "<leader>fk", "<cmd>FzfLua keymaps<CR>", "n", desc("Keymaps") },
-  { "<leader>fw", "<cmd>FzfLua grep_cword<CR>", "n", desc("word at cursor") },
-  { "<leader>fW", "<cmd>FzfLua grep_cWORD<CR>", "n", desc("WORD at cursor") },
-  { "<leader>fm", "<cmd>FzfLua marks<CR>", "n", desc("Marks") },
-  { "<leader>fq", "<cmd>FzfLua quickfix<CR>", "n", desc("Quickfix list") },
-  { "<leader>fl", "<cmd>FzfLua loclist<CR>", "n", desc("Location list") },
-  { "<leader>fr", "<cmd>FzfLua resume<CR>", "n", desc("Resume") },
-  { "<leader>fh", "<cmd>FzfLua help_tags<CR>", "n", desc("Help tags") },
-  { "<leader>fc", "<cmd>FzfLua colorschemes<CR>", "n", desc("Colorscheme") },
-  { "<leader>sc", "<cmd>FzfLua commands<CR>", "n", desc("Commands") },
-  { "<leader>sh", "<cmd>FzfLua command_history<CR>", "n", desc("Command History") },
-  { "<leader>gc", "<cmd>FzfLua git_bcommits<CR>", "n", desc("Git branch's commit") },
-  { "<leader>gb", "<cmd>FzfLua git_branches<CR>", "n", desc("Git branch") },
-  { "<leader>gs", "<cmd>FzfLua git_stash<CR>", "n", desc("Git stash") },
-  { "<leader>gf", "<cmd>FzfLua git_files<CR>", "n", desc("Git file") },
-  { "<leader>gt", "<cmd>FzfLua git_tags<CR>", "n", desc("Git tag") },
+  wk({ "<leader>ff", "<cmd>FzfLua files<CR>", "n" }, desc("Find files")),
+  wk(
+    { "<leader>fF", "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })<CR>", "n" },
+    desc("Find files")
+  ),
+  wk({ "<leader>fg", "<cmd>FzfLua grep_project<CR>", "n" }, desc("Grep pattern")),
+  wk({ "<leader>fG", "<cmd>FzfLua live_grep_glob<CR>", "n" }, desc("Live grep glob")),
+  wk({ "<leader>fo", "<cmd>FzfLua oldfiles<CR>", "n" }, desc("Recent files")),
+  wk({ "<leader>fb", "<cmd>FzfLua buffers<CR>", "n" }, desc("Buffers")),
+  wk({ "<leader>fk", "<cmd>FzfLua keymaps<CR>", "n" }, desc("Keymaps")),
+  wk({ "<leader>fw", "<cmd>FzfLua grep_cword<CR>", "n" }, desc("word at cursor")),
+  wk({ "<leader>fW", "<cmd>FzfLua grep_cWORD<CR>", "n" }, desc("WORD at cursor")),
+  wk({ "<leader>fm", "<cmd>FzfLua marks<CR>", "n" }, desc("Marks")),
+  wk({ "<leader>fq", "<cmd>FzfLua quickfix<CR>", "n" }, desc("Quickfix list")),
+  wk({ "<leader>fl", "<cmd>FzfLua loclist<CR>", "n" }, desc("Location list")),
+  wk({ "<leader>fr", "<cmd>FzfLua resume<CR>", "n" }, desc("Resume")),
+  wk({ "<leader>fh", "<cmd>FzfLua help_tags<CR>", "n" }, desc("Help tags")),
+  wk({ "<leader>fc", "<cmd>FzfLua colorschemes<CR>", "n" }, desc("Colorscheme")),
+
+  wk({ "<leader>sc", "<cmd>FzfLua commands<CR>", "n" }, desc("Commands")),
+  wk({ "<leader>sh", "<cmd>FzfLua command_history<CR>", "n" }, desc("Command History")),
+  wk({ "<leader>sr", "<cmd>Fzflua lsp_references", "n" }, desc("References")),
+  wk({ "<leader>sd", "<cmd>Fzflua lsp_declarations", "n" }, desc("Declarations")),
+  wk({ "<leader>sD", "<cmd>Fzflua lsp_definitions", "n" }, desc("Definitions")),
+  wk({ "<leader>st", "<cmd>Fzflua lsp_typedefs", "n" }, desc("Type Definitions")),
+  wk({ "<leader>si", "<cmd>Fzflua lsp_implementations", "n" }, desc("Implementations")),
+  wk({ "<leader>sc", "<cmd>Fzflua lsp_incoming_calls", "n" }, desc("Incoming Calls")),
+  wk({ "<leader>sC", "<cmd>Fzflua lsp_outgoing_calls", "n" }, desc("Outgoing Calls")),
+
+  wk({ "<leader>gc", "<cmd>FzfLua git_bcommits<CR>", "n" }, desc("Git branch's commit")),
+  wk({ "<leader>gb", "<cmd>FzfLua git_branches<CR>", "n" }, desc("Git branch")),
+  wk({ "<leader>gs", "<cmd>FzfLua git_stash<CR>", "n" }, desc("Git stash")),
+  wk({ "<leader>gf", "<cmd>FzfLua git_files<CR>", "n" }, desc("Git file")),
+  wk({ "<leader>gt", "<cmd>FzfLua git_tags<CR>", "n" }, desc("Git tag")),
 }
 
 M.config = function()

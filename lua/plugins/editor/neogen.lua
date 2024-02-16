@@ -1,4 +1,5 @@
-local add_desc = require("util.keymap").desc
+local wk = require("util.keymap").wk_desc
+local desc = require("util.keymap").desc
 return {
   "danymat/neogen",
   cmd = "Neogen",
@@ -7,7 +8,7 @@ return {
     require("neogen").setup({ snippet_engine = "luasnip" })
   end,
   keys = {
-    { "<leader>nf", "<cmd>Neogen func<CR>", "n", add_desc("Generate Docs") },
+    wk({ "<leader>nf", "<cmd>Neogen func<CR>", "n" }, desc("Generate Docs")),
   },
   -- Follow only stable versions
   version = "*",

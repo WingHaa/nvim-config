@@ -1,6 +1,5 @@
 local M = {
   "nvim-lualine/lualine.nvim",
-  event = "BufReadPre",
   dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 
@@ -29,7 +28,6 @@ M.opts = {
       "diagnostics",
     },
     lualine_c = {
-      components.recording,
       "selectioncount",
     },
     lualine_x = {},
@@ -51,11 +49,11 @@ M.opts = {
   },
   tabline = {
     lualine_a = { "tabs" },
-    lualine_b = { components.filetype, components.filename },
-    lualine_c = {},
-    lualine_x = {},
+    lualine_b = {},
+    lualine_c = { components.filetype, components.filename },
+    lualine_x = { components.lsp },
     lualine_y = {},
-    lualine_z = { components.lsp },
+    lualine_z = {},
   },
 }
 

@@ -1,4 +1,5 @@
 local desc = require("util.keymap").desc
+local wk = require("util.keymap").wk_desc
 
 local M = {
   "sindrets/diffview.nvim",
@@ -402,12 +403,12 @@ M.config = function()
 end
 
 M.keys = {
-  { "<leader>do", "<cmd>DiffviewOpen<CR>", "n", desc("Diffview Open") },
-  { "<leader>dc", "<cmd>DiffviewClose<CR>", "n", desc("Diffview Close") },
-  { "<leader>db", "<cmd>DiffviewFileHistory<CR>", "n", desc("Branch History") },
-  { "<leader>df", "<cmd>DiffviewFileHistory %<CR>", "n", desc("File History") },
-  { "<leader>dr", "<cmd>lua require('util.diffview').neo_review({type='branch'})<CR>", "n", desc("Branch Diff") },
-  { "<leader>dR", "<cmd>lua require('util.diffview').neo_review({type='commit'})<CR>", "n", desc("Diff By Commit") },
+  wk({ "<leader>do", "<cmd>DiffviewOpen<CR>" }, desc("Diffview Open")),
+  wk({ "<leader>dc", "<cmd>DiffviewClose<CR>" }, desc("Diffview Close")),
+  wk({ "<leader>db", "<cmd>DiffviewFileHistory<CR>" }, desc("Branch History")),
+  wk({ "<leader>df", "<cmd>DiffviewFileHistory %<CR>" }, desc("File History")),
+  wk({ "<leader>dr", "<cmd>lua require('util.diffview').neo_review({type='branch'})<CR>" }, desc("Branch Diff")),
+  wk({ "<leader>dR", "<cmd>lua require('util.diffview').neo_review({type='commit'})<CR>" }, desc("Diff By Commit")),
 }
 
 vim.opt.fillchars:append({ diff = "╱" })

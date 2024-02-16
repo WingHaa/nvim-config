@@ -18,4 +18,8 @@ M.noisy_desc = function(desc)
   }
 end
 
+M.wk_desc = function(specs, opts)
+  return vim.tbl_deep_extend("force", specs, opts)
+end
+
 return M

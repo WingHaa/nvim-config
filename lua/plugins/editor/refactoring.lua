@@ -41,6 +41,6 @@ vim.keymap.set("v", "<leader>rv", ":Refactor extract_var ", desc("Extract Variab
 vim.keymap.set({ "n", "v" }, "<leader>ri", ":Refactor inline_var", desc("Inline Variable"))
 vim.keymap.set("n", "<leader>rI", ":Refactor inline_func", desc("Inline Function"))
 vim.keymap.set("n", "<leader>rb", ":Refactor extract_block ", desc("Extract block"))
-vim.keymap.set("n", "<leader>rbf", ":Refactor extract_block_to_file", desc("Extract block to file"))
+vim.keymap.set("n", "<leader>rB", ":Refactor extract_block_to_file", desc("Extract block to file"))
 
 return M
