@@ -12,16 +12,16 @@ M.keys = {
     { "<leader>fF", "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })<CR>", "n" },
     desc("Find files")
   ),
-  wk({ "<leader>fg", "<cmd>FzfLua grep_project<CR>", "n" }, desc("Grep pattern")),
-  wk({ "<leader>fG", "<cmd>FzfLua live_grep_glob<CR>", "n" }, desc("Live grep glob")),
+  wk({ "<leader>fg", "<cmd>FzfLua live_grep<CR>", "n" }, desc("Live grep")),
+  wk({ "<leader>fG", "<cmd>FzfLua grep<CR>", "n" }, desc("Grep pattern")),
   wk({ "<leader>fo", "<cmd>FzfLua oldfiles<CR>", "n" }, desc("Recent files")),
   wk({ "<leader>fb", "<cmd>FzfLua buffers<CR>", "n" }, desc("Buffers")),
   wk({ "<leader>fk", "<cmd>FzfLua keymaps<CR>", "n" }, desc("Keymaps")),
   wk({ "<leader>fw", "<cmd>FzfLua grep_cword<CR>", "n" }, desc("word at cursor")),
   wk({ "<leader>fW", "<cmd>FzfLua grep_cWORD<CR>", "n" }, desc("WORD at cursor")),
   wk({ "<leader>fm", "<cmd>FzfLua marks<CR>", "n" }, desc("Marks")),
-  wk({ "<leader>fq", "<cmd>FzfLua quickfix<CR>", "n" }, desc("Quickfix list")),
-  wk({ "<leader>fl", "<cmd>FzfLua loclist<CR>", "n" }, desc("Location list")),
+  wk({ "<leader>fq", "<cmd>FzfLua quickfix_stack<CR>", "n" }, desc("Quickfix list")),
+  wk({ "<leader>fl", "<cmd>FzfLua loclist_stack<CR>", "n" }, desc("Location list")),
   wk({ "<leader>fr", "<cmd>FzfLua resume<CR>", "n" }, desc("Resume")),
   wk({ "<leader>fh", "<cmd>FzfLua help_tags<CR>", "n" }, desc("Help tags")),
   wk({ "<leader>fc", "<cmd>FzfLua colorschemes<CR>", "n" }, desc("Colorscheme")),
@@ -84,7 +84,7 @@ M.config = function()
       -- uncomment if you wish to force display of the cwd as part of the
       -- query prompt string (fzf.vim style), header line or both
       -- cwd_header = true,
-      cwd_prompt = true,
+      cwd_prompt = false,
       cwd_prompt_shorten_len = 32, -- shorten prompt beyond this length
       cwd_prompt_shorten_val = 1, -- shortened path parts length
       toggle_ignore_flag = "--no-ignore", -- flag toggled in `actions.toggle_ignore`

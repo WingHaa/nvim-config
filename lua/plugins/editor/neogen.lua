@@ -5,7 +5,8 @@ return {
   cmd = "Neogen",
   dependencies = "nvim-treesitter/nvim-treesitter",
   config = function()
-    require("neogen").setup({ snippet_engine = "luasnip" })
+    -- require("neogen").setup({ snippet_engine = "luasnip" })
+    require("neogen").setup()
   end,
   keys = {
     wk({ "<leader>nf", "<cmd>Neogen func<CR>", "n" }, desc("Generate Docs")),

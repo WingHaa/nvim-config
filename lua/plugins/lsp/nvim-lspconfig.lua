@@ -6,6 +6,7 @@ local langs = {
   "docker",
   "json",
   "lua",
+  "nginx",
   "php",
   "sql",
   "toml",

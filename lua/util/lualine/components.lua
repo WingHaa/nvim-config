@@ -60,7 +60,6 @@ M.lsp = {
 
     return unique_client_names
   end,
-  color = { gui = "bold" },
 }
 
 M.shiftwidth = {

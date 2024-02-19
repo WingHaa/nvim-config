@@ -1,5 +1,6 @@
 local map = vim.keymap
 local opts = { noremap = true, silent = true }
+local desc = require("util.keymap").desc
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -49,6 +50,14 @@ map.set("n", "dd", function()
   end
   return "dd"
 end, { expr = true })
+
+-- clipboard
+vim.keymap.set("n", "<leader>y", '"+y', desc("Yank to clipboard"))
+vim.keymap.set({ "v", "x" }, "<leader>y", '"+y', desc("Yank to clipboard"))
+vim.keymap.set("n", "<leader>yy", '"+yy', desc("Yank line to clipboard"))
+vim.keymap.set("n", "<leader>Y", '"+y$', desc("Yank till eol to clipboard"))
+vim.keymap.set({ "n", "v", "x" }, "<leader>p", '"+p', desc("Paste from clipboard"))
+vim.keymap.set("x", "<leader>P", '"_dP', desc("Paste over selection without erasing unnamed register"))
 
 local terminal = require("util.terminal")
 --Lazygit
