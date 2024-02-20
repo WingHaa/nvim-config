@@ -5,7 +5,6 @@ return {
   cmd = "Neogen",
   dependencies = "nvim-treesitter/nvim-treesitter",
   config = function()
-    -- require("neogen").setup({ snippet_engine = "luasnip" })
     require("neogen").setup()
   end,
   keys = {

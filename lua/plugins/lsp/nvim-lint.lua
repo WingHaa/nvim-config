@@ -26,10 +26,8 @@ return {
       },
     }
 
-    local phpcs = require("lint").linters.phpcs
-    phpcs.args = {
+    require("lint").linters.phpcs.args = {
       "-q",
-      -- <- Add a new parameter here
       "--standard=phpcs.xml",
       "--report=json",
       "-",

@@ -6,6 +6,7 @@ local opts = {
     "tsserver",
     "pyright",
     "jsonls",
+    "sqlls",
   },
   automatic_installation = true,
 }

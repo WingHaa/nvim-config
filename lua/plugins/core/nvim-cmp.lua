@@ -7,6 +7,7 @@ M.config = function()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
   local lspkind = require("lspkind")
+  local neogen = require("neogen")
 
   require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -26,6 +27,26 @@ M.config = function()
       ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
       ["<C-e>"] = cmp.mapping.abort(), -- close completion window
       ["<CR>"] = cmp.mapping.confirm({ select = false }),
+      ["<tab>"] = cmp.mapping(function(fallback)
+        if neogen.jumpable() then
+          neogen.jump_next()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
+      ["<S-tab>"] = cmp.mapping(function(fallback)
+        if neogen.jumpable(true) then
+          neogen.jump_prev()
+        else
+          fallback()
+        end
+      end, {
+        "i",
+        "s",
+      }),
     }),
     -- sources for autocompletion
     sources = cmp.config.sources({
