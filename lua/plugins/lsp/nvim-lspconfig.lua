@@ -1,6 +1,3 @@
-local on_attach = require("util.lsp").on_attach
-local diagnostic_signs = require("util.lsp").diagnostic_signs
-local opts = require("util.lsp").opts
 local langs = {
   "bash",
   "c",
@@ -32,12 +29,14 @@ M.keys = {
 }
 
 function M.config()
-  for type, icon in pairs(diagnostic_signs) do
-    local hl = "DiagnosticSign" .. type
+  local utils = require("util.lsp")
+
+  for type, icon in pairs(utils.diagnostic_signs) do
+    local hl = "DiagnostieSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
   end
 
-  vim.diagnostic.config(opts)
+  vim.diagnostic.config(utils.opts)
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
@@ -56,9 +55,8 @@ function M.config()
   end
 
   local capabilities = cmp_nvim_lsp.default_capabilities(C)
-
   for _, lang in pairs(langs) do
-    require("plugins.lsp.lang." .. lang).setup(on_attach, capabilities)
+    require("plugins.lsp.lang." .. lang).setup(utils.on_attach, capabilities)
   end
 end
 

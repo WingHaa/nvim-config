@@ -28,6 +28,8 @@ M.opts = {
       "diagnostics",
     },
     lualine_c = {
+      components.filetype,
+      components.filename,
       "selectioncount",
     },
     lualine_x = {},
@@ -35,7 +37,7 @@ M.opts = {
       components.shiftwidth,
       "fileformat",
       "encoding",
-      "progress",
+      -- "progress",
     },
     lualine_z = { "location" },
   },
@@ -47,14 +49,14 @@ M.opts = {
     lualine_y = {},
     lualine_z = {},
   },
-  tabline = {
-    lualine_a = { "tabs" },
-    lualine_b = {},
-    lualine_c = { components.filetype, components.filename },
-    lualine_x = { components.lsp },
-    lualine_y = {},
-    lualine_z = {},
-  },
+  -- tabline = {
+  --   lualine_a = { "tabs" },
+  --   lualine_b = {},
+  --   lualine_c = {},
+  --   lualine_x = { components.lsp },
+  --   lualine_y = {},
+  --   lualine_z = {},
+  -- },
 }
 
 return M
