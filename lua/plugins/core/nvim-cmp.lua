@@ -14,6 +14,9 @@ M.config = function()
   vim.opt.completeopt = "menu,menuone,noselect"
 
   cmp.setup({
+    experimental = {
+      ghost_text = true,
+    },
     snippet = {
       expand = function(args)
         luasnip.lsp_expand(args.body)
