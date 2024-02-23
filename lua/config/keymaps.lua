@@ -51,13 +51,13 @@ map.set("n", "dd", function()
   return "dd"
 end, { expr = true })
 
--- clipboard
-vim.keymap.set("n", "<leader>y", '"+y', desc("Yank to clipboard"))
-vim.keymap.set({ "v", "x" }, "<leader>y", '"+y', desc("Yank to clipboard"))
-vim.keymap.set("n", "<leader>yy", '"+yy', desc("Yank line to clipboard"))
-vim.keymap.set("n", "<leader>Y", '"+y$', desc("Yank till eol to clipboard"))
-vim.keymap.set({ "n", "v", "x" }, "<leader>p", '"+p', desc("Paste from clipboard"))
-vim.keymap.set("x", "<leader>P", '"_dP', desc("Paste over selection without erasing unnamed register"))
+-- -- clipboard
+-- vim.keymap.set("n", "<leader>y", '"+y', desc("Yank to clipboard"))
+-- vim.keymap.set({ "v", "x" }, "<leader>y", '"+y', desc("Yank to clipboard"))
+-- vim.keymap.set("n", "<leader>yy", '"+yy', desc("Yank line to clipboard"))
+-- vim.keymap.set("n", "<leader>Y", '"+y$', desc("Yank till eol to clipboard"))
+-- vim.keymap.set({ "n", "v", "x" }, "<leader>p", '"+p', desc("Paste from clipboard"))
+-- vim.keymap.set("x", "<leader>P", '"_dP', desc("Paste over selection without erasing unnamed register"))
 
 local terminal = require("util.terminal")
 --Lazygit

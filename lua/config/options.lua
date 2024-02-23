@@ -1,7 +1,7 @@
 local opt = vim.opt
 --Behavior
 opt.shell = "/bin/sh"
--- opt.clipboard = "unnamedplus"
+opt.clipboard = "unnamedplus"
 opt.backup = false
 opt.swapfile = false
 opt.undodir = os.getenv("HOME") .. "/.vim/undodir"

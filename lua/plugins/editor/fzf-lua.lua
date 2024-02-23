@@ -8,10 +8,8 @@ local M = {
 
 M.keys = {
   wk({ "<leader>ff", "<cmd>FzfLua files<CR>", "n" }, desc("Find files")),
-  wk(
-    { "<leader>fF", "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })<CR>", "n" },
-    desc("Find files")
-  ),
+  --stylua: ignore
+  wk({ "<leader>fF", "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })<CR>", "n" }, desc("Find files")),
   wk({ "<leader>fg", "<cmd>FzfLua live_grep<CR>", "n" }, desc("Live grep")),
   wk({ "<leader>fG", "<cmd>FzfLua grep<CR>", "n" }, desc("Grep pattern")),
   wk({ "<leader>fo", "<cmd>FzfLua oldfiles<CR>", "n" }, desc("Recent files")),
@@ -32,9 +30,9 @@ M.keys = {
   wk({ "<leader>sd", "<cmd>FzfLua lsp_declarations<cr>", "n" }, desc("Declarations")),
   wk({ "<leader>sD", "<cmd>FzfLua lsp_definitions<cr>", "n" }, desc("Definitions")),
   wk({ "<leader>st", "<cmd>FzfLua lsp_typedefs<cr>", "n" }, desc("Type Definitions")),
-  wk({ "<leader>si", "<cmd>FzfLua lsp_implementations<cr>", "n" }, desc("Implementations")),
-  wk({ "<leader>sc", "<cmd>FzfLua lsp_incoming_calls<cr>", "n" }, desc("Incoming Calls")),
-  wk({ "<leader>sC", "<cmd>FzfLua lsp_outgoing_calls<cr>", "n" }, desc("Outgoing Calls")),
+  wk({ "<leader>si", "<cmd>Fzflua lsp_implementations<cr>", "n" }, desc("Implementations")),
+  wk({ "<leader>sc", "<cmd>Fzflua lsp_incoming_calls<cr>", "n" }, desc("Incoming Calls")),
+  wk({ "<leader>sC", "<cmd>Fzflua lsp_outgoing_calls<cr>", "n" }, desc("Outgoing Calls")),
 
   wk({ "<leader>gc", "<cmd>FzfLua git_bcommits<CR>", "n" }, desc("Git branch's commit")),
   wk({ "<leader>gb", "<cmd>FzfLua git_branches<CR>", "n" }, desc("Git branch")),
