@@ -1,6 +1,5 @@
 local map = vim.keymap
 local opts = { noremap = true, silent = true }
-local desc = require("util.keymap").desc
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -41,6 +40,9 @@ map.set("t", "<C-j>", "wincmd j", opts) -- Navigate Down
 map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
 map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
 map.set("n", "<leader>L", "<cmd>Lazy<cr>", opts)
+map.set("n", "<leader>tn", "<cmd>tabnew<cr>", opts)
+map.set("n", "<C-n>", "<cmd>tabnext<cr>", opts)
+map.set("n", "<C-p>", "<cmd>tabprevious<cr>", opts)
 
 -- dd only yank if line not empty
 map.set("n", "dd", function()
@@ -50,14 +52,6 @@ map.set("n", "dd", function()
   end
   return "dd"
 end, { expr = true })
-
--- -- clipboard
--- vim.keymap.set("n", "<leader>y", '"+y', desc("Yank to clipboard"))
--- vim.keymap.set({ "v", "x" }, "<leader>y", '"+y', desc("Yank to clipboard"))
--- vim.keymap.set("n", "<leader>yy", '"+yy', desc("Yank line to clipboard"))
--- vim.keymap.set("n", "<leader>Y", '"+y$', desc("Yank till eol to clipboard"))
--- vim.keymap.set({ "n", "v", "x" }, "<leader>p", '"+p', desc("Paste from clipboard"))
--- vim.keymap.set("x", "<leader>P", '"_dP', desc("Paste over selection without erasing unnamed register"))
 
 local terminal = require("util.terminal")
 --Lazygit

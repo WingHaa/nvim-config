@@ -12,48 +12,20 @@ local M = {
 
 M.keys = function()
   local harpoon = require("harpoon")
+  -- stylua: ignore start
   local keys = {
-    wk({
-      "<leader>a",
-      function()
-        harpoon:list():append()
-      end,
-      "n",
-    }, desc("Harpoon add")),
-    wk({
-      "<leader>hl",
-      function()
-        harpoon.ui:toggle_quick_menu(harpoon:list())
-      end,
-      "n",
-    }, desc("Harpoon list")),
+    wk({ "<leader>a", function() harpoon:list():append() end, "n", }, desc("Harpoon add")),
+    wk({ "<leader>hl", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "n", }, desc("Harpoon list")),
     -- Toggle previous & next buffers stored within Harpoon list
-    wk({
-      "<M-h>",
-      function()
-        harpoon:list():prev()
-      end,
-      "n",
-    }, desc("Previous harpoon")),
-    wk({
-      "<M-l>",
-      function()
-        harpoon:list():next()
-      end,
-      "n",
-    }, desc("Next harpoon")),
+    wk({ "<M-h>", function() harpoon:list():prev() end, "n", }, desc("Previous harpoon")),
+    wk({ "<M-l>", function() harpoon:list():next() end, "n", }, desc("Next harpoon")),
   }
 
-  for i = 1, 10 do
+  -- stylua: ignore
+  for i = 1, 9 do
     table.insert(
       keys,
-      wk({
-        "<leader>" .. i,
-        function()
-          harpoon:list():select(i)
-        end,
-        "n",
-      }, desc("Harpoon " .. i))
+      wk({ "<leader>" .. i, function() harpoon:list():select(i) end, "n", }, desc("Harpoon " .. i))
     )
   end
 

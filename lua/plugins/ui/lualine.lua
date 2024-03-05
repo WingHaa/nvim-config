@@ -21,15 +21,13 @@ M.opts = {
     },
   },
   sections = {
-    lualine_a = { components.vim },
+    lualine_a = { "tabs", components.filename },
     lualine_b = {
       { "b:gitsigns_head", icon = "" },
       components.diff,
       "diagnostics",
     },
     lualine_c = {
-      components.filetype,
-      components.filename,
       "selectioncount",
     },
     lualine_x = {},
@@ -37,7 +35,6 @@ M.opts = {
       components.shiftwidth,
       "fileformat",
       "encoding",
-      -- "progress",
     },
     lualine_z = { "location" },
   },
