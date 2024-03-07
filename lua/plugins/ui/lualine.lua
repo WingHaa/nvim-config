@@ -24,8 +24,8 @@ M.opts = {
     lualine_a = { "tabs", components.filename },
     lualine_b = {
       { "b:gitsigns_head", icon = "" },
-      components.diff,
-      "diagnostics",
+      -- components.diff,
+      -- "diagnostics",
     },
     lualine_c = {
       "selectioncount",
@@ -33,8 +33,8 @@ M.opts = {
     lualine_x = {},
     lualine_y = {
       components.shiftwidth,
-      "fileformat",
-      "encoding",
+      -- "fileformat",
+      -- "encoding",
     },
     lualine_z = { "location" },
   },

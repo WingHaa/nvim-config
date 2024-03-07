@@ -1,5 +1,6 @@
 local map = vim.keymap
 local opts = { noremap = true, silent = true }
+local desc = require("util.keymap").desc
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -40,9 +41,9 @@ map.set("t", "<C-j>", "wincmd j", opts) -- Navigate Down
 map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
 map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
 map.set("n", "<leader>L", "<cmd>Lazy<cr>", opts)
-map.set("n", "<leader>tn", "<cmd>tabnew<cr>", opts)
-map.set("n", "<C-n>", "<cmd>tabnext<cr>", opts)
-map.set("n", "<C-p>", "<cmd>tabprevious<cr>", opts)
+map.set("n", "<leader>tc", "<cmd>tabnew<cr>", desc("Tab create"))
+map.set("n", "<leader>tn", "<cmd>tabnext<cr>", desc("Next tab"))
+map.set("n", "<leader>tp", "<cmd>tabprevious<cr>", desc("Previous tab"))
 
 -- dd only yank if line not empty
 map.set("n", "dd", function()
