@@ -13,6 +13,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 local O = {}
 local M = {
   "nvim-neo-tree/neo-tree.nvim",
+  enabled = false,
   branch = "v3.x",
   cmd = "Neotree",
 }
