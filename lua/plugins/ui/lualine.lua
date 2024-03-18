@@ -1,7 +1,4 @@
-local M = {
-  "nvim-lualine/lualine.nvim",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
-}
+local M = { "nvim-lualine/lualine.nvim", dependencies = "letieu/harpoon-lualine" }
 
 local components = require("util.lualine.components")
 
@@ -21,7 +18,7 @@ M.opts = {
     },
   },
   sections = {
-    lualine_a = { "tabs", components.filename },
+    lualine_a = { components.vim },
     lualine_b = {
       { "b:gitsigns_head", icon = "" },
       -- components.diff,
@@ -29,6 +26,12 @@ M.opts = {
     },
     lualine_c = {
       "selectioncount",
+      {
+        "harpoon2",
+        indicators = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" },
+        active_indicators = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]", "[9]", "[0]" },
+        separator = " ",
+      },
     },
     lualine_x = {},
     lualine_y = {
@@ -46,14 +49,14 @@ M.opts = {
     lualine_y = {},
     lualine_z = {},
   },
-  -- tabline = {
-  --   lualine_a = { "tabs" },
-  --   lualine_b = {},
-  --   lualine_c = {},
-  --   lualine_x = { components.lsp },
-  --   lualine_y = {},
-  --   lualine_z = {},
-  -- },
+  tabline = {
+    lualine_a = { "tabs" },
+    lualine_b = { components.filename },
+    lualine_c = {},
+    lualine_x = { components.lsp },
+    lualine_y = {},
+    lualine_z = {},
+  },
 }
 
 return M

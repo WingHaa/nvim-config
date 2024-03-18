@@ -1,4 +1,27 @@
-local opt = {
+local M = {
+  "nvim-treesitter/nvim-treesitter",
+  event = "BufRead",
+}
+
+local toggle_syntax = function()
+  local buf = vim.api.nvim_get_current_buf()
+
+  local lines = vim.api.nvim_buf_get_lines(buf, 0, 100, false)
+  local long_line = false
+
+  for _, line in ipairs(lines) do
+    if #line > 200 then
+      long_line = true
+      break
+    end
+  end
+
+  if long_line then
+    vim.cmd("syntax clear")
+  end
+end
+
+M.opt = {
   build = ":TSUpdate",
   event = "VeryLazy",
   indent = {
@@ -46,7 +69,7 @@ local opt = {
     additional_vim_regex_highlighting = true,
   },
   incremental_selection = {
-    enable = true,
+    enable = false,
     keymaps = {
       init_selection = "<C-s>",
       node_incremental = "<C-s>",
@@ -59,7 +82,7 @@ local opt = {
   end,
 }
 
-local config = function(_, opts)
+M.config = function(_, opts)
   require("nvim-treesitter.configs").setup(opts)
 
   require("nvim-treesitter.parsers").get_parser_configs().blade = {
@@ -70,36 +93,12 @@ local config = function(_, opts)
     },
     filetype = "blade",
   }
-  vim.filetype.add({
-    pattern = {
-      [".*%.blade%.php"] = "blade",
-    },
-  })
+
+  vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
 
   vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-    callback = function()
-      local buf = vim.api.nvim_get_current_buf()
-
-      local lines = vim.api.nvim_buf_get_lines(buf, 0, 100, false)
-      local long_line = false
-
-      for _, line in ipairs(lines) do
-        if #line > 300 then
-          long_line = true
-          break
-        end
-      end
-
-      if long_line then
-        vim.cmd("syntax clear")
-      end
-    end,
+    callback = toggle_syntax,
   })
 end
 
-return {
-  "nvim-treesitter/nvim-treesitter",
-  event = "BufRead",
-  opts = opt,
-  config = config,
-}
+return M

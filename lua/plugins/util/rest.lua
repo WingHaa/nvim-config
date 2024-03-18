@@ -34,12 +34,25 @@ local opts = {
 }
 
 return {
-  "rest-nvim/rest.nvim",
-  ft = { "http" },
-  opts = opts,
-  config = function()
-    vim.keymap.set("n", "<leader>rr", "<Plug>RestNvim<CR>", { silent = true, desc = "Rest" })
-    vim.keymap.set("n", "<leader>rp", "<Plug>RestNvimPreview<CR>", { silent = true, desc = "Rest preview" })
-    vim.keymap.set("n", "<leader>rl", "<Plug>RestNvimLast<CR>", { silent = true, desc = "Rest last" })
-  end,
+  {
+    "vhyrro/luarocks.nvim",
+    enabled = false,
+    config = function()
+      require("luarocks").setup({})
+    end,
+  },
+  {
+    "rest-nvim/rest.nvim",
+    enabled = false,
+    ft = "http",
+    dependencies = { "luarocks.nvim" },
+    opts = opts,
+    config = function()
+      require("rest-nvim").setup()
+
+      vim.keymap.set("n", "<leader>rr", "<Plug>RestNvim<CR>", { silent = true, desc = "Rest" })
+      vim.keymap.set("n", "<leader>rp", "<Plug>RestNvimPreview<CR>", { silent = true, desc = "Rest preview" })
+      vim.keymap.set("n", "<leader>rl", "<Plug>RestNvimLast<CR>", { silent = true, desc = "Rest last" })
+    end,
+  },
 }
