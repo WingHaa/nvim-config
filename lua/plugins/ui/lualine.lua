@@ -21,7 +21,7 @@ M.opts = {
     lualine_a = { components.vim },
     lualine_b = {
       { "b:gitsigns_head", icon = "" },
-      -- components.diff,
+      components.diff,
       -- "diagnostics",
     },
     lualine_c = {

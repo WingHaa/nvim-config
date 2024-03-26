@@ -98,7 +98,7 @@ M.scrollbar = {
 
 M.diff = {
   "diff",
-  symbols = { added = " ", modified = " ", removed = " " },
+  symbols = { added = " ", modified = "󰿡 ", removed = " " },
   source = function()
     local gitsigns = vim.b.gitsigns_status_dict
     if gitsigns then
