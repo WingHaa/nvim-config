@@ -52,6 +52,8 @@ M.config = function(_, opts)
   require("gitsigns").setup(opts)
   vim.keymap.set("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", add_desc("Toggle Blame"))
   vim.keymap.set("n", "<leader>td", "<cmd>Gitsigns toggle_deleted<CR>", add_desc("Toggle Deleted"))
+  vim.keymap.set({ "n", "v" }, "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", add_desc("Stage Hunk"))
+  vim.keymap.set({ "n", "v" }, "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", add_desc("Toggle Blame"))
 end
 
 return M

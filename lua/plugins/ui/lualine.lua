@@ -1,4 +1,4 @@
-local M = { "nvim-lualine/lualine.nvim", dependencies = "letieu/harpoon-lualine" }
+local M = { "nvim-lualine/lualine.nvim" }
 
 local components = require("util.lualine.components")
 
@@ -24,15 +24,7 @@ M.opts = {
       components.diff,
       -- "diagnostics",
     },
-    lualine_c = {
-      "selectioncount",
-      {
-        "harpoon2",
-        indicators = { "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" },
-        active_indicators = { "[1]", "[2]", "[3]", "[4]", "[5]", "[6]", "[7]", "[8]", "[9]", "[0]" },
-        separator = " ",
-      },
-    },
+    lualine_c = { "selectioncount" },
     lualine_x = {},
     lualine_y = {
       components.shiftwidth,

@@ -36,7 +36,6 @@ M.keys = {
 
   wk({ "<leader>gc", "<cmd>FzfLua git_bcommits<CR>", "n" }, desc("Git branch's commit")),
   wk({ "<leader>gb", "<cmd>FzfLua git_branches<CR>", "n" }, desc("Git branch")),
-  wk({ "<leader>gs", "<cmd>FzfLua git_stash<CR>", "n" }, desc("Git stash")),
   wk({ "<leader>gf", "<cmd>FzfLua git_files<CR>", "n" }, desc("Git file")),
   wk({ "<leader>gt", "<cmd>FzfLua git_tags<CR>", "n" }, desc("Git tag")),
 }
@@ -48,7 +47,8 @@ M.config = function()
     winopts = {
       preview = {
         default = (vim.fn.executable("batcat") or vim.fn.executable("cat")) and "bat" or "builtin",
-        layout = "vertical",
+        -- default = "builtin",
+        layout = "flexible",
       },
     },
     fzf_opts = {
@@ -65,10 +65,10 @@ M.config = function()
     files = {
       prompt = "Files❯ ",
       multiprocess = true, -- run command in a separate process
-      git_icons = true, -- show git icons?
-      file_icons = true, -- show file icons?
+      git_icons = false, -- show git icons?
+      file_icons = false, -- show file icons?
       color_icons = true, -- colorize file|git icons
-      -- path_shorten   = 1,              -- 'true' or number, shorten path?
+      -- path_shorten = 1, -- 'true' or number, shorten path?
       -- executed command priority is 'cmd' (if exists)
       -- otherwise auto-detect prioritizes `fd`:`rg`:`find`
       -- default options are controlled by 'fd|rg|find|_opts'

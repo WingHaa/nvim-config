@@ -10,7 +10,7 @@ local toggle_syntax = function()
   local long_line = false
 
   for _, line in ipairs(lines) do
-    if #line > 200 then
+    if #line > 500 then
       long_line = true
       break
     end
