@@ -1,20 +1,13 @@
-vim.api.nvim_create_user_command("FormatDisable", function(args)
+vim.api.nvim_create_user_command("FormatToggle", function(args)
   if args.bang then
     -- FormatDisable! will disable formatting just for this buffer
-    vim.b.autoformat = false
+    vim.b.autoformat = not vim.b.autoformat
   else
-    vim.g.autoformat = false
+    vim.g.autoformat = not vim.g.autoformat
   end
 end, {
-  desc = "Disable autoformat-on-save",
+  desc = "Toggle autoformat on save",
   bang = false,
-})
-
-vim.api.nvim_create_user_command("FormatEnable", function()
-  vim.b.autoformat = true
-  vim.g.autoformat = true
-end, {
-  desc = "Re-enable autoformat-on-save",
 })
 
 local opts = {
@@ -69,14 +62,9 @@ return {
   dependencies = { "mason.nvim" },
   cmd = "ConformInfo",
   keys = {
-    {
-      "<leader>cf",
-      function()
-        require("conform").format({ async = true, lsp_fallback = true })
-      end,
-      mode = { "n", "v" },
-      desc = "Format",
-    },
+    -- stylua: ignore start
+    { "<leader>cf", function() require("conform").format({ async = true, lsp_fallback = true }) end, mode = { "n", "v" }, desc = "Format" },
+    { "<leader>tf", "<cmd>FormatToggle<cr>", desc = "Toggle Format on Save" },
   },
   init = function()
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"

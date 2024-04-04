@@ -3,17 +3,13 @@ local M = {
   event = "InsertEnter",
 }
 
-M.config = function()
+M.opts = function()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
   local lspkind = require("lspkind")
   local neogen = require("neogen")
 
-  require("luasnip/loaders/from_vscode").lazy_load()
-
-  vim.opt.completeopt = "menu,menuone,noselect"
-
-  cmp.setup({
+  return {
     experimental = {
       ghost_text = true,
     },
@@ -94,7 +90,13 @@ M.config = function()
         },
       }),
     },
-  })
+  }
+end
+
+M.config = function(_, opts)
+  require("luasnip/loaders/from_vscode").lazy_load()
+  require("cmp").setup(opts)
+  vim.opt.completeopt = "menu,menuone,noselect"
 end
 
 M.dependencies = {
