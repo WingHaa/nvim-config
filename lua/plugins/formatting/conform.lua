@@ -31,6 +31,7 @@ local opts = {
     sql = { "sql_formatter" },
     mysql = { "sql_formatter" },
     blade = { "blade-formatter" },
+    c = { "clang-format" },
   },
   -- Custom formatters and changes to built-in formatters
   formatters = {

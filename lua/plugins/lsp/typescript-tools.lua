@@ -1,5 +1,7 @@
 local M = { "pmizio/typescript-tools.nvim" }
 
+M.enabled = false
+
 M.ft = { "javascript", "typescript", "javascriptreact", "typescriptreact" }
 
 M.dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" }

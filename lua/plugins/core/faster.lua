@@ -24,7 +24,7 @@ return {
           "filetype",
         },
         -- Files larger than `filesize` are considered big files. Value is in MB.
-        filesize = 2,
+        filesize = 10,
         -- Autocmd pattern that controls on which files behaviour will be applied.
         -- `*` means any file.
         pattern = "*",
