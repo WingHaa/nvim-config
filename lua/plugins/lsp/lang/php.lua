@@ -11,6 +11,8 @@ M.setup = function(on_attach, capabilities)
     init_options = {
       ["language_server_phpstan.enabled"] = true,
       ["language_server_phpstan.level"] = "8",
+      ["phpunit.enabled"] = true,
+      ["language_server_reference_reference_finder.reference_timeout"] = 600,
     },
   })
 
@@ -20,10 +22,7 @@ M.setup = function(on_attach, capabilities)
       name = "blade_ls",
       cmd = { vim.fn.expand("$HOME/blade-lsp/builds/laravel-dev-tools"), "lsp" },
       filetypes = { "blade" },
-      root_dir = function()
-        return vim.loop.cwd()
-      end,
-
+      root_dir = lspconfig.util.root_pattern("composer.json"),
       settings = {},
     },
   }
