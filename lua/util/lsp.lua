@@ -39,12 +39,10 @@ M.on_attach = function(client, bufnr)
   end
 end
 
-M.diagnostic_signs = { Error = " ", Warn = " ", Hint = "󰌵", Info = "" }
-
 M.opts = {
   virtual_text = true,
   signs = {
-    active = M.diagnostic_signs,
+    text = { ERROR = " ", WARN = " ", HINT = "󰌵", INFO = "" },
   },
   update_in_insert = false,
   underline = true,
