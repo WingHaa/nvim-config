@@ -1,11 +1,10 @@
 local M = {
   "nvim-treesitter/nvim-treesitter",
-  event = "BufRead",
+  event = "VeryLazy",
 }
 
-M.opt = {
+M.opts = {
   build = ":TSUpdate",
-  event = "VeryLazy",
   indent = {
     enable = true,
   },
