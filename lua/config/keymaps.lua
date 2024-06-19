@@ -36,7 +36,7 @@ map.set("n", "<M-H>", "<C-w>H", opts) -- Move Pane Left
 map.set("n", "<M-J>", "<C-w>J", opts) -- Move Pane Down
 map.set("n", "<M-K>", "<C-w>K", opts) -- Move Pane Up
 map.set("n", "<M-L>", "<C-w>L", opts) -- Move Pane Right
-map.set("t", "<C-H>", "wincmd h", opts) -- Navigate Left
+map.set("t", "<C-h>", "wincmd h", opts) -- Navigate Left
 map.set("t", "<C-j>", "wincmd j", opts) -- Navigate Down
 map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
 map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
