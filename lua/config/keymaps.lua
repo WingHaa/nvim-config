@@ -45,15 +45,6 @@ map.set("n", "<leader>tc", "<cmd>tabnew<cr>", desc("Tab create"))
 map.set("n", "<leader>tn", "<cmd>tabnext<cr>", desc("Next tab"))
 map.set("n", "<leader>tp", "<cmd>tabprevious<cr>", desc("Previous tab"))
 
--- dd only yank if line not empty
-map.set("n", "dd", function()
-  ---@diagnostic disable-next-line: param-type-mismatch
-  if vim.fn.getline("."):match("^%s*$") then
-    return '"_dd'
-  end
-  return "dd"
-end, { expr = true })
-
 local terminal = require("util.terminal")
 --Lazygit
 map.set("n", "<leader>gg", function()
