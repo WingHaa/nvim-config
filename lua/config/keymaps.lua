@@ -44,6 +44,7 @@ map.set("n", "<leader>L", "<cmd>Lazy<cr>", opts)
 map.set("n", "<leader>tc", "<cmd>tabnew<cr>", desc("Tab create"))
 map.set("n", "<leader>tn", "<cmd>tabnext<cr>", desc("Next tab"))
 map.set("n", "<leader>tp", "<cmd>tabprevious<cr>", desc("Previous tab"))
+vim.keymap.del({ "n", "x" }, "gra", { noremap = true }) -- Remove nvim default LSP code action keymapping
 
 local terminal = require("util.terminal")
 --Lazygit
