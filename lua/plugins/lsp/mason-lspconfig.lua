@@ -4,7 +4,6 @@ local opts = {
     "bashls",
     "phpactor",
     "tsserver",
-    "clang-format",
     "clangd",
     "pyright",
     "vtsls",

@@ -61,7 +61,7 @@ M.opts = {
 }
 
 M.config = function(_, opts)
-  require("nvim-treesitter.configs").setup(opts)
+  vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
 
   require("nvim-treesitter.parsers").get_parser_configs().blade = {
     install_info = {
@@ -72,7 +72,7 @@ M.config = function(_, opts)
     filetype = "blade",
   }
 
-  vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
+  require("nvim-treesitter.configs").setup(opts)
 end
 
 return M
