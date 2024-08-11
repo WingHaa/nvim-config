@@ -1,13 +1,12 @@
 local M = {}
 
-M.setup = function(on_attach, capabilities)
+M.setup = function(capabilities)
   local lspconfig = require("lspconfig")
 
   -- sql
   lspconfig.sqlls.setup({
     cmd = { "sql-language-server", "up", "--method", "stdio" },
     capabilities = capabilities,
-    on_attach = on_attach,
     root_dir = function()
       return vim.loop.cwd()
     end,
@@ -16,7 +15,6 @@ M.setup = function(on_attach, capabilities)
   -- prisma
   lspconfig.prismals.setup({
     capabilities = capabilities,
-    on_attach = on_attach,
   })
 end
 

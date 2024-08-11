@@ -1,11 +1,10 @@
 local M = {}
 
-M.setup = function(on_attach, capabilities)
+M.setup = function(capabilities)
   require("lspconfig").clangd.setup({
     capabilities = {
       offsetEncoding = { "utf-16" },
     },
-    on_attach = on_attach,
     keys = {
       -- see: https://github.com/neovim/nvim-lspconfig/blob/master/lua/lspconfig/server_configurations/clangd.lua
       { "n", "cR", "<cmd>ClangdSwitchSourceHeader<cr>", { desc = "Switch Source/Header (C/C++)" } },

@@ -1,10 +1,10 @@
+local desc = require("util.keymap").desc
 local M = {}
 
-M.setup = function(on_attach, capabilities)
+M.setup = function(capabilities)
   local lspconfig = require("lspconfig")
 
   lspconfig.tsserver.setup({
-    on_attach = on_attach,
     capabilities = capabilities,
     filetypes = {
       "typescript",
@@ -40,6 +40,13 @@ M.setup = function(on_attach, capabilities)
       end,
     },
   })
+
+  vim.keymap.set(
+    "n",
+    "<Leader>oi",
+    "<cmd>lua vim.lsp.buf.execute_command({command = '_typescript.organizeImports', arguments = {vim.fn.expand('%:p')}})<CR>",
+    desc("Organize Imports")
+  )
 end
 
 return M

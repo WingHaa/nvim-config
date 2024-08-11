@@ -1,10 +1,9 @@
 local M = {}
 
-M.setup = function(on_attach, capabilities)
+M.setup = function(capabilities)
   local lspconfig = require("lspconfig")
 
   lspconfig.tailwindcss.setup({
-    on_attach = on_attach,
     capabilities = capabilities,
     filetypes = {
       "html",
@@ -21,7 +20,6 @@ M.setup = function(on_attach, capabilities)
 
   lspconfig.emmet_ls.setup({
     capabilities = capabilities,
-    on_attach = on_attach,
   })
 end
 

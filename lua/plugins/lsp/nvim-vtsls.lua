@@ -1,4 +1,5 @@
 return {
+  enabled = false,
   "yioneko/nvim-vtsls",
   config = function()
     require("lspconfig.configs").vtsls = require("vtsls").lspconfig -- set default server config, optional but recommended

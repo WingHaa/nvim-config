@@ -7,7 +7,6 @@ M.ft = { "javascript", "typescript", "javascriptreact", "typescriptreact" }
 M.dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" }
 
 M.opts = {
-  on_attach = require("util.lsp").on_attach,
   handlers = {
     ["textDocument/publishDiagnostics"] = function(_, result, ctx, config)
       if result.diagnostics == nil then

@@ -1,9 +1,8 @@
 local M = {}
 
-M.setup = function(on_attach, capabilities)
+M.setup = function(capabilities)
   require("lspconfig").jsonls.setup({
     capabilities = capabilities,
-    on_attach = on_attach,
     filetypes = { "json", "jsonc" },
   })
 end
