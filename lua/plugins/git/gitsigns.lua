@@ -1,4 +1,4 @@
-local add_desc = require("util.keymap").desc
+local add_desc = require("lib.keymap").desc
 
 local M = {
   "lewis6991/gitsigns.nvim",

@@ -1,4 +1,4 @@
-local desc = require("util.keymap").noisy_desc
+local desc = require("lib.keymap").noisy_desc
 local M = {
   "ThePrimeagen/refactoring.nvim",
   event = "CmdlineEnter",

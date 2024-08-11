@@ -18,7 +18,7 @@ return {
         conceal = "┊",
         nbsp = "☠",
       },
-      exclude_filetypes = require("util.exclude"),
+      exclude_filetypes = require("lib.exclude"),
       lighten_step = 10,
     })
   end,

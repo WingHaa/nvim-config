@@ -16,7 +16,7 @@ local opts = {
     statusline = false,
   },
   config = {
-    header = addPad(require("util.headers").neovim_banner),
+    header = addPad(require("lib.headers").neovim_banner),
     center = {
       -- { action = "Telescope find_files", desc = " Find file", icon = " ", key = "f" },
       -- { action = "Telescope oldfiles", desc = " Recent files", icon = " ", key = "r" },

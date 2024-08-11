@@ -1,5 +1,5 @@
-local wk = require("util.keymap").wk_desc
-local desc = require("util.keymap").desc
+local wk = require("lib.keymap").wk_desc
+local desc = require("lib.keymap").desc
 return {
   "danymat/neogen",
   cmd = "Neogen",

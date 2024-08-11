@@ -1,5 +1,5 @@
-local desc = require("util.keymap").desc
-local wk = require("util.keymap").wk_desc
+local desc = require("lib.keymap").desc
+local wk = require("lib.keymap").wk_desc
 
 local M = {
   "sindrets/diffview.nvim",
@@ -407,8 +407,8 @@ M.keys = {
   wk({ "<leader>dc", "<cmd>DiffviewClose<CR>" }, desc("Diffview Close")),
   wk({ "<leader>db", "<cmd>DiffviewFileHistory<CR>" }, desc("Branch History")),
   wk({ "<leader>df", "<cmd>DiffviewFileHistory %<CR>" }, desc("File History")),
-  wk({ "<leader>dr", "<cmd>lua require('util.diffview').neo_review({type='branch'})<CR>" }, desc("Branch Diff")),
-  wk({ "<leader>dR", "<cmd>lua require('util.diffview').neo_review({type='commit'})<CR>" }, desc("Diff By Commit")),
+  wk({ "<leader>dr", "<cmd>lua require('lib.diffview').neo_review({type='branch'})<CR>" }, desc("Branch Diff")),
+  wk({ "<leader>dR", "<cmd>lua require('lib.diffview').neo_review({type='commit'})<CR>" }, desc("Diff By Commit")),
 }
 
 vim.opt.fillchars:append({ diff = "╱" })

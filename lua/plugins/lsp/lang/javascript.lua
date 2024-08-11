@@ -1,4 +1,4 @@
-local desc = require("util.keymap").desc
+local desc = require("lib.keymap").desc
 local M = {}
 
 M.setup = function(capabilities)

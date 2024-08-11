@@ -1,4 +1,4 @@
-local desc = require("util.keymap").desc
+local desc = require("lib.keymap").desc
 
 vim.keymap.set("n", "<leader>dt", "<cmd>DBUIToggle<cr>", desc("Toggle Database UI"))
 

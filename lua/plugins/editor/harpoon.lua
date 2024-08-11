@@ -1,5 +1,5 @@
-local desc = require("util.keymap").desc
-local wk = require("util.keymap").wk_desc
+local desc = require("lib.keymap").desc
+local wk = require("lib.keymap").wk_desc
 
 local M = {
   "ThePrimeagen/harpoon",

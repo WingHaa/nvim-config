@@ -31,7 +31,7 @@ M.keys = {
 
 local function setup_lsp_keymap()
   local map = vim.keymap
-  local desc = require("util.keymap").desc
+  local desc = require("lib.keymap").desc
   map.set("n", "<Leader>dd", "<cmd>lua vim.diagnostic.open_float()<CR>", desc("Current Line Diagnostic"))
   map.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc("Prev Diagnostic"))
   map.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc("Next Diagnostic"))

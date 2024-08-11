@@ -8,7 +8,7 @@ return {
     },
     scope = { enabled = false, show_start = false, show_end = false },
     exclude = {
-      filetypes = require("util.exclude").filetype,
+      filetypes = require("lib.exclude").filetype,
     },
   },
   main = "ibl",

@@ -1,6 +1,6 @@
 local map = vim.keymap
 local opts = { noremap = true, silent = true }
-local desc = require("util.keymap").desc
+local desc = require("lib.keymap").desc
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -46,7 +46,7 @@ map.set("n", "<leader>tn", "<cmd>tabnext<cr>", desc("Next tab"))
 map.set("n", "<leader>tp", "<cmd>tabprevious<cr>", desc("Previous tab"))
 vim.keymap.del({ "n", "x" }, "gra", { noremap = true }) -- Remove nvim default LSP code action keymapping
 
-local terminal = require("util.terminal")
+local terminal = require("lib.terminal")
 --Lazygit
 map.set("n", "<leader>gg", function()
   terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })

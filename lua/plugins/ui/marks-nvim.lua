@@ -9,7 +9,7 @@ local opts = {
   -- default 10.
   sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
   -- disables mark tracking for specific filetypes. default {}
-  excluded_filetypes = require("util.exclude").filetype,
+  excluded_filetypes = require("lib.exclude").filetype,
   mappings = {
     delete_line = "<leader>md", --            Deletes all marks on current line.
     delete_buf = "<leader>mr", --             Deletes all marks in current buffer.

@@ -1,6 +1,6 @@
 local M = { "nvim-lualine/lualine.nvim" }
 
-local components = require("util.lualine.components")
+local components = require("lib.lualine.components")
 
 M.opts = {
   options = {
@@ -8,7 +8,7 @@ M.opts = {
     theme = "auto",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = require("util.exclude").filetype,
+    disabled_filetypes = require("lib.exclude").filetype,
     always_divide_middle = true,
     globalstatus = false,
     refresh = {
