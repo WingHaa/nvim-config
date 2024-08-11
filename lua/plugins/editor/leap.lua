@@ -32,6 +32,7 @@ F.opts = {
   keys = { f = "f", F = "F", t = "t", T = "T" },
   -- A string like "nv", "nvo", "o", etc.
   labeled_modes = "o",
+  clever_repeat = false,
   multiline = false,
   -- Like `leap`s similar argument (call-specific overrides).
   -- E.g.: opts = { equivalence_classes = {} }
