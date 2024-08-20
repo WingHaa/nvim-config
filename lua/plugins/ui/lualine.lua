@@ -18,9 +18,10 @@ M.opts = {
     },
   },
   sections = {
-    lualine_a = { components.vim, "mode" },
+    lualine_a = { components.vim },
     lualine_b = {
       { "b:gitsigns_head", icon = "" },
+      components.filename,
       components.diff,
       -- "diagnostics",
     },
@@ -43,7 +44,7 @@ M.opts = {
   },
   tabline = {
     lualine_a = { "tabs" },
-    lualine_b = { components.filename },
+    lualine_b = {},
     lualine_c = {},
     lualine_x = { components.lsp },
     lualine_y = {},

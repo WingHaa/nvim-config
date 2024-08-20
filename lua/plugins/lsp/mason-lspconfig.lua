@@ -9,6 +9,7 @@ local opts = {
     "vtsls",
     "jsonls",
     "sqlls",
+    "gopls",
   },
   automatic_installation = true,
 }

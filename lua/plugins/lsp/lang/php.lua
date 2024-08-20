@@ -27,12 +27,6 @@ M.setup = function(capabilities)
     end,
     capabilities = capabilities,
     filetypes = { "php" },
-    init_options = {
-      ["language_server_phpstan.enabled"] = true,
-      ["language_server_phpstan.level"] = "8",
-      ["phpunit.enabled"] = true,
-      ["language_server_reference_reference_finder.reference_timeout"] = 600,
-    },
     settings = {
       phpactor = {
         language_server_phpstan = { enabled = false },
