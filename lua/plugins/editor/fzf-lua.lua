@@ -94,6 +94,8 @@ M.config = function()
         --   ["ctrl-y"]    = function(selected) print(selected[1]) end,
         -- action to toggle `--no-ignore`, requires fd or rg installed
         --   ["ctrl-g"]    = { actions.toggle_ignore },
+        ["ctrl-x"] = false,
+        ["ctrl-s"] = actions.file_split,
       },
     },
     grep = {
@@ -128,6 +130,7 @@ M.config = function()
         -- actions inherit from 'actions.files' and merge
         -- this action toggles between 'grep' and 'live_grep'
         ["ctrl-g"] = { actions.grep_lgrep },
+        ["ctrl-y"] = { actions.toggle_hidden },
       },
       no_header = false, -- hide grep|cwd header?
       no_header_i = false, -- hide interactive header?

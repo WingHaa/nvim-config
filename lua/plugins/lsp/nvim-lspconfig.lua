@@ -3,6 +3,7 @@ local langs = {
   "c",
   "css",
   "docker",
+  "go",
   "json",
   "javascript",
   "lua",

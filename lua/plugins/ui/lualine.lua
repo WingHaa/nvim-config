@@ -18,20 +18,14 @@ M.opts = {
     },
   },
   sections = {
-    lualine_a = { components.vim },
-    lualine_b = {
-      { "b:gitsigns_head", icon = "" },
+    lualine_a = {
       components.filename,
-      components.diff,
-      -- "diagnostics",
+      -- { "b:gitsigns_head", icon = "" },
     },
+    lualine_b = { components.diff, "diagnostics" },
     lualine_c = { "selectioncount" },
-    lualine_x = {},
-    lualine_y = {
-      components.shiftwidth,
-      -- "fileformat",
-      -- "encoding",
-    },
+    lualine_x = { components.lsp },
+    lualine_y = { components.shiftwidth },
     lualine_z = { "location" },
   },
   inactive_sections = {
@@ -42,14 +36,14 @@ M.opts = {
     lualine_y = {},
     lualine_z = {},
   },
-  tabline = {
-    lualine_a = { "tabs" },
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = { components.lsp },
-    lualine_y = {},
-    lualine_z = {},
-  },
+  -- tabline = {
+  --   lualine_a = { "tabs" },
+  --   lualine_b = {},
+  --   lualine_c = {},
+  --   lualine_x = { components.lsp },
+  --   lualine_y = {},
+  --   lualine_z = {},
+  -- },
 }
 
 return M

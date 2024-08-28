@@ -44,6 +44,8 @@ map.set("n", "<leader>L", "<cmd>Lazy<cr>", opts)
 map.set("n", "<leader>tc", "<cmd>tabnew<cr>", desc("Tab create"))
 map.set("n", "<leader>tn", "<cmd>tabnext<cr>", desc("Next tab"))
 map.set("n", "<leader>tp", "<cmd>tabprevious<cr>", desc("Previous tab"))
+map.set("n", "n", "nzzzv", { desc = "keep cursor centered" })
+map.set("n", "N", "Nzzzv", { desc = "keep cursor centered" })
 
 map.set({ "n", "v" }, "<leader>p", '"+p')
 map.set({ "n", "v" }, "<leader>P", '"+P')

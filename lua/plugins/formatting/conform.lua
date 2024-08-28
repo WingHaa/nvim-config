@@ -32,7 +32,7 @@ local opts = {
     mysql = { "sql_formatter" },
     blade = { "blade-formatter" },
     c = { "clang-format" },
-    go = { "goimports", "gofumpt", stop_after_first = true },
+    go = { "goimports", "gofumpt" },
   },
   -- Custom formatters and changes to built-in formatters
   formatters = {
