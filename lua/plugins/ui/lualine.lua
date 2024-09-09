@@ -19,10 +19,13 @@ M.opts = {
   },
   sections = {
     lualine_a = {
-      components.filename,
-      -- { "b:gitsigns_head", icon = "" },
+      components.vim,
     },
-    lualine_b = { components.diff, "diagnostics" },
+    lualine_b = {
+      components.filename,
+      components.diff,
+      "diagnostics",
+    },
     lualine_c = { "selectioncount" },
     lualine_x = { components.lsp },
     lualine_y = { components.shiftwidth },

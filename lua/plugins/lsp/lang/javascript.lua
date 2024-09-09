@@ -4,7 +4,7 @@ local M = {}
 M.setup = function(capabilities)
   local lspconfig = require("lspconfig")
 
-  lspconfig.tsserver.setup({
+  lspconfig.ts_ls.setup({
     capabilities = capabilities,
     filetypes = {
       "typescript",

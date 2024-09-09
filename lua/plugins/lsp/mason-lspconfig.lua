@@ -3,7 +3,7 @@ local opts = {
     "lua_ls",
     "bashls",
     "phpactor",
-    "tsserver",
+    "ts_ls",
     "clangd",
     "pyright",
     "vtsls",
