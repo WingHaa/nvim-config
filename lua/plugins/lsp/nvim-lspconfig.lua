@@ -5,7 +5,7 @@ local langs = {
   "docker",
   "go",
   "json",
-  "javascript",
+  -- "javascript",
   "lua",
   "nginx",
   "php",
@@ -43,7 +43,7 @@ local function setup_lsp_keymap()
   map.set({ "n", "v" }, "<leader>ca", "<cmd>FzfLua lsp_code_actions<CR>", desc("Code Actions"))
   map.set("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", desc("Definitions"))
   map.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", desc("Implementations"))
-  map.set("n", "go", "<cmd>FzfLua lsp_references<CR>", desc("References"))
+  map.set("n", "gr", "<cmd>FzfLua lsp_references<CR>", desc("References"))
   map.set("n", "gt", "<cmd>FzfLua lsp_typedefs<CR>", desc("Type definition"))
 
   map.set("n", "<Leader>lr", "<cmd>LspRestart<CR>", desc("Restart LSP Server"))
