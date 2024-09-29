@@ -16,11 +16,13 @@ M.keys = {
   wk({ "<leader>fb", "<cmd>FzfLua buffers<CR>", "n" }, desc("Buffers")),
   wk({ "<leader>fk", "<cmd>FzfLua keymaps<CR>", "n" }, desc("Keymaps")),
   wk({ "<leader>fw", "<cmd>FzfLua grep_cword<CR>", "n" }, desc("word at cursor")),
+  wk({ "<leader>fw", "<cmd>FzfLua grep_visual<CR>", "v" }, desc("visual word")),
   wk({ "<leader>fW", "<cmd>FzfLua grep_cWORD<CR>", "n" }, desc("WORD at cursor")),
   wk({ "<leader>fm", "<cmd>FzfLua marks<CR>", "n" }, desc("Marks")),
   wk({ "<leader>fq", "<cmd>FzfLua quickfix_stack<CR>", "n" }, desc("Quickfix list")),
   wk({ "<leader>fl", "<cmd>FzfLua loclist_stack<CR>", "n" }, desc("Location list")),
   wk({ "<leader>fr", "<cmd>FzfLua resume<CR>", "n" }, desc("Resume")),
+  wk({ "<leader>fr", "<cmd>FzfLua registers<CR>", "n" }, desc("Registers")),
   wk({ "<leader>fh", "<cmd>FzfLua help_tags<CR>", "n" }, desc("Help tags")),
   wk({ "<leader>fc", "<cmd>FzfLua colorschemes<CR>", "n" }, desc("Colorscheme")),
 
@@ -34,8 +36,8 @@ M.keys = {
   wk({ "<leader>sc", "<cmd>Fzflua lsp_incoming_calls<cr>", "n" }, desc("Incoming Calls")),
   wk({ "<leader>sC", "<cmd>Fzflua lsp_outgoing_calls<cr>", "n" }, desc("Outgoing Calls")),
 
-  wk({ "<leader>gc", "<cmd>FzfLua git_bcommits<CR>", "n" }, desc("Git branch's commit")),
-  wk({ "<leader>gb", "<cmd>FzfLua git_branches<CR>", "n" }, desc("Git branch")),
+  wk({ "<leader>gb", "<cmd>FzfLua git_bcommits<CR>", "n" }, desc("Buffer's commit")),
+  wk({ "<leader>gc", "<cmd>FzfLua git_commits<CR>", "n" }, desc("Commit")),
   wk({ "<leader>gf", "<cmd>FzfLua git_files<CR>", "n" }, desc("Git file")),
   wk({ "<leader>gt", "<cmd>FzfLua git_tags<CR>", "n" }, desc("Git tag")),
 }
@@ -48,11 +50,8 @@ M.config = function()
       preview = {
         default = (vim.fn.executable("batcat") or vim.fn.executable("cat")) and "bat" or "builtin",
         -- default = "builtin",
-        layout = "flexible",
+        layout = "flex",
       },
-    },
-    fzf_opts = {
-      ["--layout"] = "reverse",
     },
     previewers = {
       bat = {

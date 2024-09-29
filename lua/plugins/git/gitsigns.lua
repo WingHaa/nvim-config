@@ -47,11 +47,12 @@ M.opts = {
 
 M.config = function(_, opts)
   require("gitsigns").setup(opts)
-  vim.keymap.set("n", "<leader>tw", "<cmd>Gitsigns toggle_word_diff<CR>", add_desc("Toggle Deleted"))
-  vim.keymap.set("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", add_desc("Toggle Blame"))
+  vim.keymap.set("n", "<leader>tw", "<cmd>Gitsigns toggle_word_diff<CR>", add_desc("Word Diff"))
+  vim.keymap.set("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", add_desc("Line Blame"))
   vim.keymap.set("n", "<leader>td", "<cmd>Gitsigns toggle_deleted<CR>", add_desc("Toggle Deleted"))
   vim.keymap.set({ "n", "v" }, "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", add_desc("Stage Hunk"))
-  vim.keymap.set({ "n", "v" }, "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", add_desc("Toggle Blame"))
+  vim.keymap.set({ "n", "v" }, "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", add_desc("Unstage hunk"))
+  vim.keymap.set({ "n", "v" }, "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>", add_desc("Reset hunk"))
 end
 
 return M
