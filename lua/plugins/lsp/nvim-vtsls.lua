@@ -34,11 +34,16 @@ return {
             },
         })
 
-        vim.keymap.set("n", "<Leader>oi", "<cmd>VtsExec organize_imports<CR>", desc("Organize Imports"))
-        vim.keymap.set("n", "gD", "<cmd>VtsExec goto_source_definition<CR>", desc("Go to Source Definition"))
-        vim.keymap.set("n", "<Leader>mi", "<cmd>VtsExec add_missing_imports<CR>", desc("Go to File References"))
-        vim.keymap.set("n", "<Leader>rF", "<cmd>VtsExec rename_file<CR>", desc("Rename File"))
-        vim.keymap.set("n", "<Leader>lr", "<cmd>VtsExec restart_tsserver<CR>", desc("Restart TS Server"))
-        vim.keymap.set("n", "<Leader>lv", "<cmd>VtsExec select_ts_version<CR>", desc("Select TS Server Version"))
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+            callback = function()
+                vim.keymap.set("n", "<Leader>oi", "<cmd>VtsExec organize_imports<CR>", desc("Organize Imports"))
+                vim.keymap.set("n", "gD", "<cmd>VtsExec goto_source_definition<CR>", desc("Go to Source Definition"))
+                vim.keymap.set("n", "<Leader>mi", "<cmd>VtsExec add_missing_imports<CR>", desc("Go to File References"))
+                vim.keymap.set("n", "<Leader>rF", "<cmd>VtsExec rename_file<CR>", desc("Rename File"))
+                vim.keymap.set("n", "<Leader>lr", "<cmd>VtsExec restart_tsserver<CR>", desc("Restart TS Server"))
+                vim.keymap.set("n", "<Leader>lv", "<cmd>VtsExec select_ts_version<CR>", desc("Select TS Version"))
+            end,
+        })
     end,
 }

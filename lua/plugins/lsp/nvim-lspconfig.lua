@@ -4,8 +4,8 @@ local langs = {
     "css",
     "docker",
     "go",
-    "json",
     -- "javascript",
+    "json",
     "lua",
     "nginx",
     "php",
@@ -38,9 +38,6 @@ local function setup_lsp_keymap()
     map.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", desc("Prev Diagnostic"))
     map.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc("Next Diagnostic"))
     -- map.set({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc("Code Actions"))
-    -- map.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", desc("Go to Definition"))
-    -- map.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", desc("Go to Implementation"))
-    -- map.set("n", "go", "<cmd>Telescope lsp_references<CR>", desc("Go to References"))
     map.set({ "n", "v" }, "<leader>ca", "<cmd>FzfLua lsp_code_actions<CR>", desc("Code Actions"))
     map.set("n", "gd", "<cmd>FzfLua lsp_definitions<CR>", desc("Definitions"))
     map.set("n", "gi", "<cmd>FzfLua lsp_implementations<CR>", desc("Implementations"))
