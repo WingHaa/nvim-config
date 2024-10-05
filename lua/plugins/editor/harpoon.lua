@@ -2,17 +2,17 @@ local desc = require("lib.keymap").desc
 local wk = require("lib.keymap").wk_desc
 
 local M = {
-  "ThePrimeagen/harpoon",
-  branch = "harpoon2",
-  dependencies = { "nvim-lua/plenary.nvim" },
-  opts = {
-    settings = {
-      sync_on_ui_close = true,
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+        settings = {
+            sync_on_ui_close = true,
+        },
     },
-  },
-  config = function(_, opts)
-    local harpoon = require("harpoon")
-    harpoon:setup(opts)
+    config = function(_, opts)
+        local harpoon = require("harpoon")
+        harpoon:setup(opts)
 
     -- stylua: ignore start
     harpoon:extend({
@@ -22,11 +22,11 @@ local M = {
         vim.keymap.set("n", "<C-t>", function() harpoon.ui:select_menu_item({ tabedit = true }) end, { buffer = cx.bufnr })
       end,
     })
-  end,
+    end,
 }
 
 M.keys = function()
-  local harpoon = require("harpoon")
+    local harpoon = require("harpoon")
   -- stylua: ignore start
   local keys = {
     wk({ "<leader>a", function() harpoon:list():add() end, "n", }, desc("Harpoon add")),

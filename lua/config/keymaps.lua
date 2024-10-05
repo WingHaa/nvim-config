@@ -57,5 +57,5 @@ map.del({ "n", "x" }, "gra", { noremap = true }) -- Remove nvim default LSP code
 local terminal = require("lib.terminal")
 --Lazygit
 map.set("n", "<leader>gg", function()
-  terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
+    terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
 end, { desc = "Lazygit (cwd)" })

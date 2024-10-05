@@ -1,50 +1,50 @@
 local use_telescope = true
 local M = {
-  "nvim-telescope/telescope.nvim",
-  enabled = use_telescope,
-  branch = "0.1.x",
-  cmd = "Telescope",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
+    "nvim-telescope/telescope.nvim",
+    enabled = use_telescope,
+    branch = "0.1.x",
+    cmd = "Telescope",
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+    },
 }
 
 local F = {
-  "nvim-telescope/telescope-fzf-native.nvim",
-  enabled = use_telescope,
-  build = "make",
+    "nvim-telescope/telescope-fzf-native.nvim",
+    enabled = use_telescope,
+    build = "make",
 }
 
 M.config = function()
-  local telescope = require("telescope")
+    local telescope = require("telescope")
 
-  telescope.setup({
-    defaults = {
-      mappings = {
-        i = {
-          ["<C-k>"] = "move_selection_previous",
-          ["<C-j>"] = "move_selection_next",
+    telescope.setup({
+        defaults = {
+            mappings = {
+                i = {
+                    ["<C-k>"] = "move_selection_previous",
+                    ["<C-j>"] = "move_selection_next",
+                },
+            },
+            path_display = {
+                "smart",
+                "shorten",
+            },
+            file_ignore_patterns = { "node_modules" },
         },
-      },
-      path_display = {
-        "smart",
-        "shorten",
-      },
-      file_ignore_patterns = { "node_modules" },
-    },
-    pickers = {
-      find_files = {
-        hidden = true,
-      },
-      colorscheme = {
-        enable_preview = true,
-      },
-      live_grep = {},
-      buffers = {},
-    },
-  })
+        pickers = {
+            find_files = {
+                hidden = true,
+            },
+            colorscheme = {
+                enable_preview = true,
+            },
+            live_grep = {},
+            buffers = {},
+        },
+    })
 
-  telescope.load_extension("fzf")
+    telescope.load_extension("fzf")
 end
 
 -- M.keys = {
