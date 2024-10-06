@@ -13,7 +13,17 @@ return {
         },
     },
     { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
-    "nvim-tree/nvim-web-devicons",
+    {
+        "echasnovski/mini.icons",
+        lazy = true,
+        opts = {},
+        init = function()
+            package.preload["nvim-web-devicons"] = function()
+                require("mini.icons").mock_nvim_web_devicons()
+                return package.loaded["nvim-web-devicons"]
+            end
+        end,
+    },
     "tpope/vim-repeat",
     {
         "andymass/vim-matchup",
