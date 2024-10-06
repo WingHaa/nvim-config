@@ -26,7 +26,10 @@ M.opts = {
             components.diff,
             "diagnostics",
         },
-        lualine_c = { "selectioncount" },
+        lualine_c = {
+            components.recording,
+            "selectioncount",
+        },
         lualine_x = { --[[ components.lsp ]]
         },
         lualine_y = { components.shiftwidth },

@@ -1,5 +1,5 @@
 require("winghaa")
-vim.cmd("colorscheme tokyonight-night")
+vim.cmd("colorscheme tokyonight-moon")
 -- vim.cmd("colorscheme onedark")
 -- vim.cmd("colorscheme catppuccin-macchiato")
 -- vim.cmd("colorscheme kanagawa")
