@@ -27,7 +27,8 @@ M.opts = {
             "diagnostics",
         },
         lualine_c = { "selectioncount" },
-        lualine_x = { components.lsp },
+        lualine_x = { --[[ components.lsp ]]
+        },
         lualine_y = { components.shiftwidth },
         lualine_z = { "location" },
     },
