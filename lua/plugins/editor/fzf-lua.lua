@@ -22,7 +22,7 @@ M.keys = {
     wk({ "<leader>fq", "<cmd>FzfLua quickfix_stack<CR>" }, desc("Quickfix list")),
     wk({ "<leader>fl", "<cmd>FzfLua loclist_stack<CR>" }, desc("Location list")),
     wk({ "<leader>fr", "<cmd>FzfLua resume<CR>" }, desc("Resume")),
-    wk({ "<leader>fr", "<cmd>FzfLua registers<CR>" }, desc("Registers")),
+    wk({ "<leader>fR", "<cmd>FzfLua registers<CR>" }, desc("Registers")),
     wk({ "<leader>fh", "<cmd>FzfLua help_tags<CR>" }, desc("Help tags")),
     wk({ "<leader>fc", "<cmd>FzfLua colorschemes<CR>" }, desc("Colorscheme")),
 

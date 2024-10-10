@@ -27,6 +27,7 @@ local routes = {
     { filter = { event = "msg_show", find = "^E486: Pattern not found" }, view = "mini" },
 
     { filter = { event = "notify", find = "completion request failed" }, skip = true },
+    { filter = { event = "msg_show", find = "codeium.log" }, skip = true },
 
     -- Word added to spellfile via `zg`
     { filter = { event = "msg_show", find = "^Word .*%.add$" }, view = "mini" },
