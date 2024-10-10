@@ -76,12 +76,6 @@ M.encoding = {
     color = {},
 }
 
-M.filetype = {
-    "filetype",
-    cond = nil,
-    padding = { left = 1, right = 1 },
-}
-
 M.scrollbar = {
     function()
         local current_line = vim.fn.line(".")

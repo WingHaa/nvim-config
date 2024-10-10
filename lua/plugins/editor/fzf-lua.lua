@@ -3,19 +3,18 @@ local wk = require("lib.keymap").wk_desc
 local M = {
     "ibhagwan/fzf-lua",
     cmd = { "FzfLua" },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
 }
 
 M.keys = {
-    wk({ "<leader>ff", "<cmd>FzfLua files<CR>", "n" }, desc("Find files")),
-  --stylua: ignore
-  wk({ "<leader>fF", "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })<CR>" }, desc("Find files")),
+    wk({ "<leader>ff", "<cmd>FzfLua files<CR>", "n" }, desc("Files")),
+    --stylua: ignore
+    wk({ "<leader>fF", "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })<CR>" }, desc("cwd files")),
     wk({ "<leader>fg", "<cmd>FzfLua live_grep<CR>" }, desc("Live grep")),
     wk({ "<leader>fG", "<cmd>FzfLua grep<CR>" }, desc("Grep pattern")),
     wk({ "<leader>fo", "<cmd>FzfLua oldfiles<CR>" }, desc("Recent files")),
     wk({ "<leader>fb", "<cmd>FzfLua buffers<CR>" }, desc("Buffers")),
     wk({ "<leader>fk", "<cmd>FzfLua keymaps<CR>" }, desc("Keymaps")),
-    wk({ "<leader>fw", "<cmd>FzfLua grep_cword<CR>", mode = "n" }, desc("word at cursor")),
+    wk({ "<leader>fw", "<cmd>FzfLua grep_cword<CR>" }, desc("word at cursor")),
     wk({ "<leader>fw", "<cmd>FzfLua grep_visual<CR>", mode = "v" }, desc("visual word")),
     wk({ "<leader>fW", "<cmd>FzfLua grep_cWORD<CR>" }, desc("WORD at cursor")),
     wk({ "<leader>fm", "<cmd>FzfLua marks<CR>" }, desc("Marks")),
@@ -28,13 +27,6 @@ M.keys = {
 
     wk({ "<leader>sc", "<cmd>FzfLua commands<CR>" }, desc("Commands")),
     wk({ "<leader>sh", "<cmd>FzfLua command_history<cR>" }, desc("Command History")),
-    wk({ "<leader>sr", "<cmd>FzfLua lsp_references<cr>" }, desc("References")),
-    wk({ "<leader>sd", "<cmd>FzfLua lsp_declarations<cr>" }, desc("Declarations")),
-    wk({ "<leader>sD", "<cmd>FzfLua lsp_definitions<cr>" }, desc("Definitions")),
-    wk({ "<leader>st", "<cmd>FzfLua lsp_typedefs<cr>" }, desc("Type Definitions")),
-    wk({ "<leader>si", "<cmd>Fzflua lsp_implementations<cr>" }, desc("Implementations")),
-    wk({ "<leader>sc", "<cmd>Fzflua lsp_incoming_calls<cr>" }, desc("Incoming Calls")),
-    wk({ "<leader>sC", "<cmd>Fzflua lsp_outgoing_calls<cr>" }, desc("Outgoing Calls")),
 
     wk({ "<leader>gb", "<cmd>FzfLua git_bcommits<CR>" }, desc("Buffer's commit")),
     wk({ "<leader>gc", "<cmd>FzfLua git_commits<CR>" }, desc("Commit")),
@@ -45,7 +37,7 @@ M.keys = {
 M.config = function()
     local actions = require("fzf-lua.actions")
     require("fzf-lua").setup({
-        "telescope",
+        "borderless",
         winopts = {
             preview = {
                 default = (vim.fn.executable("batcat") or vim.fn.executable("cat")) and "bat" or "builtin",
@@ -64,8 +56,8 @@ M.config = function()
         files = {
             prompt = "Files❯ ",
             multiprocess = true, -- run command in a separate process
-            git_icons = false, -- show git icons?
-            file_icons = false, -- show file icons?
+            git_icons = true, -- show git icons?
+            file_icons = true, -- show file icons?
             color_icons = true, -- colorize file|git icons
             -- path_shorten = 1, -- 'true' or number, shorten path?
             -- executed command priority is 'cmd' (if exists)
@@ -133,6 +125,12 @@ M.config = function()
             },
             no_header = false, -- hide grep|cwd header?
             no_header_i = false, -- hide interactive header?
+        },
+        marks = {
+            marks = "%a", -- filter vim marks with a lua pattern
+            -- for example if you want to only show user defined marks
+            -- you would set this option as %a this would match characters from [A-Za-z]
+            -- or if you want to show only numbers you would set the pattern to %d (0-9).
         },
     })
 end

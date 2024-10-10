@@ -22,17 +22,19 @@ M.opts = {
             components.vim,
         },
         lualine_b = {
-            components.filename,
+            "branch",
             components.diff,
             "diagnostics",
         },
         lualine_c = {
+            components.filetype,
+            components.filename,
             components.recording,
             "selectioncount",
         },
         lualine_x = { --[[ components.lsp ]]
         },
-        lualine_y = { components.shiftwidth },
+        lualine_y = { "searchcount", components.shiftwidth },
         lualine_z = { "location" },
     },
     inactive_sections = {

@@ -6,14 +6,15 @@ M.setup = function(capabilities)
     lspconfig.tailwindcss.setup({
         capabilities = capabilities,
         filetypes = {
-            "html",
-            "typescriptreact",
-            "javascriptreact",
+            "blade",
             "css",
+            "html",
+            "javascriptreact",
+            "less",
             "sass",
             "scss",
-            "less",
             "svelte",
+            "typescriptreact",
             "vue",
         },
     })
