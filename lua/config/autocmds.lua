@@ -17,3 +17,10 @@ vim.api.nvim_create_autocmd("FileType", {
         end
     end,
 })
+
+vim.api.nvim_create_autocmd("BufRead", {
+    pattern = ".env*",
+    callback = function()
+        vim.bo.filetype = "conf"
+    end,
+})
