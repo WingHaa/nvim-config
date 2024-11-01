@@ -17,10 +17,29 @@ M.setup = function(capabilities)
             "typescriptreact",
             "vue",
         },
+        root_dir = lspconfig.util.root_pattern("tailwind.config.ts", "tailwind.config.js"),
     })
 
     lspconfig.emmet_ls.setup({
         capabilities = capabilities,
+        filetypes = {
+            "astro",
+            "blade",
+            "css",
+            "eruby",
+            "html",
+            "htmlangular",
+            "htmldjango",
+            "javascriptreact",
+            "less",
+            "php",
+            "pug",
+            "sass",
+            "scss",
+            "svelte",
+            "typescriptreact",
+            "vue",
+        },
     })
 end
 
