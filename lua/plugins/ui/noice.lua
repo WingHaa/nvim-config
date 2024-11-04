@@ -1,6 +1,7 @@
 local M = {
     "folke/noice.nvim",
     event = "VimEnter",
+    enabled = false,
 }
 
 M.dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" }
@@ -87,7 +88,7 @@ local routes = {
         view = "mini",
     },
 }
---
+
 M.opts = {
     cmdline = {
         --     view = "cmdline",

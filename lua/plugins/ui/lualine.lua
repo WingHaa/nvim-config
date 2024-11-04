@@ -29,7 +29,7 @@ M.opts = {
         lualine_c = {
             components.filetype,
             components.filename,
-            components.recording,
+            -- components.recording,
             "selectioncount",
         },
         lualine_x = { --[[ components.lsp ]]
