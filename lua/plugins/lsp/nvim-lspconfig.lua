@@ -21,9 +21,7 @@ local M = {
 
 M.dependencies = {
     "williamboman/mason.nvim",
-    "hrsh7th/nvim-cmp",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
+    "saghen/blink.cmp",
 }
 
 local function setup_lsp_keymap()
@@ -86,15 +84,8 @@ function M.config()
         border = "rounded",
     })
 
-    local C = vim.lsp.protocol.make_client_capabilities()
-
-    local ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-    if not ok then
-        vim.notify("Could not load nvim-cmp")
-        return
-    end
-
-    local capabilities = cmp_nvim_lsp.default_capabilities(C)
+    local default_capabilities = vim.lsp.protocol.make_client_capabilities()
+    local capabilities = require("blink.cmp").get_lsp_capabilities(default_capabilities)
     for _, lang in pairs(langs) do
         require("plugins.lsp.lang." .. lang).setup(capabilities)
     end

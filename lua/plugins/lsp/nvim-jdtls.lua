@@ -190,15 +190,7 @@ local function jdtls_setup(event)
     if cache_vars.capabilities == nil then
         jdtls.extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
-        -- Add lsp stuff to cmp
-        local ok_cmp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-        cache_vars.capabilities = ok_cmp and cmp_lsp.default_capabilities()
-        cache_vars.capabilities = vim.tbl_deep_extend(
-            "force",
-            vim.lsp.protocol.make_client_capabilities(),
-            ok_cmp and cmp_lsp.default_capabilities() or {}
-        )
-        -- cache_vars.capabilities = require("blink.cmp").get_lsp_capabilities()
+        cache_vars.capabilities = require("blink.cmp").get_lsp_capabilities()
     end
 
     -- The command that starts the language server
