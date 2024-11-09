@@ -88,10 +88,10 @@ return {
                 root_dir = opts.root_dir(fname),
                 init_options = { bundles = bundles },
                 settings = opts.settings,
-                capabilities = require("cmp_nvim_lsp").default_capabilities(),
+                capabilities = require("blink.cmp").get_lsp_capabilities(vim.lsp.protocol.make_client_capabilities()),
             }, opts.jdtls or {})
 
-            require("lua.plugins.lsp.nvim-jdtls").start_or_attach(config)
+            require("jdtls").start_or_attach(config)
         end
 
         -- Attach jdtls when a Java file is opened
