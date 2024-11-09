@@ -30,10 +30,10 @@ M.keys = function()
   -- stylua: ignore start
   local keys = {
     wk({ "<leader>a", function() harpoon:list():add() end, "n", }, desc("Harpoon add")),
-    wk({ "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "n", }, desc("Harpoon list")),
+    wk({ "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, "n", }, desc("Harpoon list")),
     -- Toggle previous & next buffers stored within Harpoon list
-    wk({ "<M-h>", function() harpoon:list():prev() end, "n", }, desc("Previous harpoon")),
-    wk({ "<M-l>", function() harpoon:list():next() end, "n", }, desc("Next harpoon")),
+    wk({ "<M-j>", function() harpoon:list():prev() end, "n", }, desc("Previous harpoon")),
+    wk({ "<M-k>", function() harpoon:list():next() end, "n", }, desc("Next harpoon")),
   }
 
   -- stylua: ignore

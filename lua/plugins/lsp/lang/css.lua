@@ -27,6 +27,7 @@ M.setup = function(capabilities)
             "blade",
             "css",
             "eruby",
+            "gotmpl",
             "html",
             "htmlangular",
             "htmldjango",

@@ -9,6 +9,7 @@ local needed = {
     "eslint_d",
     "gofumpt",
     "goimports",
+    "golines",
     "gopls",
     "intelephense",
     "isort",

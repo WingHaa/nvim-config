@@ -62,6 +62,12 @@ M.opts = {
 
 M.config = function(_, opts)
     vim.filetype.add({ pattern = { [".*%.blade%.php"] = "blade" } })
+    vim.filetype.add({
+        extension = {
+            gohtml = "gotmpl",
+            gotmpl = "gotmpl",
+        },
+    })
 
     require("nvim-treesitter.parsers").get_parser_configs().blade = {
         install_info = {
