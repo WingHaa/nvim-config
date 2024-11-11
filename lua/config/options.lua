@@ -43,3 +43,8 @@ vim.go.foldcolumn = "auto"
 vim.wo.signcolumn = "yes:1"
 
 vim.g.autoformat = false
+
+opt.spell = true
+opt.spelllang = "en_us"
+opt.spelloptions = "camel"
+opt.spellcapcheck = ""
