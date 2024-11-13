@@ -1,9 +1,9 @@
-require("winghaa")
+require("config")
+
 -- vim.cmd("colorscheme tokyonight-moon")
 -- vim.cmd("colorscheme onedark")
--- vim.cmd("colorscheme catppuccin-macchiato")
 -- vim.cmd("colorscheme kanagawa")
 -- vim.cmd("colorscheme everforest")
--- vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme gruvbox")
 -- vim.cmd("colorscheme rose-pine")
-vim.cmd("colorscheme sonokai")
+-- vim.cmd("colorscheme sonokai")

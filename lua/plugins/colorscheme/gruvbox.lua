@@ -1,1 +1,7 @@
-return { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... }
+return {
+    "morhetz/gruvbox",
+    priority = 1000,
+    config = function()
+        vim.g.gruvbox_contrast_dark = "medium"
+    end,
+}
