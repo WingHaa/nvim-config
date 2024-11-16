@@ -47,10 +47,17 @@ map.set("n", "<leader>tp", "<cmd>tabprevious<cr>", desc("Previous tab"))
 map.set("n", "n", "nzzzv", { desc = "keep cursor centered" })
 map.set("n", "N", "Nzzzv", { desc = "keep cursor centered" })
 
+-- scroll left/right horizontally
+vim.keymap.set("n", "<M-h>", "10zh")
+vim.keymap.set("n", "<M-l>", "10zl")
+
 map.set({ "n", "v" }, "<leader>p", '"+p')
 map.set({ "n", "v" }, "<leader>P", '"+P')
 map.set({ "n", "v" }, "<leader>y", '"+y')
 map.set({ "n", "v" }, "<leader>Y", '"+Y')
+
+map.set("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = "substitute word under cursor" })
+map.set("n", "<Esc>", "<cmd>nohls<CR>") -- Original C-L but replaced with tmux/buf nav
 
 map.del({ "n", "x" }, "gra", { noremap = true }) -- Remove nvim default LSP code action keymapping
 
