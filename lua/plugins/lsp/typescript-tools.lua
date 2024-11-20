@@ -1,6 +1,6 @@
 local M = { "pmizio/typescript-tools.nvim" }
 
-M.enabled = false
+M.enabled = true
 
 M.ft = { "javascript", "typescript", "javascriptreact", "typescriptreact" }
 

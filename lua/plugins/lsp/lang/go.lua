@@ -2,6 +2,19 @@ local M = {}
 
 M.setup = function(capabilities)
     require("lspconfig").gopls.setup({
+        on_attach = function(client)
+            if not client.server_capabilities.semanticTokensProvider then
+                local semantic = client.config.capabilities.textDocument.semanticTokens
+                client.server_capabilities.semanticTokensProvider = {
+                    full = true,
+                    legend = {
+                        tokenModifiers = semantic.tokenModifiers,
+                        tokenTypes = semantic.tokenTypes,
+                    },
+                    range = true,
+                }
+            end
+        end,
         capabilities = capabilities,
         settings = {
             gopls = {

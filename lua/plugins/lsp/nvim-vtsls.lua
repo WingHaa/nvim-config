@@ -1,7 +1,7 @@
 local desc = require("lib.keymap").desc
 
 return {
-    -- enabled = false,
+    enabled = false,
     "yioneko/nvim-vtsls",
     config = function()
         local vtsls = require("vtsls")
