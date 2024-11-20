@@ -14,12 +14,12 @@ local CASINGS = {
 -- stylua: ignore end
 
 local function get_binary_path()
-    local ok, Path = pcall(require, "plenary.path")
+    local ok, registry = pcall(require, "mason-registry")
     if not ok then
-        vim.notify("Failed to load plenary", vim.log.levels.ERROR)
+        vim.notify("Failed to load mason-registry", vim.log.levels.ERROR)
     end
 
-    return Path:new(vim.fn.stdpath("data") .. "/mason/bin/gomodifytags"):absolute()
+    return registry.get_package("gomodifytags"):get_install_path()
 end
 
 --- Get current buffer content in gomodifytags archive format

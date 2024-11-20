@@ -5,12 +5,12 @@ return {
         ft = "go",
         cmd = { "GoTests", "GoTestsAll" },
         config = function()
-            local ok, Path = pcall(require, "plenary.path")
+            local ok, registry = pcall(require, "mason-registry")
             if not ok then
-                vim.notify("Failed to load plenary", vim.log.levels.ERROR)
+                vim.notify("Failed to load mason-registry", vim.log.levels.ERROR)
             end
 
-            vim.g.gotests_bin = Path:new(vim.fn.stdpath("data") .. "/mason/bin/gotests"):absolute()
+            vim.g.gotests_bin = registry.get_package("gotests"):get_install_path()
         end,
     },
 }
