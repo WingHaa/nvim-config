@@ -19,7 +19,7 @@ local function get_binary_path()
         vim.notify("Failed to load mason-registry", vim.log.levels.ERROR)
     end
 
-    return registry.get_package("gomodifytags"):get_install_path()
+    return registry.get_package("gomodifytags"):get_install_path() .. "/gomodifytags"
 end
 
 --- Get current buffer content in gomodifytags archive format
@@ -66,8 +66,14 @@ local function parse_args(args, operator)
             table.insert(cmd_args, "--skip-unexported")
         elseif v == "-ct" then
             table.insert(cmd_args, "-clear-tags")
+        elseif v == "-ao" and args[i + 1] then
+            table.insert(cmd_args, "-add-options")
+            table.insert(cmd_args, args[i + 1])
+            i = i + 1
         elseif v == "-ro" and args[i + 1] then
             table.insert(cmd_args, "-remove-options")
+            table.insert(cmd_args, args[i + 1])
+            i = i + 1
         elseif v == "-co" then
             table.insert(cmd_args, "-clear-options")
         else
@@ -83,7 +89,7 @@ local function parse_args(args, operator)
     return cmd_args
 end
 
-local function modify(...)
+local function modify(arg, lines)
     local fpath = vim.fn.expand("%") ---@diagnostic disable-line: missing-parameter
     local ns = ts_utils.get_struct_node_at_pos(unpack(vim.api.nvim_win_get_cursor(0)))
     if ns == nil then
@@ -98,7 +104,10 @@ local function modify(...)
     }
 
     -- by struct name of line pos
-    if ns.name == nil then
+    if lines ~= nil then
+        table.insert(cmd_args, "-line")
+        table.insert(cmd_args, lines)
+    elseif ns.name == nil then
         local _, csrow, _, _ = unpack(vim.fn.getpos("."))
         table.insert(cmd_args, "-line")
         table.insert(cmd_args, csrow)
@@ -107,8 +116,6 @@ local function modify(...)
         table.insert(cmd_args, ns.name)
     end
 
-    -- set user args for cmd
-    local arg = { ... }
     for _, v in ipairs(arg) do
         table.insert(cmd_args, v)
     end
@@ -133,16 +140,19 @@ local function modify(...)
 end
 
 -- add tags to struct under cursor
-function M.add(...)
-    local cmd_args = parse_args({ ... }, "-add-tags")
-    vim.notify(table.concat(cmd_args, ", "))
-    modify(unpack(cmd_args))
+---@param fargs table
+---@param lines string|nil
+function M.add(fargs, lines)
+    local cmd_args = parse_args(fargs, "-add-tags")
+    modify(cmd_args, lines)
 end
 
 -- remove tags to struct under cursor
-function M.remove(...)
-    local cmd_args = parse_args({ ... }, "-remove-tags")
-    modify(unpack(cmd_args))
+---@param fargs table
+---@param lines string|nil
+function M.remove(fargs, lines)
+    local cmd_args = parse_args(fargs, "-remove-tags")
+    modify(cmd_args, lines)
 end
 
 return M
