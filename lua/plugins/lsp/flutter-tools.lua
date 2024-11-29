@@ -22,6 +22,9 @@ return {
             lsp = {
                 color = {
                     enabled = true,
+                    background = true,
+                    background_color = { r = 19, g = 17, b = 24 },
+                    virtual_text = false,
                 },
             },
         })
