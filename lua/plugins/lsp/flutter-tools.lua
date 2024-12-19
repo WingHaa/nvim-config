@@ -7,6 +7,8 @@ return {
         vim.keymap.set("n", "<leader>lfr", ":FlutterRestart <CR>", {})
         vim.keymap.set("n", "<leader>lr", ":FlutterLspRestart <CR>", {})
         vim.keymap.set("n", "<leader>lfd", ":FlutterDevTools <CR>", {})
+        vim.keymap.set("n", "<leader>lfl", ":FlutterLogToggle <CR>", {})
+        vim.keymap.set("n", "<leader>lfc", ":FlutterLogClear <CR>", {})
 
         require("flutter-tools").setup({
             decorations = {
