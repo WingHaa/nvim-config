@@ -1,3 +1,5 @@
+local util = require("lspconfig.util")
+
 local M = {}
 
 M.setup = function(capabilities)
@@ -12,6 +14,13 @@ M.setup = function(capabilities)
         settings = { php = { completion = { callSnippet = "Replace" } } },
         cmd = { "intelephense", "--stdio" },
         filetypes = { "php", "blade" },
+        root_dir = function(pattern)
+            local cwd = vim.loop.cwd()
+            local root = util.root_pattern("composer.json")(pattern)
+
+            -- prefer cwd if root is a descendant
+            return util.path.is_descendant(cwd, root) and cwd or root
+        end,
     })
 
     lspconfig.phpactor.setup({
@@ -46,7 +55,13 @@ M.setup = function(capabilities)
             name = "blade_ls",
             cmd = { vim.fn.expand("$HOME/repo/tools/laravel-dev-tools/builds/laravel-dev-tools"), "lsp" },
             filetypes = { "blade" },
-            root_dir = lspconfig.util.root_pattern("composer.json"),
+            root_dir = function(pattern)
+                local cwd = vim.loop.cwd()
+                local root = util.root_pattern("composer.json")(pattern)
+
+                -- prefer cwd if root is a descendant
+                return util.path.is_descendant(cwd, root) and cwd or root
+            end,
             settings = {},
         },
     }

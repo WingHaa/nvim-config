@@ -36,16 +36,32 @@ M.keys = {
 
 M.config = function()
     local actions = require("fzf-lua.actions")
-    require("fzf-lua").setup({
-        "borderless",
+    local fzflua = require("fzf-lua")
+    local utils = fzflua.utils
+    local function hl_validate(hl)
+        return not utils.is_hl_cleared(hl) and hl or nil
+    end
+
+    fzflua.setup({
+        fzf_opts = { ["--layout"] = "default", ["--marker"] = "+" },
         winopts = {
+            width = 0.8,
+            height = 0.9,
             preview = {
                 default = (vim.fn.executable("batcat") or vim.fn.executable("cat")) and "bat" or "builtin",
-                -- default = "builtin",
-                layout = "flex",
+                hidden = "nohidden",
+                vertical = "up:45%",
+                horizontal = "right:50%",
+                layout = "vertical",
+                flip_columns = 120,
+                delay = 10,
+                winopts = { number = false },
             },
         },
         previewers = {
+            builtin = {
+                syntax_limit_b = 1024 * 100, -- 100KB
+            },
             bat = {
                 cmd = vim.fn.executable("batcat") == 1 and "batcat" or "bat",
                 args = "--color=always --style=numbers,changes",
@@ -53,86 +69,87 @@ M.config = function()
                 theme = "OneHalfDark",
             },
         },
-        files = {
-            prompt = "Files❯ ",
-            multiprocess = true, -- run command in a separate process
-            git_icons = true, -- show git icons?
-            file_icons = true, -- show file icons?
-            color_icons = true, -- colorize file|git icons
-            -- path_shorten = 1, -- 'true' or number, shorten path?
-            -- executed command priority is 'cmd' (if exists)
-            -- otherwise auto-detect prioritizes `fd`:`rg`:`find`
-            -- default options are controlled by 'fd|rg|find|_opts'
-            -- NOTE: 'find -printf' requires GNU find
-            -- cmd            = "find . -type f -printf '%P\n'",
-            find_opts = [[-type f -not -path '*/\.git/*' -printf '%P\n']],
-            rg_opts = "--color=never --files --hidden --follow -g '!.git'",
-            fd_opts = "--color=never --type f --hidden --follow --exclude .git",
-            -- by default, cwd appears in the header only if {opts} contain a cwd
-            -- parameter to a different folder than the current working directory
-            -- uncomment if you wish to force display of the cwd as part of the
-            -- query prompt string (fzf.vim style), header line or both
-            -- cwd_header = true,
-            cwd_prompt = false,
-            cwd_prompt_shorten_len = 32, -- shorten prompt beyond this length
-            cwd_prompt_shorten_val = 1, -- shortened path parts length
-            toggle_ignore_flag = "--no-ignore", -- flag toggled in `actions.toggle_ignore`
-            actions = {
-                -- inherits from 'actions.files', here we can override
-                -- or set bind to 'false' to disable a default action
-                --   ["default"]   = actions.file_edit,
-                -- custom actions are available too
-                --   ["ctrl-y"]    = function(selected) print(selected[1]) end,
-                -- action to toggle `--no-ignore`, requires fd or rg installed
-                --   ["ctrl-g"]    = { actions.toggle_ignore },
-                ["ctrl-x"] = false,
-                ["ctrl-s"] = actions.file_split,
+        hls = {
+            normal = hl_validate("TelescopeNormal"),
+            border = hl_validate("TelescopeBorder"),
+            title = hl_validate("TelescopePromptTitle"),
+            help_normal = hl_validate("TelescopeNormal"),
+            help_border = hl_validate("TelescopeBorder"),
+            preview_normal = hl_validate("TelescopeNormal"),
+            preview_border = hl_validate("TelescopeBorder"),
+            preview_title = hl_validate("TelescopePreviewTitle"),
+            -- builtin preview only
+            cursor = hl_validate("Cursor"),
+            cursorline = hl_validate("TelescopeSelection"),
+            cursorlinenr = hl_validate("TelescopeSelection"),
+            search = hl_validate("IncSearch"),
+        },
+        lsp = {
+            jump_to_single_result = true,
+            jump_to_single_result_action = actions.file_edit,
+        },
+        fzf_colors = {
+            ["fg"] = { "fg", "TelescopeNormal" },
+            ["bg"] = { "bg", "TelescopeNormal" },
+            ["hl"] = { "fg", "TelescopeMatching" },
+            ["fg+"] = { "fg", "TelescopeSelection" },
+            ["bg+"] = { "bg", "TelescopeSelection" },
+            ["hl+"] = { "fg", "TelescopeMatching" },
+            ["info"] = { "fg", "TelescopeMultiSelection" },
+            ["border"] = { "fg", "TelescopeBorder" },
+            ["gutter"] = "-1",
+            ["query"] = { "fg", "TelescopePromptNormal" },
+            ["prompt"] = { "fg", "TelescopePromptPrefix" },
+            ["pointer"] = { "fg", "TelescopeSelectionCaret" },
+            ["marker"] = { "fg", "TelescopeSelectionCaret" },
+            ["header"] = { "fg", "TelescopeTitle" },
+        },
+        keymap = {
+            builtin = {
+                true,
+                ["<C-d>"] = "preview-page-down",
+                ["<C-u>"] = "preview-page-up",
+            },
+            fzf = {
+                true,
+                ["ctrl-d"] = "preview-page-down",
+                ["ctrl-u"] = "preview-page-up",
+                ["ctrl-q"] = "select-all+accept",
             },
         },
-        grep = {
-            prompt = "Rg❯ ",
-            input_prompt = "Grep For❯ ",
-            multiprocess = true, -- run command in a separate process
-            git_icons = true, -- show git icons?
-            file_icons = true, -- show file icons?
-            color_icons = true, -- colorize file|git icons
-            -- executed command priority is 'cmd' (if exists)
-            -- otherwise auto-detect prioritizes `rg` over `grep`
-            -- default options are controlled by 'rg|grep_opts'
-            -- cmd            = "rg --vimgrep",
-            grep_opts = "--binary-files=without-match --line-number --recursive --color=auto --perl-regexp -e",
-            rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 -e",
-            -- set to 'true' to always parse globs in both 'grep' and 'live_grep'
-            -- search strings will be split using the 'glob_separator' and translated
-            -- to '--iglob=' arguments, requires 'rg'
-            -- can still be used when 'false' by calling 'live_grep_glob' directly
-            rg_glob = true, -- default to glob parsing?
-            glob_flag = "--iglob", -- for case sensitive globs use '--glob'
-            glob_separator = "%s%-%-", -- query separator pattern (lua): ' --'
-            -- advanced usage: for custom argument parsing define
-            -- 'rg_glob_fn' to return a pair:
-            --   first returned argument is the new search query
-            --   second returned argument are addtional rg flags
-            -- rg_glob_fn = function(query, opts)
-            --   ...
-            --   return new_query, flags
-            -- end,
-            actions = {
-                -- actions inherit from 'actions.files' and merge
-                -- this action toggles between 'grep' and 'live_grep'
+        actions = {
+            files = {
+                ["enter"] = actions.file_edit_or_qf,
+                ["ctrl-s"] = actions.file_split,
+                ["ctrl-v"] = actions.file_vsplit,
+                ["ctrl-t"] = actions.file_tabedit,
+                ["alt-q"] = actions.file_sel_to_qf,
+            },
+            grep = {
                 ["ctrl-g"] = { actions.grep_lgrep },
                 ["ctrl-y"] = { actions.toggle_hidden },
             },
-            no_header = false, -- hide grep|cwd header?
-            no_header_i = false, -- hide interactive header?
+        },
+        buffers = {
+            keymap = { builtin = { ["<C-d>"] = false } },
+            actions = { ["ctrl-x"] = false, ["ctrl-d"] = { actions.buf_del, actions.resume } },
+        },
+        files = {
+            cwd_prompt = false,
+        },
+        grep = {
+            rg_glob = true, -- default to glob parsing?
+            glob_flag = "--iglob", -- for case sensitive globs use '--glob'
+            glob_separator = "%s%-%-", -- query separator pattern (lua): ' --'
+        },
+        oldfiles = {
+            include_current_session = true,
         },
         marks = {
-            marks = "%a", -- filter vim marks with a lua pattern
-            -- for example if you want to only show user defined marks
-            -- you would set this option as %a this would match characters from [A-Za-z]
-            -- or if you want to show only numbers you would set the pattern to %d (0-9).
+            marks = "%a",
         },
     })
+    fzflua.register_ui_select()
 end
 
 return M
