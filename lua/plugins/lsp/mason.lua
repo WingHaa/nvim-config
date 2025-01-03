@@ -26,6 +26,7 @@ local needed = {
     "prettier",
     "prettierd",
     "shfmt",
+    "spring-boot-tools",
     "sql-formatter",
     "sqlls",
     "stylua",
@@ -39,6 +40,10 @@ return {
     event = "BufReadPre",
     opts_extend = { "ensure_installed" },
     opts = {
+        registries = {
+            "github:nvim-java/mason-registry",
+            "github:mason-org/mason-registry",
+        },
         ensure_installed = needed,
     },
     config = function(_, opts)
