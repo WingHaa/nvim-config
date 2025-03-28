@@ -39,7 +39,6 @@ M.setup = function(capabilities)
                     rangeVariableTypes = true,
                 },
                 analyses = {
-                    fieldalignment = true,
                     nilness = true,
                     unusedparams = true,
                     unusedwrite = true,

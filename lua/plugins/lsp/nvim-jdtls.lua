@@ -332,7 +332,7 @@ end
 
 vim.api.nvim_create_autocmd("FileType", {
     group = java_cmds,
-    pattern = { "java", "yaml" },
+    pattern = { "java" },
     desc = "Setup jdtls",
     callback = jdtls_setup,
 })
