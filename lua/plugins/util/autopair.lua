@@ -3,7 +3,7 @@ return {
     version = false,
     opts = {
         -- In which modes mappings from this `config` should be created
-        modes = { insert = true, command = true, terminal = false },
+        modes = { insert = true, command = false, terminal = false },
 
         -- Global mappings. Each right hand side should be a pair information, a
         -- table with at least these fields (see more in |MiniPairs.map|):
