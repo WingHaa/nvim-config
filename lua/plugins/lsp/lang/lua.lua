@@ -7,7 +7,7 @@ M.setup = function(capabilities)
             Lua = {
                 -- make the language server recognize "vim" global
                 diagnostics = {
-                    globals = { "vim" },
+                    globals = { "vim", "Snacks" },
                 },
             },
         },
