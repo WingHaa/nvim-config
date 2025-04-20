@@ -61,8 +61,7 @@ map.set("n", "<Esc>", "<cmd>nohls<CR>") -- Original C-L but replaced with tmux/b
 
 map.del({ "n", "x" }, "gra", { noremap = true }) -- Remove nvim default LSP code action keymapping
 
-local terminal = require("lib.terminal")
 --Lazygit
 map.set("n", "<leader>gg", function()
-    terminal.open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
+    require("lib.terminal").open({ "lazygit" }, { esc_esc = false, ctrl_hjkl = false })
 end, { desc = "Lazygit (cwd)" })

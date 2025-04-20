@@ -75,7 +75,7 @@ M.dependencies = {
 
 M.opts = {
     keymap = { preset = "enter" },
-    snippets = { preset = "luasnip" },
+    -- snippets = { preset = "luasnip" },
     completion = {
         list = {
             max_items = 200,
@@ -115,7 +115,7 @@ M.opts = {
         default = {
             "lsp",
             "path",
-            -- "snippets",
+            "snippets",
             "buffer",
             "dadbod",
             -- "codeium",

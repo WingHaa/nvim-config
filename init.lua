@@ -1,6 +1,6 @@
-require("config")
+require("main")
 
-vim.o.background = "dark"
+vim.o.background = "light"
 
 -- vim.cmd("colorscheme tokyonight")
 -- vim.cmd("colorscheme onedark")
@@ -9,3 +9,4 @@ vim.o.background = "dark"
 -- vim.cmd("colorscheme gruvbox")
 -- vim.cmd("colorscheme rose-pine")
 -- vim.cmd("colorscheme sonokai")
+vim.cmd("colorscheme modus")

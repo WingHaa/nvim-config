@@ -4,7 +4,7 @@ local langs = {
     "css",
     "docker",
     "go",
-    -- "javascript",
+    "javascript",
     "json",
     "lua",
     "nginx",

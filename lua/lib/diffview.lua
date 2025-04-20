@@ -1,6 +1,6 @@
 local M = {}
 
-M.parse_string = function(string)
+local function parse_string(string)
     local branches = {}
 
     for branch in string:gmatch("[^\r\n]+") do
@@ -13,17 +13,17 @@ M.parse_string = function(string)
     return branches
 end
 
-M.get_local_branches = function()
+local function get_local_branches()
     local branch = vim.fn.system("git branch -a 2> /dev/null")
     if branch ~= "" then
-        return M.parse_string(branch)
+        return parse_string(branch)
     else
         return nil
     end
 end
 
-M.neo_review = function(opt)
-    vim.ui.select(M.get_local_branches(), { prompt = "Branch to compare with: " }, function(choice)
+function M.neo_review(opt)
+    vim.ui.select(get_local_branches(), { prompt = "Branch to compare with: " }, function(choice)
         if choice == nil then
             return
         elseif opt.type == "branch" or not opt then
