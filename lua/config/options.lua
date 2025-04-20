@@ -1,50 +1,58 @@
-local opt = vim.opt
+local o = vim.opt
 --Behavior
-opt.shell = "/bin/sh"
+o.shell = "/bin/sh"
 -- opt.clipboard = "unnamedplus"
-opt.backup = false
-opt.swapfile = false
-opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-opt.undofile = true
-opt.cursorline = false
-opt.hidden = true
-opt.updatetime = 50
-opt.ttyfast = true
-opt.autochdir = false
-opt.splitright = true
-opt.splitbelow = true
+o.backup = false
+o.swapfile = false
+o.undodir = os.getenv("HOME") .. "/.vim/undodir"
+o.undofile = true
+o.cursorline = false
+o.hidden = true
+o.updatetime = 50
+o.ttyfast = true
+o.autochdir = false
+o.splitright = true
+o.splitbelow = true
 
 -- Tab & Indent
-opt.shiftwidth = 4
-opt.tabstop = 4
-opt.softtabstop = 4
-opt.smartindent = true
-opt.wrap = false
-opt.expandtab = true
+o.shiftwidth = 4
+o.tabstop = 4
+o.softtabstop = 4
+o.smartindent = true
+o.wrap = false
+o.expandtab = true
 
 -- Disable mouse
-opt.mouse = ""
+o.mouse = ""
 
 -- Search
-opt.incsearch = true
-opt.ignorecase = true
-opt.smartcase = true
-opt.hlsearch = true
+o.incsearch = true
+o.ignorecase = true
+o.smartcase = true
+o.hlsearch = true
 
 --Appearance
-opt.number = true
-opt.relativenumber = true
-opt.termguicolors = true
-opt.scrolloff = 8
+o.number = true
+o.relativenumber = true
+o.termguicolors = true
+o.scrolloff = 8
+o.list = false
+o.listchars = {
+    -- eol = "↲",
+    trail = "·",
+    conceal = "┊",
+    nbsp = "☠",
+    tab = " »",
+}
 
-opt.foldlevel = 99
+o.foldlevel = 99
 vim.go.foldcolumn = "auto"
 
 vim.wo.signcolumn = "yes:1"
 
 vim.g.autoformat = false
 
-opt.spell = true
-opt.spelllang = "en_us"
-opt.spelloptions = "camel"
-opt.spellcapcheck = ""
+o.spell = true
+o.spelllang = "en_us"
+o.spelloptions = "camel"
+o.spellcapcheck = ""

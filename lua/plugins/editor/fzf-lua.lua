@@ -3,6 +3,7 @@ local wk = require("lib.keymap").wk_desc
 local M = {
     "ibhagwan/fzf-lua",
     cmd = { "FzfLua" },
+    enabled = false,
 }
 
 M.keys = {
@@ -32,6 +33,17 @@ M.keys = {
     wk({ "<leader>gc", "<cmd>FzfLua git_commits<CR>" }, desc("Commit")),
     wk({ "<leader>gf", "<cmd>FzfLua git_files<CR>" }, desc("Git file")),
     wk({ "<leader>gt", "<cmd>FzfLua git_tags<CR>" }, desc("Git tag")),
+    wk({ "gd", "<cmd>FzfLua lsp_definitions<CR>" }, desc("Definitions")),
+    wk({ "gD", "<cmd>FzfLua lsp_declarations<CR>" }, desc("Declarations")),
+    wk({ "gi", "<cmd>FzfLua lsp_implementations<CR>" }, desc("Implementations")),
+    wk({ "gr", "<cmd>FzfLua lsp_references<CR>" }, desc("References")),
+    wk({ "gt", "<cmd>FzfLua lsp_typedefs<CR>" }, desc("Type definition")),
+    wk({ "<leader>lc", "<cmd>FzfLua lsp_incoming_calls<CR>" }, desc("Incoming Calls")),
+    wk({ "<leader>lC", "<cmd>FzfLua lsp_outgoing_calls<CR>" }, desc("Outgoing Calls")),
+    wk({ "<leader>ld", "<cmd>FzfLua diagnostics_document<CR>" }, desc("Document Diagnostic")),
+    wk({ "<leader>lD", "<cmd>FzfLua diagnostics_workspace<CR>" }, desc("Workspace Diagnostic")),
+    wk({ "<leader>ls", "<cmd>FzfLua lsp_workspace_symbols<CR>" }, desc("Symbols")),
+    wk({ "<leader>lS", "<cmd>FzfLua lsp_live_workspace_symbols<CR>" }, desc("Live Symbols")),
 }
 
 M.config = function()

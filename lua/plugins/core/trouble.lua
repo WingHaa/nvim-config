@@ -1,6 +1,7 @@
+local icons = require("lib.icons")
+
 local M = {
     "folke/trouble.nvim",
-    branch = "dev", -- IMPORTANT!
 }
 
 M.keys = {
@@ -147,34 +148,7 @@ M.opts = {
     },
     folder_closed   = " ",
     folder_open     = " ",
-    kinds = {
-      Array         = " ",
-      Boolean       = "󰨙 ",
-      Class         = " ",
-      Constant      = "󰏿 ",
-      Constructor   = " ",
-      Enum          = " ",
-      EnumMember    = " ",
-      Event         = " ",
-      Field         = " ",
-      File          = " ",
-      Function      = "󰊕 ",
-      Interface     = " ",
-      Key           = " ",
-      Method        = "󰊕 ",
-      Module        = " ",
-      Namespace     = "󰦮 ",
-      Null          = " ",
-      Number        = "󰎠 ",
-      Object        = " ",
-      Operator      = " ",
-      Package       = " ",
-      Property      = " ",
-      String        = " ",
-      Struct        = "󰆼 ",
-      TypeParameter = " ",
-      Variable      = "󰀫 ",
-    },
+    kinds = icons.kinds,
   },
 }
 
