@@ -184,14 +184,14 @@ M.conf = {
         -- default sort is by score, text length and index
         fields = { "score:desc", "#text", "idx" },
     },
-    ui_select = false, -- replace `vim.ui.select` with the snacks picker
+    ui_select = true, -- replace `vim.ui.select` with the snacks picker
     ---@class snacks.picker.formatters.Config
     formatters = {
         text = {
             ft = nil, ---@type string? filetype for highlighting
         },
         file = {
-            filename_first = true, -- display filename before the file path
+            filename_first = false, -- display filename before the file path
             truncate = 120, -- truncate the file path to (roughly) this length
             filename_only = false, -- only show the filename
             icon_width = 2, -- width of the icon (in characters)

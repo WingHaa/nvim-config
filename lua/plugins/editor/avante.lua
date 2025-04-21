@@ -10,12 +10,12 @@ return {
         -- Of course, you can reduce the request frequency by increasing `suggestion.debounce`.
         auto_suggestions_provider = "claude",
         cursor_applying_provider = nil, -- The provider used in the applying phase of Cursor Planning Mode, defaults to nil, when nil uses Config.provider as the provider for the applying phase
-        claude = {
-            endpoint = "https://api.anthropic.com",
-            model = "claude-3-5-sonnet-20241022",
-            temperature = 0,
-            max_tokens = 8192,
-        },
+        -- claude = {
+        --     endpoint = "https://api.anthropic.com",
+        --     model = "claude-3-5-sonnet-20241022",
+        --     temperature = 0,
+        --     max_tokens = 8192,
+        -- },
         gemini = {
             -- @see https://ai.google.dev/gemini-api/docs/models/gemini
             model = "gemini-2.5-flash-preview-04-17",
@@ -165,7 +165,6 @@ return {
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
         "nvim-treesitter/nvim-treesitter",
-        "stevearc/dressing.nvim",
         "nvim-lua/plenary.nvim",
         "MunifTanjim/nui.nvim",
     },

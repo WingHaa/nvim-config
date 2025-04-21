@@ -34,4 +34,18 @@ function M.neo_review(opt)
     end)
 end
 
+function M.set_diff_highlights()
+    if vim.o.background == "dark" then
+        vim.api.nvim_set_hl(0, "DiffAdd", { bold = true, fg = "none", bg = "#2e4b2e" })
+        vim.api.nvim_set_hl(0, "DiffDelete", { bold = true, fg = "none", bg = "#4c1e15" })
+        vim.api.nvim_set_hl(0, "DiffChange", { bold = true, fg = "none", bg = "#45565c" })
+        vim.api.nvim_set_hl(0, "DiffText", { bold = true, fg = "none", bg = "#996d74" })
+    else
+        vim.api.nvim_set_hl(0, "DiffAdd", { bold = true, fg = "none", bg = "palegreen" })
+        vim.api.nvim_set_hl(0, "DiffDelete", { bold = true, fg = "none", bg = "tomato" })
+        vim.api.nvim_set_hl(0, "DiffChange", { bold = true, fg = "none", bg = "lightblue" })
+        vim.api.nvim_set_hl(0, "DiffText", { bold = true, fg = "none", bg = "lightpink" })
+    end
+end
+
 return M
