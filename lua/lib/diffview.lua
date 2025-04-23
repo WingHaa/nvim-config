@@ -42,7 +42,7 @@ function M.set_diff_highlights()
         vim.api.nvim_set_hl(0, "DiffText", { bold = true, fg = "none", bg = "#996d74" })
     else
         vim.api.nvim_set_hl(0, "DiffAdd", { bold = true, fg = "none", bg = "palegreen" })
-        vim.api.nvim_set_hl(0, "DiffDelete", { bold = true, fg = "none", bg = "tomato" })
+        vim.api.nvim_set_hl(0, "DiffDelete", { bold = true, fg = "none", bg = "lightred" })
         vim.api.nvim_set_hl(0, "DiffChange", { bold = true, fg = "none", bg = "lightblue" })
         vim.api.nvim_set_hl(0, "DiffText", { bold = true, fg = "none", bg = "lightpink" })
     end

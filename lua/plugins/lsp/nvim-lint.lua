@@ -26,12 +26,12 @@ return {
             },
         }
 
-        require("lint").linters.phpcs.args = {
-            "-q",
-            "--standard=phpcs.xml",
-            "--report=json",
-            "-",
-        }
+        -- require("lint").linters.phpcs.args = {
+        --     "-q",
+        --     "--standard=phpcs.xml",
+        --     "--report=json",
+        --     "-",
+        -- }
 
         vim.api.nvim_create_autocmd({ "BufRead", "InsertLeave", "BufWritePost" }, {
             callback = function()

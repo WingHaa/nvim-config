@@ -1,5 +1,7 @@
 local M = {}
 
+local enable = false
+
 local layouts = {
     default = {
         cycle = true,
@@ -163,7 +165,7 @@ local layouts = {
 local file_layout = layouts.ivy
 
 M.conf = {
-    enabled = true,
+    enabled = enable,
     prompt = " ",
     sources = {},
     focus = "input",
@@ -479,7 +481,7 @@ M.conf = {
 }
 
 -- stylua: ignore start
-M.keys = {
+M.keys = enable and {
     -- find
     { "<leader>fb", function() Snacks.picker.buffers({layout = file_layout}) end, desc = "Buffers" },
     { "<leader>fc", function() Snacks.picker.command_history() end, desc = "Command History" },
@@ -523,7 +525,7 @@ M.keys = {
     { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Goto T[y]pe Definition" },
     { "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
     { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-}
+} or {}
 -- stylua: ignore end
 
 return M
