@@ -52,7 +52,7 @@ vim.wo.signcolumn = "yes:1"
 
 vim.g.autoformat = false
 
-o.spell = true
+o.spell = false
 o.spelllang = "en_us"
 o.spelloptions = "camel"
 o.spellcapcheck = ""

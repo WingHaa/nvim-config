@@ -24,9 +24,3 @@ vim.api.nvim_create_autocmd("BufRead", {
         vim.bo.filetype = "conf"
     end,
 })
-
-vim.api.nvim_create_augroup("diffcolors", { clear = true })
-vim.api.nvim_create_autocmd(
-    "Colorscheme",
-    { group = "diffcolors", callback = require("lib.diffview").set_diff_highlights }
-)

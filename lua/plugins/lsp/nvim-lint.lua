@@ -21,9 +21,9 @@ return {
             -- typescriptreact = {
             --   "eslint_d",
             -- },
-            php = {
-                "phpcs",
-            },
+            -- php = {
+            --     "phpcs",
+            -- },
         }
 
         -- require("lint").linters.phpcs.args = {
