@@ -55,7 +55,8 @@ M.keys = {
         mode = { "x", "v" },
     }, { desc = "Buffer visual word" }),
 
-    wk({ "<leader>gb", "<cmd>FzfLua git_bcommits<cr>" }, desc("Buffer's commit")),
+    wk({ "<leader>gb", "<cmd>FzfLua git_branches<cr>" }, desc("Git Branch")),
+    wk({ "<leader>gB", "<cmd>FzfLua git_bcommits<cr>" }, desc("Buffer's commit")),
     wk({ "<leader>gc", "<cmd>FzfLua git_commits<cr>" }, desc("Commit")),
     wk({ "<leader>gf", "<cmd>FzfLua git_files<cr>" }, desc("Git file")),
     wk({ "<leader>gt", "<cmd>FzfLua git_tags<cr>" }, desc("Git tag")),

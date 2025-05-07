@@ -56,3 +56,13 @@ o.spell = false
 o.spelllang = "en_us"
 o.spelloptions = "camel"
 o.spellcapcheck = ""
+
+o.diffopt = {
+    "internal",
+    "filler",
+    "closeoff",
+    "context:12",
+    "algorithm:histogram",
+    "linematch:40",
+    "inline:char",
+}

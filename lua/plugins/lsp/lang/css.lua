@@ -33,7 +33,7 @@ M.setup = function(capabilities)
             "htmldjango",
             "javascriptreact",
             "less",
-            "php",
+            -- "php",
             "pug",
             "sass",
             "scss",
