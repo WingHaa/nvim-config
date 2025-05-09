@@ -18,6 +18,8 @@ local needed = {
     "intelephense",
     "isort",
     "jdtls",
+    "java-debug-adapter",
+    "java-test",
     "json-lsp",
     "lua-language-server",
     "php-cs-fixer",

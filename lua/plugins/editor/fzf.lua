@@ -64,7 +64,7 @@ M.keys = {
     wk({ "gD", "<cmd>FzfLua lsp_declarations<cr>" }, desc("Declarations")),
     wk({ "gI", "<cmd>FzfLua lsp_implementations<cr>" }, desc("Implementations")),
     wk({ "gd", "<cmd>FzfLua lsp_definitions<cr>" }, desc("Definitions")),
-    wk({ "gr", "<cmd>FzfLua lsp_references<cr>" }, desc("References")),
+    wk({ "gT", "<cmd>FzfLua lsp_references<cr>" }, desc("References")),
     wk({ "gt", "<cmd>FzfLua lsp_typedefs<cr>" }, desc("Type definition")),
     wk({ "<leader>lD", "<cmd>FzfLua diagnostics_workspace<cr>" }, desc("Workspace Diagnostic")),
     wk({ "<leader>lS", "<cmd>FzfLua lsp_live_workspace_symbols<cr>" }, desc("Live Symbols")),

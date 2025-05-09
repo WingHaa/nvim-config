@@ -30,13 +30,13 @@ return {
             },
         })
 
-        vim.keymap.set("n", "gs", sub.operator, { noremap = true })
-        vim.keymap.set("n", "gss", sub.line, { noremap = true })
-        vim.keymap.set("n", "gS", sub.eol, { noremap = true })
-        vim.keymap.set("x", "gs", sub.visual, { noremap = true })
-        vim.keymap.set("n", "+gs", "<cmd>lua require('substitute').operator({register='+'})<CR>", { noremap = true })
-        vim.keymap.set("n", "+gss", "<cmd>lua require('substitute').line({register='+'})<CR>", { noremap = true })
-        vim.keymap.set("n", "+gS", "<cmd>lua require('substitute').eol({register='+'})<CR>", { noremap = true })
-        vim.keymap.set("x", "+gs", "<cmd>lua require('substitute').visual({register='+'})<CR>", { noremap = true })
+        vim.keymap.set("n", "gr", sub.operator, { noremap = true })
+        vim.keymap.set("n", "grr", sub.line, { noremap = true })
+        vim.keymap.set("n", "gR", sub.eol, { noremap = true })
+        vim.keymap.set("x", "gr", sub.visual, { noremap = true })
+        vim.keymap.set("n", "+gr", "<cmd>lua require('substitute').operator({register='+'})<CR>", { noremap = true })
+        vim.keymap.set("n", "+grr", "<cmd>lua require('substitute').line({register='+'})<CR>", { noremap = true })
+        vim.keymap.set("n", "+gR", "<cmd>lua require('substitute').eol({register='+'})<CR>", { noremap = true })
+        vim.keymap.set("x", "+gr", "<cmd>lua require('substitute').visual({register='+'})<CR>", { noremap = true })
     end,
 }

@@ -41,9 +41,9 @@ map.set("t", "<C-j>", "wincmd j", opts) -- Navigate Down
 map.set("t", "<C-k>", "wincmd k", opts) -- Navigate Up
 map.set("t", "<C-l>", "wincmd l", opts) -- Navigate Right
 map.set("n", "<leader>L", "<cmd>Lazy<cr>", opts)
-map.set("n", "<leader>tc", "<cmd>tabnew<cr>", desc("Tab create"))
-map.set("n", "<leader>tn", "<cmd>tabnext<cr>", desc("Next tab"))
-map.set("n", "<leader>tp", "<cmd>tabprevious<cr>", desc("Previous tab"))
+map.set("n", "<leader>uc", "<cmd>tabnew<cr>", desc("Tab create"))
+map.set("n", "<leader>un", "<cmd>tabnext<cr>", desc("Next tab"))
+map.set("n", "<leader>up", "<cmd>tabprevious<cr>", desc("Previous tab"))
 map.set("n", "n", "nzzzv", { desc = "keep cursor centered" })
 map.set("n", "N", "Nzzzv", { desc = "keep cursor centered" })
 
@@ -60,6 +60,10 @@ map.set("n", "<leader>sw", [[:%s/\<<C-r><C-w>\>//g<Left><Left>]], { desc = "subs
 map.set("n", "<Esc>", "<cmd>nohls<CR>") -- Original C-L but replaced with tmux/buf nav
 
 map.del({ "n", "x" }, "gra", { noremap = true }) -- Remove nvim default LSP code action keymapping
+map.del("n", "grn")
+map.del("n", "grr")
+map.del("n", "gri")
+map.del("n", "gO")
 
 --Lazygit
 map.set("n", "<leader>gg", function()

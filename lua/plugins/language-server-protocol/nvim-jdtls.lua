@@ -1,4 +1,4 @@
--- https://github.com/oysandvik94/dotfiles/blob/main/dotfiles/.config/nvim/lua/langeoys/utils/lsp.lua
+-- https://github.com/oysandvik94/dotfiles/blob/main/dotfiles/.config/nvim/lua/langeoys/plugins/lsp/jdtls.lua
 
 local java_cmds = vim.api.nvim_create_augroup("java_cmds", { clear = true })
 local cache_vars = {}
@@ -17,10 +17,10 @@ local features = {
 
     -- change this to `true` if you have `nvim-dap`,
     -- `java-test` and `java-debug-adapter` installed
-    debugger = false,
+    debugger = true,
 }
 
-local function get_jdtls_paths()
+local function get_jdtls_paths(io)
     if cache_vars.paths then
         return cache_vars.paths
     end
@@ -29,17 +29,17 @@ local function get_jdtls_paths()
 
     path.data_dir = vim.fn.stdpath("cache") .. "/nvim-jdtls"
 
-    local jdtls_install = require("mason-registry").get_package("jdtls"):get_install_path()
-
-    path.java_agent = jdtls_install .. "/lombok.jar"
-    path.launcher_jar = vim.fn.glob(jdtls_install .. "/plugins/org.eclipse.equinox.launcher_*.jar")
+    path.java_agent = io.package("jdtls/lombok.jar")
+    local launcher_jars = io.package_glob("jdtls/plugins", "org.eclipse.equinox.launcher_*.jar")
+    table.sort(launcher_jars) -- optional: ensures consistent ordering
+    path.launcher_jar = launcher_jars[#launcher_jars] -- get the last one (latest version)
 
     if vim.fn.has("mac") == 1 then
-        path.platform_config = jdtls_install .. "/config_mac"
+        path.platform_config = io.package("jdtls/config_mac")
     elseif vim.fn.has("unix") == 1 then
-        path.platform_config = jdtls_install .. "/config_linux"
+        path.platform_config = io.package("jdtls/config_linux")
     elseif vim.fn.has("win32") == 1 then
-        path.platform_config = jdtls_install .. "/config_win"
+        path.platform_config = io.package("jdtls/config_win")
     end
 
     path.bundles = {}
@@ -47,31 +47,29 @@ local function get_jdtls_paths()
     ---
     -- Include java-test bundle if present
     ---
-    local java_test_path = require("mason-registry").get_package("java-test"):get_install_path()
-
-    local java_test_bundle = vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar"), "\n")
-
-    if java_test_bundle[1] ~= "" then
-        vim.list_extend(path.bundles, java_test_bundle)
+    local test_bundles = io.package_glob("java-test/extension/server", "*.jar")
+    if not vim.tbl_isempty(test_bundles) then
+        vim.list_extend(path.bundles, test_bundles)
     end
 
     vim.list_extend(path.bundles, require("spring_boot").java_extensions())
-    local spring_path = require("mason-registry").get_package("spring-boot-tools"):get_install_path()
-        .. "/extension/jars/*.jar"
-    local spring = vim.split(vim.fn.glob(spring_path), "\n", {})
+    local spring = io.package_glob("spring-boot-tools/extension/jars", "*.jar")
     vim.list_extend(path.bundles, spring)
+
+    if not vim.tbl_isempty(test_bundles) then
+        vim.list_extend(path.bundles, test_bundles)
+    end
 
     ---
     -- Include java-debug-adapter bundle if present
     ---
-    local java_debug_path = require("mason-registry").get_package("java-debug-adapter"):get_install_path()
-
-    local java_debug_bundle =
-        vim.split(vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar"), "\n")
-
-    if java_debug_bundle[1] ~= "" then
-        vim.list_extend(path.bundles, java_debug_bundle)
+    local debug_bundles =
+        io.package_glob("java-debug-adapter/extension/server", "com.microsoft.java.debug.plugin-*.jar")
+    if not vim.tbl_isempty(debug_bundles) then
+        vim.list_extend(path.bundles, debug_bundles)
     end
+
+    path.bundles = require("lib.tbl").uniq(path.bundles)
 
     ---
     -- Useful if you're starting jdtls with a Java version that's
@@ -145,35 +143,17 @@ local function jdtls_on_attach(client, bufnr)
     keymap("v", "<leader>rc", "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", opts)
     keymap("v", "<leader>rm", "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", opts)
     -- Dap
-    -- keymap.set("n", "<leader>jt", ":lua require'jdtls'.test_class()<CR>", opts)
-    -- keymap.set("n", "<leader>jn", ":lua require'jdtls'.test_nearest_method()<CR>", opts)
-    local mason_registry = require("mason-registry")
-    if opts.dap and mason_registry.is_installed("java-debug-adapter") then
-        require("lua.plugins.lsp.nvim-jdtls").setup_dap(opts.dap)
-        if opts.test and mason_registry.is_installed("java-test") then
-            vim.api.nvim_buf_set_keymap(
-                bufnr,
-                "n",
-                "<leader>tt",
-                [[<Cmd>lua require('jdtls.dap').test_class()<CR>]],
-                { desc = "Run All Tests" }
-            )
-            vim.api.nvim_buf_set_keymap(
-                bufnr,
-                "n",
-                "<leader>tr",
-                [[<Cmd>lua require('jdtls.dap').test_nearest_method()<CR>]],
-                { desc = "Run Nearest Test" }
-            )
-        end
-    end
+    keymap("n", "<leader>tc", ":lua require'jdtls'.test_class()<CR>", opts)
+    keymap("n", "<leader>tm", ":lua require'jdtls'.test_nearest_method()<CR>", opts)
 end
 
 local function jdtls_setup(event)
     local jdtls = require("jdtls")
-    local spring_path = require("mason-registry").get_package("spring-boot-tools"):get_install_path()
+
+    local registry = require("lib.mason").path
+    local spring_path = registry.package("spring-boot-tools/extension/language-server")
     require("spring_boot").setup({
-        ls_path = spring_path .. "/extension/language-server",
+        ls_path = spring_path,
         exploded_ls_jar_data = true,
         server = {
             handlers = {
@@ -184,7 +164,7 @@ local function jdtls_setup(event)
         },
     })
 
-    local path = get_jdtls_paths()
+    local path = get_jdtls_paths(registry)
     local data_dir = path.data_dir .. "/" .. string.gsub(vim.fn.getcwd(), "/", "_")
 
     if cache_vars.capabilities == nil then
@@ -307,9 +287,7 @@ local function jdtls_setup(event)
         settings = lsp_settings,
         on_attach = jdtls_on_attach,
         handlers = {
-            ["$/progress"] = function(_, result, ctx)
-                --
-            end,
+            ["$/progress"] = function(_, result, ctx) end,
         },
         capabilities = cache_vars.capabilities,
         root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
@@ -331,8 +309,8 @@ vim.api.nvim_create_autocmd("FileType", {
 
 return {
     "mfussenegger/nvim-jdtls",
-    "JavaHello/spring-boot.nvim",
     dependencies = {
+        "JavaHello/spring-boot.nvim",
         "rcarriga/nvim-dap-ui",
         "mfussenegger/nvim-dap",
     },

@@ -1,5 +1,5 @@
 local desc = require("lib.keymap").desc
-vim.keymap.set("n", "<leader>tt", "<cmd>TransparentToggle<CR>", desc("Toggle Transparent"))
+vim.keymap.set("n", "<leader>ut", "<cmd>TransparentToggle<CR>", desc("Toggle Transparent"))
 
 return {
     "xiyaowong/transparent.nvim",

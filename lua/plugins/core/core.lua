@@ -44,6 +44,6 @@ return {
     {
         "mbbill/undotree",
         cmd = "UndotreeToggle",
-        keys = { { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Undotree" } },
+        keys = { { "<leader>uu", "<cmd>UndotreeToggle<cr>", desc = "Undotree" } },
     },
 }

@@ -68,7 +68,7 @@ return {
     keys = {
     -- stylua: ignore start
     { "<leader>cf", function() require("conform").format({ async = true, lsp_fallback = true }) end, mode = { "n", "v" }, desc = "Format" },
-    { "<leader>tf", "<cmd>FormatToggle<cr>", desc = "Toggle Format on Save" },
+    { "<leader>uf", "<cmd>FormatToggle<cr>", desc = "Toggle Format on Save" },
     },
     init = function()
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
