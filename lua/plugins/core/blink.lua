@@ -1,43 +1,27 @@
 local M = {
     "saghen/blink.cmp",
     version = "1.*",
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts_extend = { "sources.completion.enabled_providers" },
+    event = "InsertEnter",
 }
 
 M.dependencies = {
     {
-        "saghen/blink.compat",
-        opts = {
-            impersonate_nvim_cmp = false,
-            enable_events = false,
-            debug = false,
-        },
-    },
-    -- {
-    --     "Exafunction/codeium.nvim",
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --     },
-    --     cmd = "Codeium",
-    --     build = ":Codeium Auth",
-    --     opts = {},
-    -- },
-    {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        opts = {
-            suggestion = { enabled = false },
-            panel = { enabled = false },
-            filetypes = {
-                markdown = true,
-                help = true,
+        "fang2hou/blink-copilot",
+        lazy = true,
+        dependencies = {
+            "zbirenbaum/copilot.lua",
+            cmd = "Copilot",
+            event = "InsertEnter",
+            opts = {
+                suggestion = { enabled = false },
+                panel = { enabled = false },
+                filetypes = {
+                    markdown = true,
+                    help = true,
+                },
             },
         },
     },
-    { "fang2hou/blink-copilot" },
     {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
@@ -139,12 +123,6 @@ M.opts = {
                 score_offset = 1,
             },
             dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-            -- codeium = {
-            --     name = "codeium",
-            --     module = "blink.compat.source",
-            --     score_offset = -3,
-            --     max_items = 4,
-            -- },
             lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
             copilot = {
                 name = "copilot",

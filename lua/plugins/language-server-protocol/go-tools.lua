@@ -10,7 +10,7 @@ return {
                 vim.notify("Failed to load mason-registry", vim.log.levels.ERROR)
             end
 
-            vim.g.gotests_bin = registry.get_package("gotests"):get_install_path() .. "/gotests"
+            vim.g.gotests_bin = require("lib.mason").path.bin("gotests")
         end,
     },
 }

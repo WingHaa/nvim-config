@@ -35,7 +35,7 @@ local needed = {
 }
 
 return {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     cmd = "Mason",
     event = "BufReadPre",
     opts_extend = { "ensure_installed" },

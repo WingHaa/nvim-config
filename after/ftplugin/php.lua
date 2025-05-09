@@ -6,19 +6,19 @@ vim.bo.commentstring = "// %s"
 vim.api.nvim_create_user_command("ConvertArrColumns", function(a)
     local range = string.format("%d,%d", a.line1, a.line2)
 
-    vim.cmd(range .. [[s/'type/'pdo_type' => PDO::PARAM_STR, 'type]])
-    vim.cmd(range .. [[s/string/text]])
-    vim.cmd(range .. [[s/number/int]])
-    vim.cmd(range .. [[s/select/text]])
-    vim.cmd(range .. [[s/virtTable./]])
+    vim.cmd("silent! " .. range .. [[s/'type/'pdo_type' => PDO::PARAM_STR, 'type]])
+    vim.cmd("silent! " .. range .. [[s/string/text]])
+    vim.cmd("silent! " .. range .. [[s/number/int]])
+    vim.cmd("silent! " .. range .. [[s/select/text]])
+    vim.cmd("silent! " .. range .. [[s/virtTable./]])
 end, { range = true, desc = "Convert $abc, {$abc}, N'$abc' to :abc" })
 
 vim.api.nvim_create_user_command("ConvertToBindKeys", function(a)
     local range = string.format("%d,%d", a.line1, a.line2)
 
-    vim.cmd(range .. [[s/\$\(\w\+\)/:\1/g]])
-    vim.cmd(range .. [[s/{\(:*\w*\)}/\1/g]])
-    vim.cmd(range .. [[s/N\?'\(:\w*\)'/\1/g]])
+    vim.cmd("silent! " .. range .. [[s/\$\(\w\+\)/:\1/g]])
+    vim.cmd("silent! " .. range .. [[s/{\(:*\w*\)}/\1/g]])
+    vim.cmd("silent! " .. range .. [[s/N\?'\(:\w*\)'/\1/g]])
 end, { range = true, desc = "Convert $abc, {$abc}, N'$abc' to :abc" })
 
 vim.api.nvim_create_user_command("ConvertToBindStatements", function(a)
