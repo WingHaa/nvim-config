@@ -26,6 +26,9 @@ L.config = function(_, opts)
     vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap-forward-to)")
     vim.keymap.set({ "n", "x", "o" }, "S", "<Plug>(leap-backward-to)")
     vim.keymap.set({ "n", "x", "o" }, "R", require("lib.ts-selector"))
+    vim.keymap.set({ "n", "x", "o" }, "gs", function()
+        require("leap.remote").action()
+    end)
 end
 
 F.opts = {

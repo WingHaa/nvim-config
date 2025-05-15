@@ -52,7 +52,7 @@ M.config = function(_, opts)
     vim.keymap.set("n", "<leader>ud", "<cmd>Gitsigns toggle_deleted<CR>", add_desc("Toggle Deleted"))
     vim.keymap.set({ "n", "v" }, "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", add_desc("Stage Hunk"))
     vim.keymap.set({ "n", "v" }, "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", add_desc("Unstage hunk"))
-    vim.keymap.set({ "n", "v" }, "<leader>gr", "<cmd>Gitsigns reset_hunk<CR>", add_desc("Reset hunk"))
+    vim.keymap.set({ "n", "v" }, "<leader>gd", "<cmd>Gitsigns reset_hunk<CR>", add_desc("Discard hunk"))
 end
 
 return M

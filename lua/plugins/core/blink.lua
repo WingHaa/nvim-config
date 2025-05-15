@@ -101,8 +101,6 @@ M.opts = {
             "path",
             "snippets",
             "buffer",
-            "dadbod",
-            -- "codeium",
             "lazydev",
             "copilot",
         },
@@ -122,7 +120,6 @@ M.opts = {
                 end,
                 score_offset = 1,
             },
-            dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
             lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
             copilot = {
                 name = "copilot",

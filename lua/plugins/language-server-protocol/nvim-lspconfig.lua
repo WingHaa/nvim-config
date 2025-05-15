@@ -11,13 +11,6 @@ local function lsp_keymap()
     map.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc("Signature Help"))
 end
 
-local function navic(c, b)
-    local ok, n = pcall(require, "nvim-navic")
-    if ok and c and c.supports_method("textDocument/documentSymbol") then
-        n.attach(c, b)
-    end
-end
-
 local function lsp_highlight(client, bufnr)
     if not client or not client.server_capabilities.documentHighlightProvider then
         return
@@ -38,12 +31,12 @@ local function setup(e)
     local bufnr = e.buf
     local client = vim.lsp.get_client_by_id(e.data.client_id)
     lsp_keymap()
-    navic(client, bufnr)
     lsp_highlight(client, bufnr)
 end
 
 return {
     "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "williamboman/mason.nvim",
         "saghen/blink.cmp",

@@ -9,7 +9,7 @@ return {
         require("which-key").add({
             { "<leader>b", group = "Buffer/Blame" },
             { "<leader>c", group = "Code Action/Format" },
-            { "<leader>d", group = "Diff/Database" },
+            { "<leader>d", group = "Diff" },
             { "<leader>f", group = "Fuzzy Finder" },
             { "<leader>g", group = "Git" },
             { "<leader>h", group = "Harpoon" },
@@ -18,7 +18,7 @@ return {
             { "<leader>n", group = "Neodoc" },
             { "<leader>r", group = "Refactoring" },
             { "<leader>s", group = "Search LSP" },
-            { "<leader>t", group = "Transparent" },
+            { "<leader>u", group = "Update State" },
         })
     end,
 }

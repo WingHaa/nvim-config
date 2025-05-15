@@ -17,7 +17,6 @@ M.keys = {
     wk({ "<leader>fc", "<cmd>FzfLua command_history<cR>" }, desc("Command History")),
     wk({ "<leader>ff", "<cmd>FzfLua files<cr>", "n" }, desc("Files")),
     wk({ "<leader>fg", "<cmd>FzfLua live_grep<cr>" }, desc("Live grep")),
-    wk({ "<leader>fk", "<cmd>FzfLua keymaps<cr>" }, desc("Keymaps")),
     wk({ "<leader>fl", "<cmd>FzfLua loclist_stack<cr>" }, desc("Location list")),
     wk({ "<leader>fm", "<cmd>FzfLua marks<cr>" }, desc("Marks")),
     wk({ "<leader>fo", "<cmd>FzfLua oldfiles<cr>" }, desc("Recent files")),
@@ -28,6 +27,7 @@ M.keys = {
 
     wk({ "<leader>sc", "<cmd>FzfLua colorschemes<cr>" }, desc("Colorscheme")),
     wk({ "<leader>sh", "<cmd>FzfLua help_tags<cr>" }, desc("Help tags")),
+    wk({ "<leader>sk", "<cmd>FzfLua keymaps<cr>" }, desc("Keymaps")),
     wk({ "<leader>sr", "<cmd>FzfLua oldfiles<cr>" }, desc("Resume")),
     wk({
         "<leader>sb",
