@@ -1,5 +1,6 @@
 local desc = require("lib.keymap").desc
 local wk = require("lib.keymap").wk_desc
+local picker = require("lib.fzf.picker")
 local M = {
     "ibhagwan/fzf-lua",
     cmd = { "FzfLua" },
@@ -7,14 +8,13 @@ local M = {
 }
 
 M.keys = {
-    --stylua: ignore
-    wk({ "<leader>fC", "<cmd>FzfLua commands<cr>" }, desc("Commands")),
+    wk({ "<leader>fC", "<cmd>FzfLua commands<cr>", mode = { "n", "x" } }, desc("Commands")),
     wk({ "<leader>fF", "<cmd>lua require('fzf-lua').files({ cwd = vim.fn.expand('%:p:h') })<cr>" }, desc("cwd files")),
     wk({ "<leader>fG", "<cmd>FzfLua grep<cr>" }, desc("Grep pattern")),
     wk({ "<leader>fR", "<cmd>FzfLua registers<cr>" }, desc("Registers")),
     wk({ "<leader>fW", "<cmd>FzfLua grep_cWORD<cr>" }, desc("WORD at cursor")),
     wk({ "<leader>fb", "<cmd>FzfLua buffers<cr>" }, desc("Buffers")),
-    wk({ "<leader>fc", "<cmd>FzfLua command_history<cR>" }, desc("Command History")),
+    wk({ "<leader>fc", "<cmd>FzfLua command_history<cR>", mode = { "n", "x" } }, desc("Command History")),
     wk({ "<leader>ff", "<cmd>FzfLua files<cr>", "n" }, desc("Files")),
     wk({ "<leader>fg", "<cmd>FzfLua live_grep<cr>" }, desc("Live grep")),
     wk({ "<leader>fl", "<cmd>FzfLua loclist_stack<cr>" }, desc("Location list")),
@@ -25,35 +25,13 @@ M.keys = {
     wk({ "<leader>fw", "<cmd>FzfLua grep_cword<cr>" }, desc("word at cursor")),
     wk({ "<leader>fw", "<cmd>FzfLua grep_visual<cr>", mode = "v" }, desc("visual word")),
 
+    wk({ "<leader>sb", picker.cword_buffer, mode = { "n", "x", "v" } }, { desc = "Buffer visual word" }),
     wk({ "<leader>sc", "<cmd>FzfLua colorschemes<cr>" }, desc("Colorscheme")),
+    wk({ "<leader>sd", picker.grep_definition, mode = { "n", "x", "v" } }, { desc = "Grep Definitions" }),
+    wk({ "<leader>sf", picker.cword_file }, { desc = "Find files matching cword" }),
     wk({ "<leader>sh", "<cmd>FzfLua help_tags<cr>" }, desc("Help tags")),
     wk({ "<leader>sk", "<cmd>FzfLua keymaps<cr>" }, desc("Keymaps")),
     wk({ "<leader>sr", "<cmd>FzfLua oldfiles<cr>" }, desc("Resume")),
-    wk({
-        "<leader>sb",
-        function()
-            local fname = vim.fn.expand("%:t")
-            require("fzf-lua").grep({
-                search = vim.fn.expand("<cword>"),
-                grep_opts = "--no-heading --with-filename --line-number --column --smart-case",
-                rg_opts = "--no-heading --column --line-number --smart-case",
-                file = vim.fn.expand("%"),
-            })
-        end,
-    }, { desc = "Buffer cword" }),
-    wk({
-        "<leader>sb",
-        function()
-            local selected_text = require("fzf-lua.utils").get_visual_selection()
-            require("fzf-lua").grep({
-                search = selected_text,
-                grep_opts = "--no-heading --with-filename --line-number --column --smart-case",
-                rg_opts = "--no-heading --column --line-number --smart-case",
-                file = vim.fn.expand("%"),
-            })
-        end,
-        mode = { "x", "v" },
-    }, { desc = "Buffer visual word" }),
 
     wk({ "<leader>gb", "<cmd>FzfLua git_branches<cr>" }, desc("Git Branch")),
     wk({ "<leader>gB", "<cmd>FzfLua git_bcommits<cr>" }, desc("Buffer's commit")),

@@ -1,8 +1,8 @@
 local add_desc = require("lib.keymap").desc
+local wk = require("lib.keymap").wk_desc
 
 local M = {
     "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
 }
 
 M.opts = {
@@ -45,14 +45,13 @@ M.opts = {
     },
 }
 
-M.config = function(_, opts)
-    require("gitsigns").setup(opts)
-    vim.keymap.set("n", "<leader>uw", "<cmd>Gitsigns toggle_word_diff<CR>", add_desc("Word Diff"))
-    vim.keymap.set("n", "<leader>ub", "<cmd>Gitsigns toggle_current_line_blame<CR>", add_desc("Line Blame"))
-    vim.keymap.set("n", "<leader>ud", "<cmd>Gitsigns toggle_deleted<CR>", add_desc("Toggle Deleted"))
-    vim.keymap.set({ "n", "v" }, "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", add_desc("Stage Hunk"))
-    vim.keymap.set({ "n", "v" }, "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", add_desc("Unstage hunk"))
-    vim.keymap.set({ "n", "v" }, "<leader>gd", "<cmd>Gitsigns reset_hunk<CR>", add_desc("Discard hunk"))
-end
+M.keys = {
+    wk({ "<leader>uw", "<cmd>Gitsigns toggle_word_diff<CR>" }, add_desc("Word Diff")),
+    wk({ "<leader>ub", "<cmd>Gitsigns toggle_current_line_blame<CR>" }, add_desc("Line Blame")),
+    wk({ "<leader>ud", "<cmd>Gitsigns toggle_deleted<CR>" }, add_desc("Toggle Deleted")),
+    wk({ "<leader>gs", "<cmd>Gitsigns stage_hunk<CR>", { "n", "v" } }, add_desc("Stage Hunk")),
+    wk({ "<leader>gu", "<cmd>Gitsigns undo_stage_hunk<CR>", { "n", "v" } }, add_desc("Unstage hunk")),
+    wk({ "<leader>gd", "<cmd>Gitsigns reset_hunk<CR>", { "n", "v" } }, add_desc("Discard hunk")),
+}
 
 return M
