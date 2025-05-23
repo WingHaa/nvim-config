@@ -58,8 +58,11 @@ M.dependencies = {
 }
 
 M.opts = {
-    keymap = { preset = "enter" },
-    -- snippets = { preset = "luasnip" },
+    keymap = {
+        preset = "enter",
+        ["<CR>"] = { "select_and_accept" }, -- make it so CR expand snippet with tabstop
+    },
+    snippets = { preset = "luasnip" },
     completion = {
         list = {
             max_items = 200,
@@ -135,9 +138,5 @@ M.opts = {
         nerd_font_variant = "mono",
     },
 }
-
-M.config = function(_, opts)
-    require("blink.cmp").setup(opts)
-end
 
 return M
