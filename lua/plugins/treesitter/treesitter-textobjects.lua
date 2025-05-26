@@ -7,7 +7,7 @@ return {
             textobjects = {
                 select = {
                     enable = true,
-                    disable = { "dart" }, -- https://github.com/AstroNvim/AstroNvim/issues/2707
+                    disable = { "dart" }, -- Dart parser too bad
                     -- Automatically jump forward to textobj, similar to targets.vim
                     lookahead = true,
                     keymaps = {

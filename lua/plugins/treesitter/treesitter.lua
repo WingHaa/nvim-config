@@ -68,7 +68,6 @@ M.config = function(_, opts)
             gotmpl = "gotmpl",
         },
     })
-
     require("nvim-treesitter.parsers").get_parser_configs().blade = {
         install_info = {
             url = "https://github.com/EmranMR/tree-sitter-blade",
@@ -77,6 +76,8 @@ M.config = function(_, opts)
         },
         filetype = "blade",
     }
+
+    vim.g._ts_force_sync_parsing = true -- https://github.com/neovim/neovim/issues/32660
 
     require("nvim-treesitter.configs").setup(opts)
 end
