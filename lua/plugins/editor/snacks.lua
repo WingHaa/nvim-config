@@ -6,7 +6,15 @@ return {
         bigfile = { enabled = true },
         dashboard = { enabled = false },
         explorer = { enabled = false },
-        indent = { enabled = false },
+        indent = {
+            enabled = true,
+            indent = {
+                char = "▏",
+            },
+            scope = {
+                enabled = false,
+            },
+        },
         image = { enabled = true },
         input = { enabled = true },
         picker = require("lib.picker").conf,

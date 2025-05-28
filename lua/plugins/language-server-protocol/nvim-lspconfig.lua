@@ -43,7 +43,9 @@ return {
     },
     config = function()
         vim.diagnostic.config({
-            virtual_text = true,
+            virtual_text = {
+                source = "if_many", -- change to "always" to always show source
+            },
             signs = {
                 text = { ERROR = " ", WARN = " ", HINT = "󰌵", INFO = "" },
             },
