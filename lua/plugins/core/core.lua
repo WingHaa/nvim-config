@@ -34,7 +34,7 @@ return {
             vim.g.matchup_matchparen_offscreen = { method = "popup" }
             vim.g.matchup_surround_enabled = 1
 
-            require("nvim-treesitter.configs").setup({
+            require("nvim-treesitter").setup({
                 matchup = {
                     enable = true,
                     disable = {}, -- optional, list of language that will be disabled

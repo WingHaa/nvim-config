@@ -1,31 +1,13 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     event = "VeryLazy",
+    build = ":TSUpdate",
 }
 
 M.opts = {
-    build = ":TSUpdate",
     indent = {
         enable = true,
-    },
-    autotag = {
-        enable = true,
-        filetypes = {
-            "html",
-            "javascript",
-            "typescript",
-            "javascriptreact",
-            "typescriptreact",
-            "svelte",
-            "vue",
-            "tsx",
-            "jsx",
-            "rescript",
-            "css",
-            "lua",
-            "xml",
-            "markdown",
-        },
     },
     ensure_installed = {
         "markdown",
@@ -43,20 +25,13 @@ M.opts = {
         "jsdoc",
         "phpdoc",
         "http",
+        "sql",
     },
     auto_install = true,
+    install_dir = vim.fn.stdpath("data") .. "/site",
     highlight = {
         enable = true,
-        additional_vim_regex_highlighting = true,
-    },
-    incremental_selection = {
-        enable = false,
-        keymaps = {
-            init_selection = "<C-s>",
-            node_incremental = "<C-s>",
-            scope_incremental = false,
-            node_decremental = "<BS>",
-        },
+        additional_vim_regex_highlighting = false,
     },
 }
 
@@ -68,18 +43,38 @@ M.config = function(_, opts)
             gotmpl = "gotmpl",
         },
     })
-    require("nvim-treesitter.parsers").get_parser_configs().blade = {
-        install_info = {
-            url = "https://github.com/EmranMR/tree-sitter-blade",
-            files = { "src/parser.c" },
-            branch = "main",
-        },
-        filetype = "blade",
-    }
-
-    vim.g._ts_force_sync_parsing = true -- https://github.com/neovim/neovim/issues/32660
-
-    require("nvim-treesitter.configs").setup(opts)
+    -- vim.g._ts_force_sync_parsing = true -- https://github.com/neovim/neovim/issues/32660
+    vim.api.nvim_create_autocmd("User", {
+        pattern = "TSUpdate",
+        callback = function()
+            require("nvim-treesitter.parsers").blade = {
+                install_info = {
+                    url = "https://github.com/EmranMR/tree-sitter-blade",
+                    branch = "main",
+                },
+            }
+        end,
+    })
+    vim.api.nvim_create_autocmd("FileType", {
+        callback = function(details)
+            local bufnr = details.buf
+            if not pcall(vim.treesitter.start, bufnr) then
+                return
+            end
+            vim.bo[bufnr].syntax = "on" -- Use regex based syntax-highlighting as fallback as some plugins might need it
+            -- vim.wo.foldmethod = "expr"
+            -- vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()" -- Use treesitter for folds
+            vim.bo[bufnr].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" -- Use treesitter for indentation
+        end,
+    })
+    local already_installed = require("nvim-treesitter.config").get_installed()
+    local parsers_to_install = vim.iter(opts.ensure_installed)
+        :filter(function(parser)
+            return not vim.tbl_contains(already_installed, parser)
+        end)
+        :totable()
+    require("nvim-treesitter").install(parsers_to_install)
+    require("nvim-treesitter").setup(opts)
 end
 
 return M
