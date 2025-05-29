@@ -16,6 +16,7 @@ end, { range = true, desc = "Convert $abc, {$abc}, N'$abc' to :abc" })
 vim.api.nvim_create_user_command("ConvertToBindKeys", function(a)
     local range = string.format("%d,%d", a.line1, a.line2)
 
+    vim.cmd("silent! " .. range .. [[s/\$\zs\w*\['\(\w*\)'\]/\1/g]])
     vim.cmd("silent! " .. range .. [[s/\$\(\w\+\)/:\1/g]])
     vim.cmd("silent! " .. range .. [[s/{\(:*\w*\)}/\1/g]])
     vim.cmd("silent! " .. range .. [[s/N\?'\(:\w*\)'/\1/g]])
@@ -39,15 +40,35 @@ vim.api.nvim_create_user_command("ConvertToBindStatements", function(a)
     end
 
     local output = {}
-    for _, param in ipairs(ordered) do
-        if a.args ~= "extract" then
-            table.insert(output, string.format("$stmt->bindValue(':%s', $%s, PDO::PARAM_STR);", param, param))
-        else
-            table.insert(output, string.format("$stmt->bindValue(':%s', $data['%s'], PDO::PARAM_STR);", param, param))
-        end
-    end
+    if a.args == "extract" then
+        vim.ui.input({ prompt = "From array($data): " }, function(input)
+            local arr_expr = "$data"
+            if input ~= "" then
+                local keys = vim.split(input, "%.")
+                for i, key in ipairs(keys) do
+                    if i > 1 then
+                        arr_expr = arr_expr .. "['" .. key .. "']"
+                    else
+                        arr_expr = "$" .. key
+                    end
+                end
+            end
 
-    vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, output)
+            for _, param in ipairs(ordered) do
+                table.insert(
+                    output,
+                    string.format("$stmt->bindValue(':%s', %s['%s'], PDO::PARAM_STR);", param, arr_expr, param)
+                )
+            end
+
+            vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, output)
+        end)
+    else
+        for _, param in ipairs(ordered) do
+            table.insert(output, string.format("$stmt->bindValue(':%s', $%s, PDO::PARAM_STR);", param, param))
+        end
+        vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, output)
+    end
 end, { range = true, nargs = "?", desc = "Parse to Bindings" })
 
 map.set("v", "<leader>ma", ":'<,'>ConvertArrColumns<CR>", desc("Bind Column"))
