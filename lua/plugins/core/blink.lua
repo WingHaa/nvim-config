@@ -64,6 +64,16 @@ M.opts = {
         enabled = true,
     },
 
+    cmdline = {
+        enabled = true,
+        completion = {
+            menu = { auto_show = true },
+            list = {
+                selection = { preselect = true },
+            },
+        },
+    },
+
     sources = {
         default = {
             "lsp",
