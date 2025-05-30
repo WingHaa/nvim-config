@@ -9,6 +9,9 @@ local function lsp_keymap()
     map.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc("Hover Definition"))
     map.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", desc("Rename Symbol"))
     map.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc("Signature Help"))
+    map.set("n", "<leader>ui", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+    end, desc("Toggle inlay hints"))
 end
 
 local function lsp_highlight(client, bufnr)
@@ -18,7 +21,9 @@ local function lsp_highlight(client, bufnr)
 
     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
         buffer = bufnr,
-        callback = vim.lsp.buf.document_highlight,
+        callback = function()
+            pcall(vim.lsp.buf.document_highlight)
+        end,
     })
 
     vim.api.nvim_create_autocmd("CursorMoved", {
