@@ -1,4 +1,4 @@
-vim.b.autoformat = true
+vim.b.autoformat = false
 
 local bufnr = vim.api.nvim_get_current_buf()
 

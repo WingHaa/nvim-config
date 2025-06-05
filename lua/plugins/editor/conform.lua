@@ -74,4 +74,8 @@ return {
         vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
     opts = opts,
+    config = function(_, opt)
+        local conf = require("neoconf").get("conform", opt)
+        require("conform").setup(conf)
+    end,
 }
