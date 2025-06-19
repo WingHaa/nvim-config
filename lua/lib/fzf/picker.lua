@@ -1,21 +1,27 @@
 local M = {}
 
 local function clean_code_text(text)
-    -- Try to extract quoted strings like 'operations.Foo.get' or "something.Bar.baz"
+    -- Try to extract quoted string first
     local quoted = text:match([['([^']+)']]) or text:match([["([^"]+)"]])
     if quoted then
-        -- Check if it's a PHP URL with ?m=...&c=...&a=...
+        -- ✅ Check for api=... inside quoted string
+        local api = quoted:match("api=([%w%.]+)")
+        if api then
+            return api
+        end
+
+        -- ✅ Check for ?c=...&a=... inside quoted string
         local controller = quoted:match("[&?]c=([%w_]+)")
         local action = quoted:match("[&?]a=([%w_]+)")
         if controller and action then
             return controller .. "Controller." .. action
         end
-        return quoted:match("^%s*(.-)%s*$") -- trim leading/trailing whitespace inside quotes
+
+        -- Otherwise just return the trimmed quoted string
+        return quoted:match("^%s*(.-)%s*$")
     end
 
-    -- Remove everything before and including the first "="
     text = text:match("=.*") or text
-    -- Remove leading non-alphanumeric and strip everything from first '('
     text = text:gsub("^%W+", "") -- Trim non-word chars at start
     text = text:gsub("%(.*$", "") -- Trim from first '(' to end
     text = text:match("^%s*(.-)%s*$") -- Trim all leading and trailing whitespace

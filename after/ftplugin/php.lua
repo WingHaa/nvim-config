@@ -43,14 +43,16 @@ vim.api.nvim_create_user_command("ConvertToBindStatements", function(a)
     if a.args == "extract" then
         vim.ui.input({ prompt = "From array($data): " }, function(input)
             local arr_expr = "$data"
-            if input ~= "" then
-                local keys = vim.split(input, "%.")
-                for i, key in ipairs(keys) do
-                    if i > 1 then
-                        arr_expr = arr_expr .. "['" .. key .. "']"
-                    else
-                        arr_expr = "$" .. key
-                    end
+            if input == nil or input == "" then
+                return
+            end
+
+            local keys = vim.split(input, "%.")
+            for i, key in ipairs(keys) do
+                if i > 1 then
+                    arr_expr = arr_expr .. "['" .. key .. "']"
+                else
+                    arr_expr = "$" .. key
                 end
             end
 
