@@ -41,7 +41,7 @@ return {
             selector.select_textobject("@function.outer", "textobjects")
         end)
         vim.keymap.set({ "x", "o" }, "if", function()
-            selector().select_textobject("@function.inner", "textobjects")
+            selector.select_textobject("@function.inner", "textobjects")
         end)
         vim.keymap.set({ "x", "o" }, "ac", function()
             selector.select_textobject("@class.outer", "textobjects")
