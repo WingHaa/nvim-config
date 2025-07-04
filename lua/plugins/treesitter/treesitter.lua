@@ -26,6 +26,7 @@ M.opts = {
         "phpdoc",
         "http",
         "sql",
+        "go",
     },
     auto_install = true,
     install_dir = vim.fn.stdpath("data") .. "/site",
