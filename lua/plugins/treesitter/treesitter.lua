@@ -10,6 +10,7 @@ M.opts = {
         enable = true,
     },
     ensure_installed = {
+        "blade",
         "markdown",
         "json",
         "javascript",
@@ -45,17 +46,6 @@ M.config = function(_, opts)
         },
     })
     -- vim.g._ts_force_sync_parsing = true -- https://github.com/neovim/neovim/issues/32660
-    vim.api.nvim_create_autocmd("User", {
-        pattern = "TSUpdate",
-        callback = function()
-            require("nvim-treesitter.parsers").blade = {
-                install_info = {
-                    url = "https://github.com/EmranMR/tree-sitter-blade",
-                    branch = "main",
-                },
-            }
-        end,
-    })
     vim.api.nvim_create_autocmd("FileType", {
         callback = function(details)
             local bufnr = details.buf

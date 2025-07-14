@@ -79,24 +79,6 @@ return {
             border = "rounded",
         })
 
-        -- Add custom blade lsp
-        require("lspconfig.configs").blade_ls = {
-            default_config = {
-                name = "blade_ls",
-                cmd = { vim.fn.expand("$HOME/repo/tools/laravel-dev-tools/builds/laravel-dev-tools"), "lsp" },
-                filetypes = { "blade" },
-                root_dir = function(pattern)
-                    local util = require("lspconfig.util")
-                    local cwd = vim.loop.cwd()
-                    local root = util.root_pattern("composer.json")(pattern)
-
-                    -- prefer cwd if root is a descendant
-                    return util.path.is_descendant(cwd, root) and cwd or root
-                end,
-                settings = {},
-            },
-        }
-
         local default_capabilities = vim.lsp.protocol.make_client_capabilities()
         local capabilities = require("blink.cmp").get_lsp_capabilities(default_capabilities)
         vim.lsp.config("*", { capabilities = capabilities })
@@ -104,7 +86,6 @@ return {
         vim.lsp.enable({
             "basedpyright",
             "bashls",
-            "blade_ls",
             "clangd",
             "docker_compose_language_service",
             "dockerls",
