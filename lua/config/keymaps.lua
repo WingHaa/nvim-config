@@ -61,6 +61,7 @@ map.set("n", "<Esc>", "<cmd>nohls<CR>") -- Original C-L but replaced with tmux/b
 
 map.del({ "n", "x" }, "gra", { noremap = true }) -- Remove nvim default LSP code action keymapping
 map.del("n", "grn")
+map.del("n", "grt")
 map.del("n", "grr")
 map.del("n", "gri")
 map.del("n", "gO")
