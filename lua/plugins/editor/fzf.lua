@@ -100,6 +100,7 @@ M.config = function()
         winopts = {
             title_pos = "center",
             preview = {
+                default = "bat",
                 title_pos = "center",
                 scrollbar = false,
             },
