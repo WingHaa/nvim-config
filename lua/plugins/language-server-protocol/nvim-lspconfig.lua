@@ -28,7 +28,9 @@ local function lsp_highlight(client, bufnr)
 
     vim.api.nvim_create_autocmd("CursorMoved", {
         buffer = bufnr,
-        callback = vim.lsp.buf.clear_references,
+        callback = function()
+            pcall(vim.lsp.buf.clear_references)
+        end,
     })
 end
 
@@ -36,7 +38,7 @@ local function setup(e)
     local bufnr = e.buf
     local client = vim.lsp.get_client_by_id(e.data.client_id)
     lsp_keymap()
-    lsp_highlight(client, bufnr)
+    -- lsp_highlight(client, bufnr)
 end
 
 return {
@@ -89,7 +91,7 @@ return {
             "clangd",
             "docker_compose_language_service",
             "dockerls",
-            "emmlet_ls",
+            "emmet-ls",
             "gopls",
             "jsonls",
             "lua_ls",

@@ -5,23 +5,23 @@ local M = {
 }
 
 M.dependencies = {
-    {
-        "fang2hou/blink-copilot",
-        lazy = true,
-        dependencies = {
-            "zbirenbaum/copilot.lua",
-            cmd = "Copilot",
-            event = "InsertEnter",
-            opts = {
-                suggestion = { enabled = false },
-                panel = { enabled = false },
-                filetypes = {
-                    markdown = true,
-                    help = true,
-                },
-            },
-        },
-    },
+    -- {
+    --     "fang2hou/blink-copilot",
+    --     lazy = true,
+    --     dependencies = {
+    --         "zbirenbaum/copilot.lua",
+    --         cmd = "Copilot",
+    --         event = "InsertEnter",
+    --         opts = {
+    --             suggestion = { enabled = false },
+    --             panel = { enabled = false },
+    --             filetypes = {
+    --                 markdown = true,
+    --                 help = true,
+    --             },
+    --         },
+    --     },
+    -- },
 }
 
 M.opts = {
@@ -81,7 +81,7 @@ M.opts = {
             "snippets",
             "buffer",
             "lazydev",
-            "copilot",
+            -- "copilot",
         },
 
         min_keyword_length = function()
@@ -100,12 +100,12 @@ M.opts = {
                 score_offset = 1,
             },
             lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
-            copilot = {
-                name = "copilot",
-                module = "blink-copilot",
-                score_offset = -3,
-                async = true,
-            },
+            -- copilot = {
+            --     name = "copilot",
+            --     module = "blink-copilot",
+            --     score_offset = -3,
+            --     async = true,
+            -- },
         },
     },
 

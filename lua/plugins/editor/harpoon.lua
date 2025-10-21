@@ -22,25 +22,25 @@ end
 local M = {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
-    commit = "e76cb03",
+    -- commit = "e76cb03",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
         settings = {
             save_on_toggle = false,
             sync_on_ui_close = false,
             key = function()
-                local branch = get_os_command_output({
-                    "git",
-                    "rev-parse",
-                    "--abbrev-ref",
-                    "HEAD",
-                })[1]
-
-                if branch then
-                    return vim.loop.cwd() .. "-" .. branch
-                else
-                    return vim.loop.cwd()
-                end
+                -- local branch = get_os_command_output({
+                --     "git",
+                --     "rev-parse",
+                --     "--abbrev-ref",
+                --     "HEAD",
+                -- })[1]
+                --
+                -- if branch then
+                --     return vim.loop.cwd() .. "-" .. branch
+                -- else
+                return vim.loop.cwd()
+                -- end
             end,
         },
     },
