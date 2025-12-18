@@ -1,4 +1,4 @@
-local L = { "ggandor/leap.nvim", keys = { "s", "S" } }
+local L = { "https://codeberg.org/andyg/leap.nvim.git", keys = { "s", "S" } }
 
 local F = { "ggandor/flit.nvim" }
 

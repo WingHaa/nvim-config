@@ -17,7 +17,7 @@ return {
     },
     { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
     {
-        "echasnovski/mini.icons",
+        "nvim-mini/mini.icons",
         lazy = true,
         opts = {},
         init = function()

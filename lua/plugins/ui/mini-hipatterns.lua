@@ -4,7 +4,7 @@ local M = {}
 M.hl = {}
 
 M.plugin = {
-    "echasnovski/mini.hipatterns",
+    "nvim-mini/mini.hipatterns",
     event = "BufRead",
     opts = function()
         local hi = require("mini.hipatterns")

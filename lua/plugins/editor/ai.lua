@@ -1,5 +1,5 @@
 return {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     version = "*",
     opts = {
         -- Table with textobject id as fields, textobject specification as values.
@@ -13,8 +13,10 @@ return {
             inside = "i",
 
             -- Next/last variants
-            around_next = "an",
-            inside_next = "in",
+            -- around_next = "an",
+            -- inside_next = "in",
+            around_next = "",
+            inside_next = "",
             around_last = "al",
             inside_last = "il",
 
