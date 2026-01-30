@@ -1,5 +1,6 @@
 return {
     "p00f/clangd_extensions.nvim",
+    ft = { "c", "cpp" },
     opts = {
         ast = {
             --These require codicons (https://github.com/microsoft/vscode-codicons)

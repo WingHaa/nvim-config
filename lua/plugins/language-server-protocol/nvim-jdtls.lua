@@ -309,6 +309,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 return {
     "mfussenegger/nvim-jdtls",
+    ft = "java",
     dependencies = {
         "JavaHello/spring-boot.nvim",
         "rcarriga/nvim-dap-ui",

@@ -2,6 +2,7 @@ local add_desc = require("lib.keymap").desc
 
 local M = {
     "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre" },
 }
 
 M.opts = {

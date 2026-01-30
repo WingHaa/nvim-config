@@ -1,7 +1,7 @@
 local desc = require("lib.keymap").noisy_desc
 local M = {
     "ThePrimeagen/refactoring.nvim",
-    event = "CmdlineEnter",
+    cmd = "Refactor",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
@@ -35,12 +35,14 @@ M.opts = {
     -- i.e. [Refactor] Inlined 3 variable occurrences
 }
 
-vim.keymap.set("v", "<leader>re", ":Refactor extract ", desc("Extract Function"))
-vim.keymap.set("v", "<leader>rf", ":Refactor extract_to_file ", desc("Extract Function to file"))
-vim.keymap.set("v", "<leader>rv", ":Refactor extract_var ", desc("Extract Variable"))
-vim.keymap.set({ "n", "v" }, "<leader>ri", ":Refactor inline_var", desc("Inline Variable"))
-vim.keymap.set("n", "<leader>rI", ":Refactor inline_func", desc("Inline Function"))
-vim.keymap.set("n", "<leader>rb", ":Refactor extract_block ", desc("Extract block"))
-vim.keymap.set("n", "<leader>rB", ":Refactor extract_block_to_file", desc("Extract block to file"))
+M.keys = {
+    { "<leader>re", ":Refactor extract<CR>", mode = "v", desc("Extract Function") },
+    { "<leader>rf", ":Refactor extract_to_file<CR>", mode = "v", desc("Extract Function to file") },
+    { "<leader>rv", ":Refactor extract_var<CR>", mode = "v", desc("Extract Variable") },
+    { "<leader>ri", ":Refactor inline_var<CR>", mode = { "n", "v" }, desc("Inline Variable") },
+    { "<leader>rI", ":Refactor inline_func<CR>", mode = "n", desc("Inline Function") },
+    { "<leader>rb", ":Refactor extract_block<CR>", mode = "n", desc("Extract block") },
+    { "<leader>rB", ":Refactor extract_block_to_file<CR>", mode = "n", desc("Extract block to file") },
+}
 
 return M

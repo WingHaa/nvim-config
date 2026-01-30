@@ -1,4 +1,4 @@
-local M = { "nvim-lualine/lualine.nvim" }
+local M = { "nvim-lualine/lualine.nvim", event = "UIEnter" }
 
 local components = require("lib.lualine.components")
 

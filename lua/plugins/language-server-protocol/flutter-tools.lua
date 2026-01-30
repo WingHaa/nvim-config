@@ -1,6 +1,6 @@
 return {
     "nvim-flutter/flutter-tools.nvim",
-    lazy = false,
+    ft = "dart",
     config = function()
         vim.keymap.set("n", "<leader>lfs", ":FlutterRun <CR>", {})
         vim.keymap.set("n", "<leader>lfq", ":FlutterQuit <CR>", {})

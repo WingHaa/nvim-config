@@ -1,7 +1,7 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    event = "VeryLazy",
+    event = { "BufReadPost", "BufNewFile" },
     build = ":TSUpdate",
 }
 
