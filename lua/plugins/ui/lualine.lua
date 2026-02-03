@@ -32,7 +32,8 @@ M.opts = {
             -- components.recording,
             "selectioncount",
         },
-        lualine_x = { --[[ components.lsp ]]
+        lualine_x = {
+            components.lsp,
         },
         lualine_y = { "searchcount", components.shiftwidth },
         lualine_z = { "location" },
