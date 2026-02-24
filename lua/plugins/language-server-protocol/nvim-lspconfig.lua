@@ -6,37 +6,37 @@ local function lsp_keymap()
     map.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc("Next Diagnostic"))
     map.set({ "n", "v" }, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", desc("Code Actions"))
     map.set("n", "<leader>lr", "<cmd>lsp restart<CR>", desc("Restart LSP Server"))
-    map.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc("Hover Definition"))
+    map.set("n", "K", "<cmd>lua vim.lsp.buf.hover({ border = 'rounded' })<CR>", desc("Hover Definition"))
     map.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", desc("Rename Symbol"))
-    map.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc("Signature Help"))
+    map.set("i", "<C-h>", "<cmd>lua vim.lsp.buf.signature_help({ border = 'rounded' })<CR>", desc("Signature Help"))
     map.set("n", "<leader>ui", function()
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
     end, desc("Toggle inlay hints"))
 end
 
-local function lsp_highlight(client, bufnr)
-    if not client or not client.server_capabilities.documentHighlightProvider then
-        return
-    end
-
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-        buffer = bufnr,
-        callback = function()
-            pcall(vim.lsp.buf.document_highlight)
-        end,
-    })
-
-    vim.api.nvim_create_autocmd("CursorMoved", {
-        buffer = bufnr,
-        callback = function()
-            pcall(vim.lsp.buf.clear_references)
-        end,
-    })
-end
+-- local function lsp_highlight(client, bufnr)
+--     if not client or not client.server_capabilities.documentHighlightProvider then
+--         return
+--     end
+--
+--     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+--         buffer = bufnr,
+--         callback = function()
+--             pcall(vim.lsp.buf.document_highlight)
+--         end,
+--     })
+--
+--     vim.api.nvim_create_autocmd("CursorMoved", {
+--         buffer = bufnr,
+--         callback = function()
+--             pcall(vim.lsp.buf.clear_references)
+--         end,
+--     })
+-- end
 
 local function setup(e)
-    local bufnr = e.buf
-    local client = vim.lsp.get_client_by_id(e.data.client_id)
+    -- local bufnr = e.buf
+    -- local client = vim.lsp.get_client_by_id(e.data.client_id)
     lsp_keymap()
     -- lsp_highlight(client, bufnr)
 end
@@ -71,14 +71,6 @@ return {
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("LspAttach_buffer_sync", { clear = true }),
             callback = setup,
-        })
-
-        vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-            border = "rounded",
-        })
-
-        vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-            border = "rounded",
         })
 
         local default_capabilities = vim.lsp.protocol.make_client_capabilities()
