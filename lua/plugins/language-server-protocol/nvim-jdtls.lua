@@ -76,26 +76,13 @@ local function get_jdtls_paths(io)
     -- different from the one the project uses.
     ---
     path.runtimes = {
-        -- Note: the field `name` must be a valid `ExecutionEnvironment`,
-        -- you can find the list here:
-        -- https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
-        --
-        -- This example assume you are using sdkman: https://sdkman.io
-        -- {
-        -- 	name = "JavaSE-1.8",
-        -- 	path = vim.fn.expand("~/.sdkman/candidates/java/8.0.392-tem"),
-        -- },
-        {
-            name = "JavaSE-11",
-            path = vim.fn.expand("~/.sdkman/candidates/java/11.0.25-tem"),
-        },
         {
             name = "JavaSE-17",
-            path = vim.fn.expand("~/.sdkman/candidates/java/17.0.13-tem"),
+            path = vim.fn.expand("~/.jdks/temurin-17.0.19"),
         },
         {
             name = "JavaSE-21",
-            path = vim.fn.expand("~/.sdkman/candidates/java/21.0.5-tem"),
+            path = vim.fn.expand("~/.jdks/temurin-21.0.7"),
         },
     }
 
@@ -172,11 +159,11 @@ local function jdtls_setup(event)
 
         cache_vars.capabilities = require("blink.cmp").get_lsp_capabilities()
     end
-
+    local java_home = vim.fn.expand("~/.jdks/temurin-17.0.19")
     -- The command that starts the language server
     -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
     local cmd = {
-        "java",
+        java_home .. "/bin/java",
         "-Declipse.application=org.eclipse.jdt.ls.core.id1",
         "-XX:+UnlockExperimentalVMOptions",
         "-Dosgi.bundles.defaultStartLevel=4",
@@ -300,14 +287,15 @@ local function jdtls_setup(event)
     })
 end
 
-vim.api.nvim_create_autocmd("FileType", {
-    group = java_cmds,
-    pattern = { "java" },
-    desc = "Setup jdtls",
-    callback = jdtls_setup,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     group = java_cmds,
+--     pattern = { "java" },
+--     desc = "Setup jdtls",
+--     callback = jdtls_setup,
+-- })
 
 return {
+    enabled = false,
     "mfussenegger/nvim-jdtls",
     ft = "java",
     dependencies = {
